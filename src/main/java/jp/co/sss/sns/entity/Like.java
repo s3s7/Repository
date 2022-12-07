@@ -1,0 +1,52 @@
+package jp.co.sss.sns.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sns_like")
+
+public class Like {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long likeId;
+
+	@ManyToOne
+	@JoinColumn(name = "post_id", referencedColumnName = "id")
+	private Posting posting;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private User user;
+
+	public long getLikeId() {
+		return likeId;
+	}
+
+	public void setLikeId(long likeId) {
+		this.likeId = likeId;
+	}
+
+	public Posting getPosting() {
+		return posting;
+	}
+
+	public void setPosting(Posting posting) {
+		this.posting = posting;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+}

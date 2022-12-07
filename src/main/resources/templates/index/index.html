@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8" />
+<title>ちょいブログ</title>
+</head>
+<body>
+	<h3>ブログシステム</h3>
+	<p class="error" th:text="${errMessage}"></p>
+	<!-- 		<th:block th:if="${#lists.isEmpty(book)}"> -->
+
+	<div>記事一覧</div>
+	<table>
+		<tr>
+			<th>投稿日</th>
+			<th>タイトル</th>
+			<th>投稿内容</th>
+			<!-- 			<th>いいね！</th> -->
+			<th>コメント</th>
+		</tr>
+		<tr th:each="posting: ${session.posting}">
+			<td th:text="${posting.insertDate}"></td>
+			<td th:text="${posting.title}"></td>
+			<td th:text="${posting.contents}"></td>
+			<!-- 			<td th:text="${posting.contents}"></td> -->
+			<td><form action="/snssns/comments">
+					<input type="hidden" name="id" th:value="${posting.id}" /> <input
+						type="submit" value="コメントする" />
+				</form></td>
+		</tr>
+	</table>
+	<th:block th:if="${session.users}">
+		<div>
+			<a href="/snssns/posts">投稿する</a>
+		</div>
+	</th:block>
+
+	</th:block>
+	<!-- もしいいねしていたら -->
+	<!-- list.contains()メソッドでその投稿にいいねしているかチェック-->
+	<!-- <th:block th:if="${myLikes.contains(post.postId) == true}"> -->
+	<!-- ぬりつぶされたハートアイコンを表示 -->
+	<!-- <a th:href="@{/like/__${post.postId}__}"><i class="fas fa-heart fa-2x pink-text text-accent-2"></i></a> -->
+	<!-- いいねの総数を表示 -->
+	<!-- Map.get()メソッド -->
+	<!-- 角かっこの抜いたところ２つあり -->
+	<!-- </th:block> -->
+
+	<!-- いいねしていなかったら -->
+	<!-- <th:block th:unless="${myLikes.contains(post.postId) == true}"> -->
+	<!-- 枠線のみのハートアイコンを表示 -->
+	<!-- <a th:href="@{/like/__${post.postId}__}"><i class="far fa-heart fa-2x pink-text text-accent-2"></i></a> -->
+	<!-- いいねの総数を表示 -->
+
+	<!-- </th:block> -->
+
+
+</body>
+</html>

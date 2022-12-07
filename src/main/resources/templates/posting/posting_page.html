@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8" />
+<title>ブログ投稿画面< | ブログ/title>
+</head>
+<body>
+	<h2 class="title">投稿するブログのタイトル、内容</h2>
+	<!-- エラーメッセージコントローラー表示用 -->
+	<!-- 	<p class="error" th:text="${errMessage}"></p> -->
+
+	<!-- <ul th:if="${#fields.hasErrors()}"  th:class="input_list" > -->
+	<!--   					<li th:each="err : ${#fields.errors()}" th:text="${err}" th:class="error_list" ></li> -->
+	<!-- 				</ul> -->
+	<!-- 	<h2 class="title">入力画面</h2> -->
+	<!-- <!-- 	<div class="user_info_form_area"> -->
+	<!-- 		<form method="post" th:action="@{/review/regist/check/{id}(id=${reviewForm.item_id})}"  th:object="${reviewForm}"> -->
+	<!-- 				<table><tr th:if="${#fields.hasErrors()}"  th:class="input_list" > -->
+	<!--   					<td th:each="err : ${#fields.errors()}" th:text="${err}" th:class="error_list" ></td> -->
+	<!-- 			</tr>	</table> -->
+	<!-- 		<form method="post" th:action="@{/review/regist/check/{id}(id=${reviewForm.item_id})}"  th:object="${reviewForm}"> -->
+	<form th:action="@{/snssns/posting}" th:object="${postingForm}">
+		<label> <!-- <table> --> <!--  <tr th:inline="text" th:each ="message:${errorList}"><td colspan="4"></td> -->
+
+			<!--   					<td th:each="err : ${#fields.errors()}" th:text="${err}" th:class="error_list" ></td> -->
+			<!-- 			</tr>	</table> --> <!-- <table> --> <!-- <tr> --> <span
+			class="input_title"> <!-- 							<span class="input_title" th:object="${PostingForm}"> -->
+				タイトル
+		</span> <!-- 							<span th:if="${#fields.hasErrors('title')}"></span> --> <textarea
+				name="title" rows="1" th:field="*{title}"></textarea>
+			<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+			<span style="color: red"></span><br /> <!-- 			th:if="${#fields.hasErrors('title')" 	th:errors="*{title}"   			-->
+			<!-- 							 --> <!-- 							th:value="${PostingForm.title}" th:field = "*{title}" /> -->
+		</label>
+
+		<!-- 						<form th:action="@{/snssns/posting}"  -->
+		<!-- 					<form th:action="@{/snssns/posting}"  -->
+		<!-- 						th:object="${PostingForm}">	 -->
+		<label> <span class="input_title">投稿内容</span> <textarea
+				name="contents" rows="6" th:field="*{contents}" style="color: red"></textarea>
+			<div th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}"></div>
+			<!-- 							th:value="${PostingForm.contents}" th:field = "*{contents}" /> -->
+		</label>
+		<!-- 					</li> -->
+		<!-- 				</ul> -->
+		<input type="submit" value="投稿内容確認画面へ" class="send_button" />
+	</form>
+	<!-- 		<form th:action="@{/order/detail/{id}(id=${session.orderId})}"> -->
+
+	<!-- 記事一覧へ戻るボタン -->
+	<form th:action="@{/snssns/findAll}">
+		<input type="submit" value="記事一覧画面へ戻る" class="back_button" />
+	</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8" />
+<title>ブログ</title>
+</head>
+<body>
+
+<div>ログイン</div>
+<form  action="/snssns/doLogin">
+ユーザ ID:<input  type="text" name="userId" /> 
+パスワード:<input type="password" name="password" /> 
+<input type="submit" value="ログイン" />
+    </form>
+</body>
+</html>
