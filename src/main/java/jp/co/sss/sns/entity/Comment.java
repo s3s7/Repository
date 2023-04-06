@@ -18,7 +18,7 @@ public class Comment {
 	private long commentId;
 
 	@ManyToOne
-	@JoinColumn(name = "post_id", referencedColumnName = "id")
+	@JoinColumn(name = "posting_id", referencedColumnName = "id")
 	private Posting posting;
 	
 @Column

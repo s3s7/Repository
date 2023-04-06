@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.entity.Comment;
@@ -56,7 +57,7 @@ public class PostingController {
 		return "posting/posting_page";
 	}
 
-	// 投稿確認画面へ（登録）機能 入力チェック付き
+	// 投稿確認画面へ（登録）機能 入力チェックあり
 	@RequestMapping("/snssns/posting")
 	public String doLogin(Model model ,@Valid @ModelAttribute PostingForm form, BindingResult result) {
 		if (result.hasErrors()) {
@@ -72,6 +73,14 @@ public class PostingController {
 //			return "redirect:/posting/posting_page";
 		}
 		String content = form.getContents();
+//		List<content> contentList = form.getContents()
+//		 List<String> list = new ArrayList<String>(){
+//	            {
+//	                add(form.getContents());
+//	                add("Orange");
+//	                add("Melon");
+//	            }
+//	        };
 		content = form.getTitle();
 
 		if (content != null) {
@@ -141,6 +150,10 @@ public class PostingController {
 	public String docomment(Model model, @ModelAttribute CommentForm form) {
 		// コメント内容情報の生成
 		Comment comment = new Comment();
+		
+		 
+//        System.out.println(timestamp);
+		
 //		item.setId(form.getItem_id());
 
 		// 入力値をリポジトリ保存
@@ -164,6 +177,17 @@ public class PostingController {
 		Comment commentContents = new Comment();
 		commentContents.setCommentId(commentId);
 		
+//	@RequestMapping("/comment/list/{id}")
+//		public String showCommentList(Model model,@ModelAttribute PostingForm form) {
+//			List<Posting> posting = postingRepository.findBy();
+//			List<Comment> postings = commentRepository.findAll();
+//			if (!posting.isEmpty()) {
+//				session.setAttribute("posting", posting);
+//			} else {
+//				model.addAttribute("errMessage", "コメントは存在しません。");
+//			}
+//			return "index/index";
+//		}
 		
 //		List<Comment> comment = new ArrayList<Comment>;
 //		String commentContents = ();
@@ -171,6 +195,34 @@ public class PostingController {
 	
 		return "comment/comment_complete";
 	}
+//	コメント一覧表示
+	@RequestMapping("comment/list/{id}")
+	public String showCommentList(@PathVariable long id, Model model) {
+
+		// 選択されたコメントIDに該当するレビュー情報を取得
+		List<Comment> comment = commentRepository.findByPostingId(id);
+
+		// コメント情報をViewへ渡す
+		model.addAttribute("posthing_comment", comment);
+		model.addAttribute("posthing_id",id);
+
+		return "/comment/comment_read";
+	}
+	
+	
+//	レビューのコード引っ張ってきたもの
+//	@RequestMapping("comment/list/{id}")
+//	public String showCommentLists(@PathVariable int id, Model model) {
+
+		// 選択された商品IDに該当するレビュー情報を取得
+//		List<Comment> comment = CommentRepository.findByIdOrderByInsertDateDesc(id);
+
+		// レビュー情報をViewへ渡す
+//		model.addAttribute("posthing_comment", comment);
+//		model.addAttribute("posthing_id",id);
+//
+//		return "review/list/review_list";
+//	}
 	
 	// いいね実行
 //	@RequestMapping("/like/{postId}")

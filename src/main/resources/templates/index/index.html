@@ -17,13 +17,18 @@
 			<th>タイトル</th>
 			<th>投稿内容</th>
 			<!-- 			<th>いいね！</th> -->
-			<th>コメント</th>
+			<th>コメント一覧</th>
+			<th>コメント投稿</th>
 		</tr>
 		<tr th:each="posting: ${session.posting}">
 			<td th:text="${posting.insertDate}"></td>
 			<td th:text="${posting.title}"></td>
 			<td th:text="${posting.contents}"></td>
 			<!-- 			<td th:text="${posting.contents}"></td> -->
+			<td>
+				<form th:action="@{/comment/list/{id}(id=${posting.id})}">
+				<input type="submit" value="この記事のコメントを見る" />
+			</form></td>
 			<td><form action="/snssns/comments">
 					<input type="hidden" name="id" th:value="${posting.id}" /> <input
 						type="submit" value="コメントする" />

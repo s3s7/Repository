@@ -13,14 +13,24 @@ public class User {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
     private String userId;
     
     @Column
     private String password;
+    
+	/**
+	 * 権限
+	 */
+	@Column
+	private Integer	authority;
+    
+//    @Column
+//    private String name;
 
+	
 	public long getId() {
 		return id;
 	}
@@ -44,6 +54,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public Integer getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(Integer authority) {
+		this.authority = authority;
+	}
+
+
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
 	
 	
 }

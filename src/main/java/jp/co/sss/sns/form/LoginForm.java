@@ -8,9 +8,11 @@ public class LoginForm {
 	private String userId;
 	@NotNull
     private String password;
+//	@NotNull
+//    private String userName;
 
 
-	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -26,5 +28,12 @@ public class LoginForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+//	public String getUserName() {
+//		return userName;
+//	}
+//
+//	public void setUserName(String userName) {
+//		this.userName = userName;
+//	}
 }
