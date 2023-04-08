@@ -11,26 +11,21 @@ import javax.persistence.Table;
 @Table(name = "sns_user")
 public class User {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column
-    private String userId;
-    
-    @Column
-    private String password;
-    
+	private long id;
+	@Column
+	private String userName;
+
+	@Column
+	private String password;
+
 	/**
 	 * 権限
 	 */
 	@Column
-	private Integer	authority;
-    
-//    @Column
-//    private String name;
+	private Integer authority;
 
-	
 	public long getId() {
 		return id;
 	}
@@ -39,12 +34,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -54,7 +49,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Integer getAuthority() {
 		return authority;
 	}
@@ -63,7 +58,6 @@ public class User {
 		this.authority = authority;
 	}
 
-
 //	public String getName() {
 //		return name;
 //	}
@@ -71,6 +65,5 @@ public class User {
 //	public void setName(String name) {
 //		this.name = name;
 //	}
-	
-	
+
 }

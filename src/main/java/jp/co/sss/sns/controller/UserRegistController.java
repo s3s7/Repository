@@ -94,7 +94,7 @@ public class UserRegistController{
 		UserBean userBean = new UserBean();
 		userBean.setId(user.getId());
 		userBean.setPassword(user.getPassword());
-		userBean.setUserId(user.getUserId());
+		userBean.setUserName(user.getUserName());
 		userBean.setAuthority(user.getAuthority());
 		session.setAttribute("user", userBean);
 

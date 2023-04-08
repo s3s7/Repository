@@ -30,6 +30,9 @@ public class Posting {
     @Column
     private String title;
     
+    @Column
+    private int user_id ;
+    
 	public long getId() {
 		return id;
 	}
@@ -60,6 +63,14 @@ public class Posting {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
     
 

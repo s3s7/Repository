@@ -18,21 +18,35 @@
 			<th>投稿内容</th>
 			<!-- 			<th>いいね！</th> -->
 			<th>コメント一覧</th>
-			<th>コメント投稿</th>
+				<th:block th:if="${session.usersAuthority == 0}">
+			<th>コメント投稿</th></th:block>
 		</tr>
 		<tr th:each="posting: ${session.posting}">
-			<td th:text="${posting.insertDate}"></td>
-			<td th:text="${posting.title}"></td>
-			<td th:text="${posting.contents}"></td>
+			
+			<td  style="text-align: center;" th:text="${posting.insertDate}"></td>
+			<td style="text-align: center;" th:text="${posting.title}"></td>
+			<td style="text-align: center;" th:text="${posting.contents}"></td>
 			<!-- 			<td th:text="${posting.contents}"></td> -->
+
 			<td>
-				<form th:action="@{/comment/list/{id}(id=${posting.id})}">
-				<input type="submit" value="この記事のコメントを見る" />
-			</form></td>
-			<td><form action="/snssns/comments">
-					<input type="hidden" name="id" th:value="${posting.id}" /> <input
-						type="submit" value="コメントする" />
-				</form></td>
+				<div style="text-align: center;">
+					<form th:action="@{/comment/list/{id}(id=${posting.id})}">
+						<input type="submit" value="この記事のコメントを見る" />
+					</form>
+				</div>
+			</td>
+
+			<!-- コメントするボタン（ログインした場合のみ表示） -->
+			<th:block th:if="${session.usersAuthority == 0}">
+				<dd class="link_area">
+				<td><form action="/snssns/comments">
+						<div style="text-align: center;">
+							<input type="hidden" name="id" th:value="${posting.id}" /> <input
+								type="submit" value="コメントする" />
+			</div>		</form></td>
+			
+			</th:block>
+		
 		</tr>
 	</table>
 	<th:block th:if="${session.users}">

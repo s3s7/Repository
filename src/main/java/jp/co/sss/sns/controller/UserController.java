@@ -33,6 +33,7 @@ public class UserController {
 	public String index() {
 		return "login";
 	}
+	
 
 //ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
@@ -65,7 +66,8 @@ public class UserController {
 //				System.out.println(user.getUserId());
 //				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
 //				Lis> userr = new ArrayList<userr>();
-			session.setAttribute("users", user.getUserId());
+			session.setAttribute("users", user.getUserName());
+			session.setAttribute("usersAuthority",user.getAuthority());
 			return "index/index";
 
 		} else {
