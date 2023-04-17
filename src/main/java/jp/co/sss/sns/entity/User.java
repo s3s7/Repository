@@ -25,6 +25,13 @@ public class User {
 	 */
 	@Column
 	private Integer authority;
+	
+	/**
+	 * 削除フラグ 0:未削除、1:削除済み
+	 */
+	@Column(insertable = false)
+	private Integer	deleteFlag;
+
 
 	public long getId() {
 		return id;
@@ -58,8 +65,15 @@ public class User {
 		this.authority = authority;
 	}
 
-//	public String getName() {
-//		return name;
+	public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+
 //	}
 //
 //	public void setName(String name) {

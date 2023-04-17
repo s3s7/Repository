@@ -1,0 +1,91 @@
+package jp.co.sss.sns.controller.comment;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jp.co.sss.sns.entity.Comment;
+import jp.co.sss.sns.form.CommentForm;
+import jp.co.sss.sns.repository.CommentRepository;
+
+@Controller
+public class CommentRegistController {
+
+	@Autowired
+	CommentRepository commentRepository;
+	
+	// コメントページ遷移処理
+	@RequestMapping("/snssns/comments")
+	public String goComments(Model model, @ModelAttribute CommentForm form) {
+		return "comment/comment_page";
+	}
+
+	// コメント機能 入力チェック付き
+	@RequestMapping("/snssns/comment")
+	public String docomment(Model model, @Valid @ModelAttribute CommentForm form, BindingResult result) {
+		if (result.hasErrors()) {
+			// 別のところのこーど
+			List<ObjectError> errorList = result.getAllErrors();
+			model.addAttribute("errorList", errorList);
+			return goComments(model, form);
+		}
+		String commentContent = form.getCommentContents();
+		if (commentContent != null) {
+			model.addAttribute("contents", commentContent);
+			// 条件を満たした場合コメント内容確認画面へ
+			return "comment/comment_check";
+		} else {
+			return goComments(model, form);
+		}
+	}
+
+	// コメントするボタン
+	@RequestMapping("/snssns/doComment")
+	public String docomment(Model model, @ModelAttribute CommentForm form) {
+		// コメント内容情報の生成
+		Comment comment = new Comment();
+
+		// 入力値をリポジトリ保存
+		comment.setCommentContents(form.getCommentContents());
+		commentRepository.save(comment);
+		return "redirect:/snssns/commentComplete";
+	}
+
+	// コメント完了画面表示
+	@RequestMapping("/snssns/commentComplete")
+	public String docommented() {
+		return "comment/comment_complete";
+	}
+
+//	コメント数カウント処理
+	@RequestMapping("/snssns/countComment")
+	public String countcomment(long commentId) {
+		Comment commentContents = new Comment();
+		commentContents.setCommentId(commentId);
+		return "comment/comment_complete";
+	}
+
+//	コメント一覧表示
+	@RequestMapping("comment/list/{id}")
+	public String showCommentList(@PathVariable long id, Model model) {
+
+		// 選択されたコメントIDに該当するレビュー情報を取得
+		List<Comment> comment = commentRepository.findByPostingId(id);
+
+		// コメント情報をViewへ渡す
+		model.addAttribute("posthing_comment", comment);
+		model.addAttribute("posthing_id", id);
+
+		return "/comment/comment_read";
+	}
+
+}

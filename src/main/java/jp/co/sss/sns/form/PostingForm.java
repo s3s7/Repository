@@ -1,6 +1,5 @@
 package jp.co.sss.sns.form;
 
-
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
@@ -8,17 +7,15 @@ import javax.validation.constraints.Size;
 
 public class PostingForm {
 
-//
-//    private long id;
-    private Date  insertDate;
-//    
-	   @NotEmpty(message = "投稿内容を入力してください")
-    private String contents;
-    
-    @NotEmpty(message = "タイトルを入力してください")
-	@Size(min = 0,max = 20)
-    private String title;
-    
+	private Date insertDate;
+	
+	@NotEmpty(message = "投稿内容を入力してください")
+	private String contents;
+
+	@NotEmpty(message = "タイトルを入力してください")
+	@Size(min = 0, max = 20)
+	private String title;
+
 
 	public String getContents() {
 		return contents;
@@ -43,5 +40,6 @@ public class PostingForm {
 	public void setinsertDate(Date insertDate) {
 		this.insertDate = insertDate;
 	}
-	
+
+
 }

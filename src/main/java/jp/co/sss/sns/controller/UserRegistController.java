@@ -69,7 +69,6 @@ public class UserRegistController{
 		if (result.hasErrors()) {
 			return "user/regist/user_regist_input";
 		}
-
 		return "user/regist/user_regist_check";
 	}
 

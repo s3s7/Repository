@@ -1,5 +1,10 @@
 package jp.co.sss.sns.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,14 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.sss.sns.entity.Comment;
 import jp.co.sss.sns.entity.Posting;
-import jp.co.sss.sns.form.CommentForm;
 import jp.co.sss.sns.form.PostingForm;
-import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.LikeRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
@@ -33,16 +34,12 @@ public class PostingController {
 	LikeRepository likeRepository;
 	@Autowired
 	UserRepository userRepository;
-	@Autowired
-	CommentRepository commentRepository;
-	
-	
+
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
-	public String showList(Model model,@ModelAttribute PostingForm form) {
+	public String showList(Model model, @ModelAttribute PostingForm form) {
 
 		List<Posting> posting = postingRepository.findAll();
-//		List<Comment> postings = commentRepository.findAll();
 		if (!posting.isEmpty()) {
 			session.setAttribute("posting", posting);
 		} else {
@@ -53,61 +50,53 @@ public class PostingController {
 
 	// 投稿ページ遷移処理
 	@RequestMapping("/snssns/posts")
-	public String postsposts(Model model,@ModelAttribute PostingForm form) {
+	public String postsposts(Model model, @ModelAttribute PostingForm form) {
 		return "posting/posting_page";
 	}
 
 	// 投稿確認画面へ（登録）機能 入力チェックあり
 	@RequestMapping("/snssns/posting")
-	public String doLogin(Model model ,@Valid @ModelAttribute PostingForm form, BindingResult result) {
+	public String doLogin(Model model, @Valid @ModelAttribute PostingForm form, BindingResult result) {
 		if (result.hasErrors()) {
-//			List<String> errorList = new ArrayList<String>();
-//			for (ObjectError error : result.getAllErrors()) {
-//				errorList.add(error.getDefaultMessage());
-//			}
-			//別のところのこーど
+			// 別のところのこーど
 			List<ObjectError> errorList = result.getAllErrors();
-			model.addAttribute("errorList",errorList);
-//			model.addAttribute("errMessage", "文字数が多いです");
-			return postsposts(model,form);
-//			return "redirect:/posting/posting_page";
+			model.addAttribute("errorList", errorList);
+			return postsposts(model, form);
 		}
 		String content = form.getContents();
-//		List<content> contentList = form.getContents()
-//		 List<String> list = new ArrayList<String>(){
-//	            {
-//	                add(form.getContents());
-//	                add("Orange");
-//	                add("Melon");
-//	            }
-//	        };
 		content = form.getTitle();
 
 		if (content != null) {
 //				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
 			model.addAttribute("contents", content);
-			//条件を満たした場合投稿内容確認画面へ
+			// 条件を満たした場合投稿内容確認画面へ
 			return "posting/posting_check";
 
 		} else {
-//			model.addAttribute("errMessage", "文字数が多い、もしくは何も書かれていません");
-			return postsposts(model,form);
-//			return "redirect:/posting/posting_page";
+			return postsposts(model, form);
 		}
 
 	}
+
 	// 投稿するボタン
 	@RequestMapping("/snssns/dopost")
 	public String dopost(Model model, @ModelAttribute PostingForm form) {
 		// 投稿内容情報の生成
 		Posting posting = new Posting();
-//		item.setId(form.getItem_id());
 
 		// 入力値をリポジトリ保存
 		posting.setContents(form.getContents());
 		posting.setTitle(form.getTitle());
-//		review.setItem(item);
-
+		//投稿時間の取得
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		 Date date = new Date();
+//		 SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+		try {
+			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		posting.setInsertDate(date);
 		postingRepository.save(posting);
 		return "redirect:/snssns/complete";
 	}
@@ -115,123 +104,17 @@ public class PostingController {
 	// 投稿完了画面表示
 	@RequestMapping("/snssns/complete")
 	public String doposted() {
-
 		return "posting/posting_complete";
 	}
 
-	//コメントページ遷移処理
-		@RequestMapping("/snssns/comments")
-		public String goComments(Model model,@ModelAttribute CommentForm form) {
-			return "comment/comment_page";
-		}
-	
-	//コメント機能 入力チェック付き
-	@RequestMapping("/snssns/comment")
-	public String docomment(Model model ,@Valid @ModelAttribute CommentForm  form, BindingResult result) {
-		if (result.hasErrors()) {
-			//別のところのこーど
-			List<ObjectError> errorList = result.getAllErrors();
-			model.addAttribute("errorList",errorList);
-			return goComments(model,form);
-		}
-		String commentContent = form.getCommentContents();
-//		content = form.getTitle();
-		if (commentContent != null) {
-			model.addAttribute("contents", commentContent);
-			//条件を満たした場合コメント内容確認画面へ
-			return "comment/comment_check";
-		} else {
-			return goComments(model,form);
-		}
-	}
-	
-	// コメントするボタン
-	@RequestMapping("/snssns/doComment")
-	public String docomment(Model model, @ModelAttribute CommentForm form) {
-		// コメント内容情報の生成
-		Comment comment = new Comment();
-		
-		 
-//        System.out.println(timestamp);
-		
-//		item.setId(form.getItem_id());
-
-		// 入力値をリポジトリ保存
-		comment.setCommentContents(form.getCommentContents());
-//		comment.setTitle(form.getTitle());
-//		review.setItem(item);
-
-		commentRepository.save(comment);
-		return "redirect:/snssns/commentComplete";
-	}
-	
-	// コメント完了画面表示
-	@RequestMapping("/snssns/commentComplete")
-	public String docommented() {
-		return "comment/comment_complete";
-	}
-	
-//	コメント数カウント処理
-	@RequestMapping("/snssns/countComment")
-	public String countcomment(long commentId) {
-		Comment commentContents = new Comment();
-		commentContents.setCommentId(commentId);
-		
-//	@RequestMapping("/comment/list/{id}")
-//		public String showCommentList(Model model,@ModelAttribute PostingForm form) {
-//			List<Posting> posting = postingRepository.findBy();
-//			List<Comment> postings = commentRepository.findAll();
-//			if (!posting.isEmpty()) {
-//				session.setAttribute("posting", posting);
-//			} else {
-//				model.addAttribute("errMessage", "コメントは存在しません。");
-//			}
-//			return "index/index";
-//		}
-		
-//		List<Comment> comment = new ArrayList<Comment>;
-//		String commentContents = ();
-//				commentRepository.findByCommentContentsContaining(commentContents);
-	
-		return "comment/comment_complete";
-	}
-//	コメント一覧表示
-	@RequestMapping("comment/list/{id}")
-	public String showCommentList(@PathVariable long id, Model model) {
-
-		// 選択されたコメントIDに該当するレビュー情報を取得
-		List<Comment> comment = commentRepository.findByPostingId(id);
-
-		// コメント情報をViewへ渡す
-		model.addAttribute("posthing_comment", comment);
-		model.addAttribute("posthing_id",id);
-
-		return "/comment/comment_read";
-	}
-	
-	
-//	レビューのコード引っ張ってきたもの
-//	@RequestMapping("comment/list/{id}")
-//	public String showCommentLists(@PathVariable int id, Model model) {
-
-		// 選択された商品IDに該当するレビュー情報を取得
-//		List<Comment> comment = CommentRepository.findByIdOrderByInsertDateDesc(id);
-
-		// レビュー情報をViewへ渡す
-//		model.addAttribute("posthing_comment", comment);
-//		model.addAttribute("posthing_id",id);
-//
-//		return "review/list/review_list";
-//	}
-	
 	// いいね実行
 //	@RequestMapping("/like/{postId}")
 ////	@Transactional
 //	public String Like(@PathVariable("postId") int postId, @ModelAttribute("like")Like like, Model model,Authentication loginUser) {
 ////		session.getAttribute("userId");
 //		
-	
-	  //すでにいいねしていた場合、いいねを取り消す
+
+	// すでにいいねしていた場合、いいねを取り消す
 //	  if(likeRepository.existsByUserAndPosting(loginUser.getPosting(), postId) == true) {
 //	      likeRepository.deleteByUserAndPosting(loginUser.getName(), postId);
 //	  }else {  //いいねしていなかった場合、投稿へのいいねを登録する
@@ -272,6 +155,4 @@ public class PostingController {
 //	  return "postmain";
 //	}
 
-	
 }
-

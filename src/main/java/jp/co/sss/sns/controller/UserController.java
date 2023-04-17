@@ -33,12 +33,10 @@ public class UserController {
 	public String index() {
 		return "login";
 	}
-	
 
 //ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
 	public String doLogout(Model model) {
-//		System.out.println("a");
 		List<Posting> posting = postingrepository.findAll();
 		if (!posting.isEmpty()) {
 			session.setAttribute("posting", posting);
@@ -56,16 +54,12 @@ public class UserController {
 			model.addAttribute("errMessage", "ユーザIDまたはパスワードが間違っています。");
 			return "index/index";
 		}
-		String userId = form.getUserId();
+		String userName = form.getUserName();
 		String password = form.getPassword();
-//			List<User> user = 
-		User user = userrepository.findByUserIdAndPassword(userId, password);
-//user =  userrepository.findByUserIdAndPassword(userId, password);
+		User user = userrepository.findByUserNameAndPassword(userName, password);
 
 		if (user != null) {
-//				System.out.println(user.getUserId());
 //				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
-//				Lis> userr = new ArrayList<userr>();
 			session.setAttribute("users", user.getUserName());
 			session.setAttribute("usersAuthority",user.getAuthority());
 			return "index/index";
@@ -75,7 +69,6 @@ public class UserController {
 			return "index/index";
 		}
 
-//           return "redirect:/index";
 	}
 //	@RequestMapping(path = "/login", method = RequestMethod.POST)
 //	public String doLogin(@Valid @ModelAttribute LoginForm form, BindingResult result, HttpSession session,

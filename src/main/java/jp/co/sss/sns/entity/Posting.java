@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +29,8 @@ public class Posting {
     @Column
     private String title;
     
-    @Column
-    private int user_id ;
+//    @Column
+//    private int user_id ;
     
 	public long getId() {
 		return id;
@@ -65,13 +64,13 @@ public class Posting {
 		this.title = title;
 	}
 
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
+//	public int getUser_id() {
+//		return user_id;
+//	}
+//
+//	public void setUser_id(int user_id) {
+//		this.user_id = user_id;
+//	}
     
 
 	

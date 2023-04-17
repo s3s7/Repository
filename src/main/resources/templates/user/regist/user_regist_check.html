@@ -13,7 +13,7 @@
 			<ul class="input_list">
 				<li>
 					<span class="input_title">ユーザーid</span>
-					<span class="input_value" th:text="${userForm.userId}"></span>
+					<span class="input_value" th:text="${userForm.userName}"></span>
 				</li>
 				<li>
 					<span class="input_title">パスワード</span>
@@ -24,13 +24,13 @@
 
 			<form method="post" th:action="@{/user/regist/complete}" th:object="${userForm}"  class="user_info_form">
 				<input type="hidden" name="password" th:value="${userForm.password}" />
-				<input type="hidden" name="userId" th:value="${userForm.userId}" />
+				<input type="hidden" name="userId" th:value="${userForm.userName}" />
 				<input type="hidden" name="authority" th:value="${userForm.authority}" />
 				<input type="submit" value="登録" class="send_button" />
 			</form>
 			<form method="post" th:action="@{/user/regist/input}">
 				<input type="hidden" name="password" th:value="${userForm.password}" />
-				<input type="hidden" name="userId" th:value="${userForm.userId}" />
+				<input type="hidden" name="userId" th:value="${userForm.userName}" />
 			
 				<input type="hidden" name="authority" th:value="${userForm.authority}" />
 				<input type="submit" value="戻る" class="back_button" />
