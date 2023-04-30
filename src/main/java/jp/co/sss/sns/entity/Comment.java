@@ -15,7 +15,7 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long commentId;
+	private int commentId;
 
 	@ManyToOne
 	@JoinColumn(name = "posting_id", referencedColumnName = "id")
@@ -28,7 +28,7 @@ public long getCommentId() {
 	return commentId;
 }
 
-public void setCommentId(long commentId) {
+public void setCommentId(int commentId) {
 	this.commentId = commentId;
 }
 
