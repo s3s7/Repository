@@ -68,24 +68,12 @@ public class CommentRegistController {
 
 //	コメント数カウント処理
 	@RequestMapping("/snssns/countComment")
-	public String countcomment(long commentId) {
+	public String countcomment(int commentId) {
 		Comment commentContents = new Comment();
 		commentContents.setCommentId(commentId);
 		return "comment/comment_complete";
 	}
 
-//	コメント一覧表示
-	@RequestMapping("comment/list/{id}")
-	public String showCommentList(@PathVariable long id, Model model) {
 
-		// 選択されたコメントIDに該当するレビュー情報を取得
-		List<Comment> comment = commentRepository.findByPostingId(id);
-
-		// コメント情報をViewへ渡す
-		model.addAttribute("posthing_comment", comment);
-		model.addAttribute("posthing_id", id);
-
-		return "/comment/comment_read";
-	}
 
 }

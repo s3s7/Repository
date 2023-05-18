@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import jp.co.sss.sns.entity.Comment;
-public interface  CommentRepository  extends JpaRepository<Comment,Long> {
+public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 
 //		User findByUserIdAndPassword(String userId,String password);
 //		List<User> findByUserIdNamedQuery(String name);
@@ -18,5 +18,8 @@ public interface  CommentRepository  extends JpaRepository<Comment,Long> {
 //		User findByUserIdAndPassword(String userId,String password);
 	
 	List<Comment> findByCommentContentsContaining(String commentContents);
-	List<Comment> findByPostingId(long id);
+	List<Comment> findByPostingId(int id);
+	List<Comment> findByPostingIdOrderByInsertDateDesc(int id);
+	
+	
 }

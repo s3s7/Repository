@@ -19,7 +19,7 @@ public class Posting {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq__reviews_gen")
 //	@SequenceGenerator(name = "seq_item_reviews_gen", sequenceName = "seq_item_reviews", allocationSize = 1)
-    private long id;
+    private int id;
     @Column
     private Date  insertDate;
     
@@ -32,11 +32,11 @@ public class Posting {
 //    @Column
 //    private int user_id ;
     
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
