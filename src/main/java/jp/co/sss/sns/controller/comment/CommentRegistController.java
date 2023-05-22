@@ -1,5 +1,10 @@
 package jp.co.sss.sns.controller.comment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -56,6 +61,16 @@ public class CommentRegistController {
 
 		// 入力値をリポジトリ保存
 		comment.setCommentContents(form.getCommentContents());
+		//投稿時間の取得
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		 Date date = new Date();
+//		 SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+		try {
+			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		comment.setInsertDate(date);
 		commentRepository.save(comment);
 		return "redirect:/snssns/commentComplete";
 	}

@@ -9,29 +9,40 @@
 	<h3>ブログシステム</h3>
 	<p class="error" th:text="${errMessage}"></p>
 
-
 	<div>コメント一覧</div>
-	<table>
-		<tr>
+<!-- 	<table> -->
+<!-- 	<dl class="posting_detail_list">
+				<dt>記事タイトル</dt>
+				<dd th:text="${posting.title}"></dd>
+				<dt>投稿日付</dt>
+				<dd th:text="${posting.insertDate}"></dd>
+				<dt>投稿内容</dt>
+				<dd th:text="${posting.contents}"></dd>
+				</dl> -->
+		<!-- <tr>
 			<th>投稿日</th>
 			<th>タイトル</th>
 			<th>投稿内容</th>
-			
-			<th>コメント一覧</th>
-			<th>コメント投稿</th>
+		</tr> -->
+		<!-- <tr th:each="posting: ${session.posting}">
+			<td style="text-align: center;" th:text="${posting.insertDate}"></td>
+			<td style="text-align: center;" th:text="${posting.title}"></td>
+			<td style="text-align: center;" th:text="${posting.contents}"></td>
+		</tr> -->
+
+<!-- 	</table> -->
+	<br>
+	<table>
+		<tr>
+			<th>コメント投稿日</th>
+			<th>コメント内容</th>
 		</tr>
-		<tr th:each="posting: ${session.posting}">
-			<td th:text="${posting.insertDate}"></td>
-			<td th:text="${posting.title}"></td>
-			<td th:text="${posting.contents}"></td>
-						<td th:text="${posting.contents}"></td>
-			<td>
-				<form th:action="@{/comment/list/{id}(id=${posting.id})}">
-				<input type="submit" value="この記事のコメントを見る" />
-			</form></td>
+		<tr th:each="comment: ${posting_comment}">
+			<td style="text-align: center;" th:text="${comment.insertDate}"></td>
+			<td style="text-align: center;" th:text="${comment.commentContents}"></td>
 			<td><form action="/snssns/comments">
-					<input type="hidden" name="id" th:value="${posting.id}" /> <input
-						type="submit" value="コメントに返信する" />
+					<input type="hidden" name="id" th:value="${comment.commentId}" />
+					<input type="submit" value="コメントに返信する" />
 				</form></td>
 		</tr>
 	</table>

@@ -37,8 +37,9 @@ public class CommentShowController {
 		public String showCommentList(@PathVariable int id, Model model) {
 
 			// 選択されたコメントIDに該当するコメント情報を取得
-			List<Comment> comment = commentRepository.findByPostingId(id);
-
+			List<Comment> comment = commentRepository.findByPostingIdOrderByInsertDateDesc(id);
+			
+			
 			// コメント情報をViewへ渡す
 			model.addAttribute("posting_comment", comment);
 			model.addAttribute("posting_id", id);
