@@ -92,7 +92,7 @@ public class PostingController {
 		 Date date = new Date();
 //		 SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
-			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now()));
+			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

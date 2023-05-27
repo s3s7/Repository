@@ -22,7 +22,7 @@
 		</tr>
 		<tr th:each="posting: ${session.posting}">
 			
-			<td  style="text-align: center;" th:text="${posting.insertDate}"></td>
+			<td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm:ss')}"></td>
 			<td style="text-align: center;" th:text="${posting.title}"></td>
 			<td style="text-align: center;" th:text="${posting.contents}"></td>
 
@@ -41,6 +41,17 @@
 						<div style="text-align: center;">
 							<input type="hidden" name="id" th:value="${posting.id}" /> <input
 								type="submit" value="コメントする" />
+			</div>		</form></td>
+			
+			</th:block>
+			
+			<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
+			<th:block th:if="${session.usersAuthority == 0}">
+				<dd class="link_area">
+				<td><form action="/snssns/comments">
+						<div style="text-align: center;">
+							<input type="hidden" name="id" th:value="${posting.id}" /> <input
+								type="submit" value="ログインして、コメントする" />
 			</div>		</form></td>
 			
 			</th:block>
