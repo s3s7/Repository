@@ -17,7 +17,9 @@
 			<th>投稿内容</th>
 			<!-- 			<th>いいね！</th> -->
 			<th>コメント一覧</th>
-				<th:block th:if="${session.usersAuthority == 0}">
+				<th:block th:if="${session.usersAuthority == 2}">
+			<th>コメント投稿</th></th:block>
+			<th:block th:if="${session.usersAuthority == 0}">
 			<th>コメント投稿</th></th:block>
 		</tr>
 		<tr th:each="posting: ${session.posting}">
@@ -34,8 +36,8 @@
 				</div>
 			</td>
 
-			<!-- コメントするボタン（ログインした場合のみ表示） -->
-			<th:block th:if="${session.usersAuthority == 0}">
+			<!-- コメントするボタン（ログインした場合のみ表示）nullでやる？ -->
+			<th:block th:if="${session.usersAuthority == 2}">
 				<dd class="link_area">
 				<td><form action="/snssns/comments">
 						<div style="text-align: center;">
