@@ -10,8 +10,8 @@
 	<h2 class="title">この記事に関するコメント</h2>
 	<table>
 		<tr>
-<!-- 			<th>投稿日</th> -->
-<!-- 			<th>タイトル</th> -->
+			<!-- 			<th>投稿日</th> -->
+			<!-- 			<th>タイトル</th> -->
 			<th>コメント内容</th>
 			<th>コメント</th>
 		</tr>
@@ -19,18 +19,17 @@
 			<td th:text="${comment.insertDate}"></td>
 			<td th:text="${comment.title}"></td>
 			<td th:text="${comment.contents}"></td>
-			<!-- 			<td th:text="${posting.contents}"></td> -->
 			<td><form action="/snssns/comments">
 					<input type="hidden" name="id" th:value="${posting.id}" /> <input
 						type="submit" value="コメントする" />
 				</form></td>
 		</tr>
 	</table>
-		<!-- 記事投稿画面へ戻るボタン -->
-		<form th:action="@{/snssns/comments}">
-			<input type="submit" value="コメント画面へ戻る" class="back_button" />
-		</form>
-	
+	<!-- 記事投稿画面へ戻るボタン -->
+	<form th:action="@{/snssns/comments}">
+		<input type="submit" value="コメント画面へ戻る" class="back_button" />
+	</form>
+
 
 </body>
 </html>
