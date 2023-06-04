@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.LoginForm;
@@ -57,11 +59,13 @@ public class UserController {
 		String userName = form.getUserName();
 		String password = form.getPassword();
 		User user = userrepository.findByUserNameAndPassword(userName, password);
+		
+//		UserBean userBean = new UserBean();
+//		BeanUtils.copyProperties(user, userBean);
 
 		if (user != null) {
 //				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
-			session.setAttribute("users", user.getUserName());
-			session.setAttribute("usersAuthority",user.getAuthority());
+			session.setAttribute("users", user);
 			return "index/index";
 
 		} else {
