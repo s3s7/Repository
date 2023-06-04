@@ -2,6 +2,7 @@ package jp.co.sss.sns.controller.user;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,11 @@ userBean = (UserBean) session.getAttribute("user");
 //表示対象の会員情報を取得
 User user = userRepository.getOne(userBean.getId());
 
+// Userエンティティの各フィールドの値をUserBeanにコピー
+BeanUtils.copyProperties(user, userBean);
 
+//会員情報をViewに渡す
+		model.addAttribute("user", userBean);
 		
 		return "user/detail/user_detail";
 
