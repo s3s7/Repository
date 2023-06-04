@@ -40,8 +40,6 @@ public class UserRegistAdminController {
 					UserForm userForm = new UserForm();
 					UserBean user = (UserBean) session.getAttribute("user");
 					if (user.getAuthority() == 0) {
-						// システム管理者としてログイン中の場合、入力フォーム「権限」の初期値を0（システム管理者）に指定する。
-						userForm.setAuthority(user.getAuthority());
 					}
 					model.addAttribute("userForm", userForm);
 				}

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import jp.co.sss.sns.entity.User;
 
-public interface  UserRepository  extends JpaRepository<User,Long>{
+public interface  UserRepository  extends JpaRepository<User,Integer>{
 
 //	List<User> findByUserIdNamedQuery(String name);
 	
@@ -14,4 +14,8 @@ public interface  UserRepository  extends JpaRepository<User,Long>{
 //	int countByUser(@Param("keyword")String keyword);
 	
 	User findByUserNameAndPassword(String userName,String password);
+
+	User getReferenceById(Integer id);
+
+	
 }

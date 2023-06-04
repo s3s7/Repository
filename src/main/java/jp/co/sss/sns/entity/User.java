@@ -13,7 +13,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Integer id;
 	@Column
 	private String userName;
 
@@ -25,19 +25,18 @@ public class User {
 	 */
 	@Column
 	private Integer authority;
-	
+
 	/**
 	 * 削除フラグ 0:未削除、1:削除済み
 	 */
 	@Column(insertable = false)
-	private Integer	deleteFlag;
+	private Integer deleteFlag;
 
-
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -72,12 +71,5 @@ public class User {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-
-
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
 
 }

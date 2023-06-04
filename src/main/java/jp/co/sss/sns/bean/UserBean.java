@@ -2,7 +2,7 @@ package jp.co.sss.sns.bean;
 
 public class UserBean {
 
-	private long id;
+	private Integer id;
 
 	private String userName;
 
@@ -13,11 +13,11 @@ public class UserBean {
 	 */
 	private Integer authority;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -37,7 +37,7 @@ public class UserBean {
 		this.password = password;
 	}
 
-	public int getAuthority() {
+	public Integer getAuthority() {
 		return authority;
 	}
 

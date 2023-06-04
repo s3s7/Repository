@@ -30,10 +30,6 @@ public class UserForm {
 	 */
 	@NotNull
 	private String userName;
-	/**
-	 * 権限
-	 */
-	private Integer authority;
 
 	public Integer getId() {
 		return id;
@@ -59,12 +55,5 @@ public class UserForm {
 		this.userName = userName;
 	}
 
-	public Integer getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(Integer authority) {
-		this.authority = authority;
-	}
 
 }
