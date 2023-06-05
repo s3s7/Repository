@@ -56,44 +56,28 @@ public class UserController {
 			model.addAttribute("errMessage", "ユーザIDまたはパスワードが間違っています。");
 			return "index/index";
 		}
+		// ユーザ名とパスワードを取得
 		String userName = form.getUserName();
 		String password = form.getPassword();
+		// 会員情報を検索
 		User user = userrepository.findByUserNameAndPassword(userName, password);
-		
-//		UserBean userBean = new UserBean();
-//		BeanUtils.copyProperties(user, userBean);
+
+		UserBean userBean = new UserBean();
 
 		if (user != null) {
-//				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
-			session.setAttribute("users", user);
+			// 会員情報が存在する場合、ログイン
+			BeanUtils.copyProperties(user, userBean);
+			// List<ItemBean> itemBeanList =
+			// BeanCopy.copyEntityToItemBean(itemList.getContent());
+			session.setAttribute("users", userBean);
 			return "index/index";
 
 		} else {
+			//会員情報がない場合エラーメッセージ
 			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
 			return "index/index";
 		}
 
 	}
-//	@RequestMapping(path = "/login", method = RequestMethod.POST)
-//	public String doLogin(@Valid @ModelAttribute LoginForm form, BindingResult result, HttpSession session,
-//			Model model) {
-//		if (result.hasErrors()) {
-//			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
-//			return "redirect:/index";
-//		}
-//		String userId = form.getUserId();
-//		String password = form.getPassword();
-//		List<User> user = userrepository.findByUserIdAndPassword(userId, password);
-//
-//		if (user != null) {
-//
-//			session.setAttribute("users", ((User) user).getUserId());
-//			return "redirect:/index";
-//
-//		} else {
-//			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
-//			return "redirect:/index";
-//		}
-//	}
 
 }

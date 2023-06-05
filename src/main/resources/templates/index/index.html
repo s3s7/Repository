@@ -19,7 +19,7 @@
 			<th>コメント一覧</th>
 				<th:block th:if="${session.usersAuthority == 2}">
 			<th>コメント投稿</th></th:block>
-			<th:block th:if="${session.usersAuthority == 0}">
+			<th:block th:unless="${session.users == 0}">
 			<th>コメント投稿</th></th:block>
 		</tr>
 		<tr th:each="posting: ${session.posting}">
@@ -48,7 +48,7 @@
 			</th:block>
 			
 			<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
-			<th:block th:if="${session.usersAuthority == 0}">
+			<th:block th:unless="${session.users}">
 				<dd class="link_area">
 				<td><form action="/snssns/comments">
 						<div style="text-align: center;">
