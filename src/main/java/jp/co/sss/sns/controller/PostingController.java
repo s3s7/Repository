@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -107,6 +109,21 @@ public class PostingController {
 		return "posting/posting_complete";
 	}
 
+	@RequestMapping(path = "/")
+	public String newSort(Model model,Pageable pageable) {
+		// 商品情報を全件検索(新着順)
+//		Page<Posting> postingList = postingRepository.findByDeleteFlagOrderByInsertDateDesc(deleteFlag,pageable);
+		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(pageable);
+		// エンティティ内の検索結果をJavaBeansにコピー
+//		List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
+
+		// 商品情報をViewへ渡す
+		model.addAttribute("pages", postingList);
+//		model.addAttribute("items", postingBeanList);
+//		model.addAttribute("url", "/item/list/admin/");
+
+		return "index";
+	}
 	// いいね実行
 //	@RequestMapping("/like/{postId}")
 ////	@Transactional

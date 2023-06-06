@@ -9,7 +9,18 @@
 	<h3>ブログシステム</h3>
 	<p class="error" th:text="${errMessage}"></p>
 
-	<div>記事一覧</div>
+	<div>記事一覧</div> <div class="posting_sort">
+        <h1>並び替え</h1>
+        <select>
+            <option value="00"></option>
+            <option
+                th:each="sortList : ${sortList}"
+                th:value="${sortList.code}"
+                th:text="${sortList.name}"
+                th:selected="${sortList.code == selectedValue}">
+            </option>
+        </select>
+    </div>
 	<table>
 		<tr>
 			<th>投稿日</th>

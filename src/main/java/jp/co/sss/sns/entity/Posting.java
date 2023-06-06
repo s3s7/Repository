@@ -29,8 +29,8 @@ public class Posting {
     @Column
     private String title;
     
-//    @Column
-//    private int user_id ;
+//	@Column(insertable = false)
+//    private Integer deleteFlag;
     
 	public int getId() {
 		return id;
@@ -64,15 +64,13 @@ public class Posting {
 		this.title = title;
 	}
 
-//	public int getUser_id() {
-//		return user_id;
+//	public Integer getDeleteFlag() {
+//		return deleteFlag;
 //	}
 //
-//	public void setUser_id(int user_id) {
-//		this.user_id = user_id;
+//	public void setDeleteFlag(Integer deleteFlag) {
+//		this.deleteFlag = deleteFlag;
 //	}
-    
 
-	
-	
+
 }
