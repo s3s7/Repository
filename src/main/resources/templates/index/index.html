@@ -10,8 +10,9 @@
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">
-        <h1>並び替え</h1>
-        <select>
+        <span>並び替え</span> <a href="/sns/newSort">新着順</a>
+        
+      <!--   <select>
             <option value="00"></option>
             <option
                 th:each="sortList : ${sortList}"
@@ -19,7 +20,7 @@
                 th:text="${sortList.name}"
                 th:selected="${sortList.code == selectedValue}">
             </option>
-        </select>
+        </select> -->
     </div>
 	<table>
 		<tr>

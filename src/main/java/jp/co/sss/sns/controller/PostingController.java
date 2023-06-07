@@ -60,7 +60,7 @@ public class PostingController {
 	@RequestMapping("/snssns/posting")
 	public String doLogin(Model model, @Valid @ModelAttribute PostingForm form, BindingResult result) {
 		if (result.hasErrors()) {
-			// 別のところのこーど
+			// エラーリスト
 			List<ObjectError> errorList = result.getAllErrors();
 			model.addAttribute("errorList", errorList);
 			return postsposts(model, form);
@@ -69,7 +69,7 @@ public class PostingController {
 		content = form.getTitle();
 
 		if (content != null) {
-//				List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
+			//List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
 			model.addAttribute("contents", content);
 			// 条件を満たした場合投稿内容確認画面へ
 			return "posting/posting_check";
@@ -89,10 +89,10 @@ public class PostingController {
 		// 入力値をリポジトリ保存
 		posting.setContents(form.getContents());
 		posting.setTitle(form.getTitle());
-		//投稿時間の取得
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-		 Date date = new Date();
-//		 SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+		// 投稿時間の取得
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		Date date = new Date();
+		//SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
 			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
 		} catch (ParseException e) {
@@ -109,8 +109,8 @@ public class PostingController {
 		return "posting/posting_complete";
 	}
 
-	@RequestMapping(path = "/")
-	public String newSort(Model model,Pageable pageable) {
+	@RequestMapping(path = "/sns/newSort")
+	public String newSort(Model model, Pageable pageable) {
 		// 商品情報を全件検索(新着順)
 //		Page<Posting> postingList = postingRepository.findByDeleteFlagOrderByInsertDateDesc(deleteFlag,pageable);
 		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(pageable);
@@ -118,11 +118,11 @@ public class PostingController {
 //		List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
 
 		// 商品情報をViewへ渡す
-		model.addAttribute("pages", postingList);
+		model.addAttribute("posthing", postingList);
 //		model.addAttribute("items", postingBeanList);
 //		model.addAttribute("url", "/item/list/admin/");
 
-		return "index";
+		return "index/index";
 	}
 	// いいね実行
 //	@RequestMapping("/like/{postId}")
