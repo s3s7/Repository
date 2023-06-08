@@ -1,5 +1,7 @@
 package jp.co.sss.sns.bean;
 
+import javax.persistence.Column;
+
 public class UserBean {
 
 	private Integer id;
@@ -12,6 +14,24 @@ public class UserBean {
 	 * 権限
 	 */
 	private Integer authority;
+	
+	/**
+	 * 今日の目標
+	 */
+	@Column
+	private String dayGoal;
+	
+	/**
+	 * 今週の目標
+	 */
+	@Column
+	private String weekGoal;
+	
+	/**
+	 * 今月の目標
+	 */
+	@Column
+	private String monthGoal;
 
 	public Integer getId() {
 		return id;
@@ -43,6 +63,30 @@ public class UserBean {
 
 	public void setAuthority(Integer authority) {
 		this.authority = authority;
+	}
+
+	public String getDayGoal() {
+		return dayGoal;
+	}
+
+	public void setDayGoal(String dayGoal) {
+		this.dayGoal = dayGoal;
+	}
+
+	public String getWeekGoal() {
+		return weekGoal;
+	}
+
+	public void setWeekGoal(String weekGoal) {
+		this.weekGoal = weekGoal;
+	}
+
+	public String getMonthGoal() {
+		return monthGoal;
+	}
+
+	public void setMonthGoal(String monthGoal) {
+		this.monthGoal = monthGoal;
 	}
 
 }

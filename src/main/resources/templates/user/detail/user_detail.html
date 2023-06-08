@@ -9,22 +9,29 @@
 	<h2 class="title">会員詳細</h2>
 	<div class="user_detail_area">
 		<ul class="input_list">
-			<li><span class="input_title">氏名</span> <span
+			<li><span class="input_title">会員名</span> <span
 				class="input_value" th:text="${users.userName}"></span></li>
+		
+		<li><span class="input_title">今日の目標</span> <span
+				class="input_value" th:text="${users.dayGoal}"></span></li>
+		
+		<li><span class="input_title">今週の目標</span> <span
+				class="input_value" th:text="${users.weekGoal}"></span></li>
+		
 		</ul>
 	</div>
 
-	<!-- <div class="detail_button_area">
-		<form th:action="@{/}">
+ <div class="detail_button_area">
+		<form th:action="@{/snssns/findAll}">
 			<input type="submit" value="戻る" />
 		</form>
-		<form th:action="@{/user/update/input}" method="post">
+		<!-- <form th:action="@{/user/update/input}" method="post">
 			<input type="submit" value="変更" />
-		</form>
+		</form> -->
 		<form th:action="@{/user/delete/check}" method="post">
 			<input type="submit" value="退会" class="delete" />
 		</form>
-	</div> -->
+	</div> 
 
 </body>
 </html>
