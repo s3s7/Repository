@@ -11,11 +11,13 @@
 		<ul class="input_list">
 			<li><span class="input_title">会員名</span> <span
 				class="input_value" th:text="${users.userName}"></span></li>
-		
-		<li><span class="input_title">今日の目標</span> <span
-				class="input_value" th:text="${users.dayGoal}"></span></li>
+		<li><span class="input_title">今月の目標</span> <span
+				class="input_value" th:text="${users.weekGoal}"></span></li>
 		
 		<li><span class="input_title">今週の目標</span> <span
+				class="input_value" th:text="${users.dayGoal}"></span></li>
+		
+		<li><span class="input_title">今日の目標</span> <span
 				class="input_value" th:text="${users.weekGoal}"></span></li>
 		
 		</ul>
