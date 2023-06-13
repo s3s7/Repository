@@ -14,21 +14,21 @@ public class GoalForm {
 	 */
 	@NotBlank
 	@Size(max = 20)
-	private String dailyGoal;
+	private String dailyGoalContents;
 	
 	/**
 	 * 今週の目標
 	 */
 	@NotBlank
 	@Size(max = 30)
-	private String weekGoal;
+	private String weekGoalContents;
 	
 	/**
 	 * 今月の目標
 	 */
 	@NotBlank
 	@Size(max = 30)
-	private String monthGoal;
+	private String monthGoalContents;
 
 	public Integer getId() {
 		return id;
@@ -38,29 +38,30 @@ public class GoalForm {
 		this.id = id;
 	}
 
-	public String getDailyGoal() {
-		return dailyGoal;
+	public String getDailyGoalContents() {
+		return dailyGoalContents;
 	}
 
-	public void setDailyGoal(String dailyGoal) {
-		this.dailyGoal = dailyGoal;
+	public void setDailyGoalContents(String dailyGoalContents) {
+		this.dailyGoalContents = dailyGoalContents;
 	}
 
-	public String getWeekGoal() {
-		return weekGoal;
+	public String getWeekGoalContents() {
+		return weekGoalContents;
 	}
 
-	public void setWeekGoal(String weekGoal) {
-		this.weekGoal = weekGoal;
+	public void setWeekGoalContents(String weekGoalContents) {
+		this.weekGoalContents = weekGoalContents;
 	}
 
-	public String getMonthGoal() {
-		return monthGoal;
+	public String getMonthGoalContents() {
+		return monthGoalContents;
 	}
 
-	public void setMonthGoal(String monthGoal) {
-		this.monthGoal = monthGoal;
+	public void setMonthGoalContents(String monthGoalContents) {
+		this.monthGoalContents = monthGoalContents;
 	}
+
 	
 	
 	

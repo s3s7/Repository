@@ -22,19 +22,19 @@ public class goal {
 	 * 今日の目標
 	 */
 	@Column
-	private String dayGoal;
+	private String dayGoalContents;
 	
 	/**
 	 * 今週の目標
 	 */
 	@Column
-	private String weekGoal;
+	private String weekGoalContents;
 	
 	/**
 	 * 今月の目標
 	 */
 	@Column
-	private String monthGoal;
+	private String monthGoalContents;
 
 	public Integer getId() {
 		return id;
@@ -44,28 +44,29 @@ public class goal {
 		this.id = id;
 	}
 
-	public String getDayGoal() {
-		return dayGoal;
+	public String getDayGoalContents() {
+		return dayGoalContents;
 	}
 
-	public void setDayGoal(String dayGoal) {
-		this.dayGoal = dayGoal;
+	public void setDayGoalContents(String dayGoalContents) {
+		this.dayGoalContents = dayGoalContents;
 	}
 
-	public String getWeekGoal() {
-		return weekGoal;
+	public String getWeekGoalContents() {
+		return weekGoalContents;
 	}
 
-	public void setWeekGoal(String weekGoal) {
-		this.weekGoal = weekGoal;
+	public void setWeekGoalContents(String weekGoalContents) {
+		this.weekGoalContents = weekGoalContents;
 	}
 
-	public String getMonthGoal() {
-		return monthGoal;
+	public String getMonthGoalContents() {
+		return monthGoalContents;
 	}
 
-	public void setMonthGoal(String monthGoal) {
-		this.monthGoal = monthGoal;
+	public void setMonthGoalContents(String monthGoalContents) {
+		this.monthGoalContents = monthGoalContents;
 	}
+
 	
 }

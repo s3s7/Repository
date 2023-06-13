@@ -3,7 +3,7 @@
 	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8">
-<title>会員詳細 | 習慣</title>
+<title>会員詳細 | スモールスタート</title>
 </head>
 <body>
 	<h2 class="title">会員詳細</h2>
@@ -22,7 +22,7 @@
 				
 					<th:block th:if="${session.users}">
 		<div>
-			<a href="/snssns/dailyGoal">更新する</a>
+			<a href="/sns/dailyGoal">更新する</a>
 		</div>
 	</th:block>
 		
@@ -37,7 +37,7 @@
 			<input type="submit" value="変更" />
 		</form> -->
 		<form th:action="@{/user/delete/check}" method="post">
-			<input type="submit" value="退会" class="delete" />
+			<input type="submit" value="退会する" class="delete" />
 		</form>
 	</div> 
 
