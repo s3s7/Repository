@@ -22,7 +22,7 @@
 		</form>
 		<form method="post" th:action="@{/sns/dailyGoal}"
 			th:object="${postingForm}" class="posting_info_form">
-			<input type="hidden" name="title" th:value="${postingForm.title}" />
+			<!-- <input type="hidden" name="title" th:value="${postingForm.title}" /> -->
 			<input type="hidden" name="contents"
 				th:value="${goalForm.dailyGoalContents}" /> <input type="submit"
 				value="設定する" class="send_button" />
