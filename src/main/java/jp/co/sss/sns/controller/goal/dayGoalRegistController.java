@@ -49,7 +49,6 @@ public class dayGoalRegistController {
 		if (result.hasErrors()) {
 			return "goal/daily_goal_check";
 		}
-
 		return "goal/daily_goal_check";
 	}
 
