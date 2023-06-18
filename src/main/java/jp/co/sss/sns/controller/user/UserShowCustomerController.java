@@ -20,7 +20,7 @@ public class UserShowCustomerController {
 	@Autowired
 	UserRepository userRepository;
 	// 会員詳細画面表示処理
-	@RequestMapping(path = "sns/user/detail")
+	@RequestMapping(path = "/sns/user/detail")
 	public String userShowCostomer(Model model, HttpSession session) {
 
 		UserBean userBean = new UserBean();

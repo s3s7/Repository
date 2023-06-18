@@ -9,8 +9,8 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <body>
 			<h2 class="title">目標投稿が完了しました</h2>
 	<!-- 記事一覧へ戻るボタン -->
-<form th:action="@{/snssns/findAll}">
-			<input type="submit" value="記事一覧へ" class="back_button"/>
+<form th:action="@{/sns/user/detail}">
+			<input type="submit" value="会員詳細画面へ" class="back_button"/>
 		</form>
 
 </body>

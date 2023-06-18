@@ -9,7 +9,7 @@
 		<p class="error" th:text="${userDetailErrMessage}"></p>
 		<th:block th:if="${session.users}">
 			<div>
-				ようこそ、<span th:text="${session.users.userName}"></span>さん     <a href="/sns/user/detail">会員画面へ</a>
+				ようこそ、<span th:text="${session.users.userName}"></span>さん     <a href="/sns/user/detail">会員詳細画面へ</a>
 			</div>
 			<a href="/snssns/logout">ログアウト</a>
 		</th:block>
