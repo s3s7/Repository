@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8" />
+<title>スモールスタート</title>
+</head>
+<body>
+ <h2 class="title">今月の目標登録</h2>
+		 <div class="user_goal_form_area"> 
+			<form method="post" th:action="@{/goal/daily_goal_check}" th:object="${goalForm}" class="user_goal_form">
+				 <ul th:if="${#fields.hasErrors('*')}"  th:class="input_list" >
+  					<li th:each="err : ${#fields.errors('*')}" th:text="${err}" th:class="error_list" ></li>
+				</ul> 
+					<ul class="input_list"> 
+							<li> 
+						 	<label>
+								<span class="input_title">今月の目標</span>
+								<input type="text" name="dayGoal" th:value="${goalForm.dayGoal}" />
+							</label> 
+						</li> 
+					</ul> 
+	 	</form>  
+		<!-- 会員詳細画面に戻る -->
+		<form th:action="@{/sns/user/detail}">
+			<input type="submit" value="会員詳細画面へ" class="back_button"/>
+		</form>
+         </div>
+</body>
+</html>
