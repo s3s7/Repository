@@ -19,9 +19,9 @@ public class dayGoalRegistController {
 	 *
 	 * @return "" 今日の目標 登録入力画面へ
 	 */
-	@RequestMapping(path = "/sns/dailyGoal", method = RequestMethod.GET)
+	@RequestMapping(path = "/sns/dailyGoal/input", method = RequestMethod.GET)
 	public String dailyGoalRegist(GoalForm form) {
-		return "goal/daily_goal_check";
+		return "goal/daily_goal_input";
 	}
 	
 	/**
