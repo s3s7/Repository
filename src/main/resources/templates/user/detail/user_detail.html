@@ -13,9 +13,19 @@
 				class="input_value" th:text="${users.userName}"></span></li>
 		<li><span class="input_title">今月の目標</span> <span
 				class="input_value" th:text="${users.monthGoal}"></span></li>
+											<th:block th:if="${session.users}">
+		<div>
+			<a href="/sns/monthGoal/input">更新する</a>
+		</div>
+	</th:block>
 		
 		<li><span class="input_title">今週の目標</span> <span
 				class="input_value" th:text="${users.weekGoal}"></span></li>
+									<th:block th:if="${session.users}">
+		<div>
+			<a href="/sns/weekGoal/input">更新する</a>
+		</div>
+	</th:block>
 		
 		<li><span class="input_title">今日の目標</span> <span
 				class="input_value" th:text="${users.dayGoal}"></span></li>
