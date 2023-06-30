@@ -37,8 +37,8 @@ public class WeekGoalRegistController {
 //		 *
 //		 * @param form   会員情報フォーム
 //		 * @param result 入力チェック結果
-//		 * @return 入力値エラーあり："goal/user_regist_input" 目標情報登録画面へ
-//		 *         入力値エラーなし："goal/user_regist_check" 目標情報登録確認画面へ
+//		 * @return 入力値エラーあり："goal/week_goal_input" 目標情報登録画面へ
+//		 *         入力値エラーなし："goal/week_goal_check" 目標情報登録確認画面へ
 //		 */
 		@RequestMapping(path = "/weekGoal/check", method = RequestMethod.POST)
 		public String weekGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
