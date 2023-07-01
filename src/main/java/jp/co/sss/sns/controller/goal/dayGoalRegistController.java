@@ -35,17 +35,17 @@ public class dayGoalRegistController {
 //		return "user/regist/user_regist_input";
 //	}
 //
-//	/**
-//	 * 会員情報 登録確認処理
-//	 *
-//	 * @param form   会員情報フォーム
-//	 * @param result 入力チェック結果
-//	 * @return 入力値エラーあり："user/regist/user_regist_input" 会員情報登録画面へ
-//	 *         入力値エラーなし："user/regist/user_regist_check" 会員情報 登録確認画面へ
-//	 */
-	@RequestMapping(path = "/dailyGoal/check", method = RequestMethod.POST)
+	/**
+	 * 会員情報 登録確認処理
+	 *
+	 * @param form   会員情報フォーム
+	 * @param result 入力チェック結果
+	 * @return 入力値エラーあり："goal/daily_goal_input" 今日の目標登録画面へ
+	 *         入力値エラーなし："goal/daily_goal_input" 今日の目標登録確認画面へ
+	 */
+	@RequestMapping(path = "/sns/dailyGoal/check", method = RequestMethod.POST)
 	public String dailyGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
-		// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
+		// 入力値にエラーがあった場合、今日の目標 入力画面表示処理に戻る
 		if (result.hasErrors()) {
 			return "goal/daily_goal_check";
 		}

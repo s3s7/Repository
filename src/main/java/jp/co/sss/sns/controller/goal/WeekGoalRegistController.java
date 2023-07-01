@@ -40,7 +40,7 @@ public class WeekGoalRegistController {
 //		 * @return 入力値エラーあり："goal/week_goal_input" 目標情報登録画面へ
 //		 *         入力値エラーなし："goal/week_goal_check" 目標情報登録確認画面へ
 //		 */
-		@RequestMapping(path = "/weekGoal/check", method = RequestMethod.POST)
+		@RequestMapping(path = "/sns/weekGoal/check", method = RequestMethod.POST)
 		public String weekGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
 			// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
 			if (result.hasErrors()) {
@@ -49,12 +49,12 @@ public class WeekGoalRegistController {
 			return "goal/week_goal_check";
 		}
 
-//		/**
-//		 * 会員情報登録完了処理
-//		 *
-//		 * @param form 会員情報
-//		 * @return "redirect:/user/regist/complete" 会員情報 登録完了画面へ
-//		 */
+		/**
+		 * 会員情報登録完了処理
+		 *
+		 * @param form 会員情報
+		 * @return "redirect:/user/regist/complete" 会員情報 登録完了画面へ
+		 */
 //		@RequestMapping(path = "/user/regist/complete", method = RequestMethod.POST)
 //		public String registComplete(@ModelAttribute UserForm form) {
 //			// 会員情報の生成
