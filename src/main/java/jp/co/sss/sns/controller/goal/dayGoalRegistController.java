@@ -38,7 +38,7 @@ public class dayGoalRegistController {
 	/**
 	 * 会員情報 登録確認処理
 	 *
-	 * @param form   会員情報フォーム
+	 * @param form   目標フォーム
 	 * @param result 入力チェック結果
 	 * @return 入力値エラーあり："goal/daily_goal_input" 今日の目標登録画面へ
 	 *         入力値エラーなし："goal/daily_goal_input" 今日の目標登録確認画面へ
@@ -56,7 +56,7 @@ public class dayGoalRegistController {
 //	 * 会員情報登録完了処理
 //	 *
 //	 * @param form 会員情報
-//	 * @return "redirect:/user/regist/complete" 会員情報 登録完了画面へ
+//	 * @return "redirect:/goal/daily_goal_input" 今日の目標 登録完了画面へ
 //	 */
 //	@RequestMapping(path = "/user/regist/complete", method = RequestMethod.POST)
 //	public String registComplete(@ModelAttribute UserForm form) {
