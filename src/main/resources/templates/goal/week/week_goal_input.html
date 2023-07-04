@@ -21,6 +21,10 @@
 						</li> 
 					</ul> 
 	 	</form>  
+	 	<!-- 登録内容確認画面へボタン -->
+	 	<form th:action="@{/sns/goal/weekGoal/check}">
+			<input type="submit" value="登録内容確認画面へ" class="back_button"/>
+		</form>
 		<!-- 会員詳細画面に戻る -->
 		<form th:action="@{/sns/user/detail}">
 			<input type="submit" value="会員詳細画面へ" class="back_button"/>
