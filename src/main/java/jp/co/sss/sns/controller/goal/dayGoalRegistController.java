@@ -75,26 +75,26 @@ public class dayGoalRegistController {
 	 * @param form 会員情報
 	 * @return "redirect:/goal/daily_goal_complete" 今日の目標 登録完了画面へ
 	 */
-//	@RequestMapping(path = "/sns/dailyGoal/complete", method = RequestMethod.POST)
-//	public String dailyGoalRegistComplete(@ModelAttribute GoalForm form) {
-//		// 今日の目標情報の生成
-//		Goal goal = new Goal();
-//
-//		// 入力値を情報にコピー
-////		BeanUtils.copyProperties(form, goal);
-//
-//		// 今日の目標情報を保存
-//		goalRepository.save(goal);
-//
-//		// ログイン状態保存
-////		UserBean userBean = new UserBean();
-////		userBean.setId(user.getId());
-////		userBean.setName(user.getName());
-////		userBean.setAuthority(user.getAuthority());
-//		session.setAttribute("goal", goal);
-//
-//		return "redirect:/goal/daily_goal_complete";
-//	}
+	@RequestMapping(path = "/sns/dailyGoal/complete", method = RequestMethod.POST)
+	public String dailyGoalRegistComplete(@ModelAttribute GoalForm form) {
+		// 今日の目標情報の生成
+		goal goal = new goal();
+
+		// 入力値を情報にコピー
+//		BeanUtils.copyProperties(form, goal);
+
+		// 今日の目標情報を保存
+		goalRepository.save(goal);
+
+		// ログイン状態保存
+//		UserBean userBean = new UserBean();
+//		userBean.setId(user.getId());
+//		userBean.setName(user.getName());
+//		userBean.setAuthority(user.getAuthority());
+		session.setAttribute("goal", goal);
+
+		return "redirect:/goal/daily_goal_complete";
+	}
 
 	/**
 	 * 会員情報登録完了画面表示
