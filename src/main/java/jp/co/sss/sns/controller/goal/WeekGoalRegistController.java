@@ -53,9 +53,9 @@ public class WeekGoalRegistController {
 		 * 会員情報登録完了処理
 		 *
 		 * @param form 会員情報
-		 * @return "redirect:/user/regist/complete" 会員情報 登録完了画面へ
+		 * @return "redirect:goal/week_goal_complete" 今週の目標 登録完了画面へ
 		 */
-//		@RequestMapping(path = "/user/regist/complete", method = RequestMethod.POST)
+//		@RequestMapping(path = "/sns/weekGoal/complete", method = RequestMethod.POST)
 //		public String registComplete(@ModelAttribute UserForm form) {
 //			// 会員情報の生成
 //			User user = new User();
