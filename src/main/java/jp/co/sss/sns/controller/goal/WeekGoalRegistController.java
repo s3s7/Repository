@@ -1,16 +1,34 @@
 package jp.co.sss.sns.controller.goal;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.sss.sns.entity.goal;
 import jp.co.sss.sns.form.GoalForm;
+import jp.co.sss.sns.repository.GoalRepository;
 @Controller
 public class WeekGoalRegistController {
+	
+	/**
+	 * 目標情報
+	 */
+	@Autowired
+	GoalRepository goalRepository;
+	
+	/**
+	 * セッション
+	 */
+	@Autowired
+	HttpSession session;
+	
+	
 		/**
 		 * 今月の目標入力画面表示処理
 		 *
@@ -31,15 +49,15 @@ public class WeekGoalRegistController {
 //		public String registInputBack(UserForm form) {
 //			return "user/regist/user_regist_input";
 //		}
-	//
-//		/**
-//		 * 今週の目標 登録確認処理
-//		 *
-//		 * @param form   会員情報フォーム
-//		 * @param result 入力チェック結果
-//		 * @return 入力値エラーあり："goal/week_goal_input" 目標情報登録画面へ
-//		 *         入力値エラーなし："goal/week_goal_check" 目標情報登録確認画面へ
-//		 */
+	
+		/**
+		 * 今週の目標 登録確認処理
+		 *
+		 * @param form   会員情報フォーム
+		 * @param result 入力チェック結果
+		 * @return 入力値エラーあり："goal/week_goal_input" 目標情報登録画面へ
+		 *         入力値エラーなし："goal/week_goal_check" 目標情報登録確認画面へ
+		 */
 		@RequestMapping(path = "/sns/weekGoal/check", method = RequestMethod.POST)
 		public String weekGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
 			// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
@@ -55,26 +73,26 @@ public class WeekGoalRegistController {
 		 * @param form 会員情報
 		 * @return "redirect:goal/week_goal_complete" 今週の目標 登録完了画面へ
 		 */
-//		@RequestMapping(path = "/sns/weekGoal/complete", method = RequestMethod.POST)
-//		public String registComplete(@ModelAttribute UserForm form) {
-//			// 会員情報の生成
-//			User user = new User();
-	//
-//			// 入力値を会員情報にコピー
-//			BeanUtils.copyProperties(form, user);
-	//
-//			// 会員情報を保存
-//			userRepository.save(user);
-	//
-//			// ログイン状態保存
-//			UserBean userBean = new UserBean();
-//			userBean.setId(user.getId());
-//			userBean.setName(user.getName());
-//			userBean.setAuthority(user.getAuthority());
-//			session.setAttribute("user", userBean);
-	//
-//			return "redirect:/user/regist/complete";
-//		}
+		@RequestMapping(path = "/sns/weekGoal/complete", method = RequestMethod.POST)
+		public String registComplete(@ModelAttribute GoalForm form) {
+		// 今日の目標情報の生成
+		goal goal = new goal();
+
+		// 入力値を情報にコピー
+//		BeanUtils.copyProperties(form, goal);
+
+		// 今日の目標情報を保存
+		goalRepository.save(goal);
+
+		// ログイン状態保存
+//		UserBean userBean = new UserBean();
+//		userBean.setId(user.getId());
+//		userBean.setName(user.getName());
+//		userBean.setAuthority(user.getAuthority());
+        session.setAttribute("goal",goal);
+        
+		return "redirect:/goal/week_goal_complete";
+	}
 	//
 //		/**
 //		 * 会員情報登録完了画面表示
@@ -86,4 +104,6 @@ public class WeekGoalRegistController {
 //		public String registCompleteRedirect() {
 //			return "user/regist/user_regist_complete";
 //		}
+		
+		
 }

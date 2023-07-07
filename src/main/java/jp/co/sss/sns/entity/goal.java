@@ -10,63 +10,63 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sns_goal")
 public class goal {
-
-	/**
-	 * 目標id
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	/**
-	 * 今日の目標
-	 */
-	@Column
-	private String dayGoalContents;
 	
-	/**
-	 * 今週の目標
-	 */
-	@Column
-	private String weekGoalContents;
-	
-	/**
-	 * 今月の目標
-	 */
-	@Column
-	private String monthGoalContents;
 
-	public Integer getId() {
-		return id;
-	}
+			/**
+			 * 目標id
+			 */
+			@Id
+			@GeneratedValue(strategy = GenerationType.IDENTITY)
+			private Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+			/**
+			 * 今日の目標
+			 */
+			@Column
+			private String dayGoalContents;
+			
+			/**
+			 * 今週の目標
+			 */
+			@Column
+			private String weekGoalContents;
+			
+			/**
+			 * 今月の目標
+			 */
+			@Column
+			private String monthGoalContents;
 
-	public String getDayGoalContents() {
-		return dayGoalContents;
-	}
+			public Integer getId() {
+				return id;
+			}
 
-	public void setDayGoalContents(String dayGoalContents) {
-		this.dayGoalContents = dayGoalContents;
-	}
+			public void setId(Integer id) {
+				this.id = id;
+			}
 
-	public String getWeekGoalContents() {
-		return weekGoalContents;
-	}
+			public String getDayGoalContents() {
+				return dayGoalContents;
+			}
 
-	public void setWeekGoalContents(String weekGoalContents) {
-		this.weekGoalContents = weekGoalContents;
-	}
+			public void setDayGoalContents(String dayGoalContents) {
+				this.dayGoalContents = dayGoalContents;
+			}
 
-	public String getMonthGoalContents() {
-		return monthGoalContents;
-	}
+			public String getWeekGoalContents() {
+				return weekGoalContents;
+			}
 
-	public void setMonthGoalContents(String monthGoalContents) {
-		this.monthGoalContents = monthGoalContents;
-	}
+			public void setWeekGoalContents(String weekGoalContents) {
+				this.weekGoalContents = weekGoalContents;
+			}
 
-	
-}
+			public String getMonthGoalContents() {
+				return monthGoalContents;
+			}
+
+			public void setMonthGoalContents(String monthGoalContents) {
+				this.monthGoalContents = monthGoalContents;
+			}
+		}
+

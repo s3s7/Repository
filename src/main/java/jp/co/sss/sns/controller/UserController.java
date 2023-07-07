@@ -30,24 +30,30 @@ public class UserController {
 	@Autowired
 	PostingRepository postingrepository;
 
-//ログインページ
+	//ログインページ
 	@RequestMapping("/snssns/index")
 	public String index() {
 		return "login";
 	}
 
-//ログアウト機能
+	//ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
-	public String doLogout(Model model) {
-		List<Posting> posting = postingrepository.findAll();
-		if (!posting.isEmpty()) {
-			session.setAttribute("posting", posting);
-		} else {
-			model.addAttribute("errMessage", "投稿記事は存在しません。");
-		}
-		session.removeAttribute("users");
-		return "/index/index";
+	public String logout(HttpSession session) {
+		// セッション情報を無効にする
+		session.invalidate();
+		return "redirect:/";
 	}
+//	@RequestMapping(path = "/snssns/logout")
+//	public String doLogout(Model model) {
+//		List<Posting> posting = postingrepository.findAll();
+//		if (!posting.isEmpty()) {
+//			session.setAttribute("posting", posting);
+//		} else {
+//			model.addAttribute("errMessage", "投稿記事は存在しません。");
+//		}
+//		session.removeAttribute("users");
+//		return "/index/index";
+//	}
 
 //	ログイン機能　入力チェックあり
 	@RequestMapping(path = "/snssns/doLogin")
@@ -73,7 +79,7 @@ public class UserController {
 			return "index/index";
 
 		} else {
-			//会員情報がない場合エラーメッセージ
+			// 会員情報がない場合エラーメッセージ
 			model.addAttribute("errMessage", "ユーザID、またはパスワードが間違っています。");
 			return "index/index";
 		}
