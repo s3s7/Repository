@@ -25,7 +25,7 @@ body {
 
 h2,
 h3 {
-	font-size: 1em;
+	font-size: 1.5em;
 	font-weight: normal;
 	margin: 0;
 	padding: 0;
@@ -41,21 +41,20 @@ form {
 }
 
 table {
-	width:100%;
+	width: 100%;
 	background-color: #fff;
 	border-collapse: collapse;
 	margin: 0px auto 20px;
 }
 
-ul,
-li {
+ul, li {
 	margin: 0;
 	padding: 0;
 }
+
 li {
 	list-style-type: none;
 }
-
 
 /* スキルアップテクニック3
  * overflowプロパティの値hiddenを設定することで、要素は適切な高さをもつことができます。
@@ -68,11 +67,13 @@ li {
 	overflow: hidden;
 	float: none;
 }
-body > .container {
+
+body>.container {
 	margin-top: 15px;
 }
+
 .content {
-	padding:30px 0 60px;
+	padding: 30px 0 60px;
 }
 
 /* ---- ヘッダー ---- */
@@ -92,7 +93,7 @@ header {
 	float: left;
 	font-size: 1.8em;
 	font-weight: normal;
-	margin:0;
+	margin: 0;
 }
 
 /* スキルアップテクニック5
@@ -100,11 +101,12 @@ header {
  * また、レスポンシブにも対応できるため、px指定と比べ柔軟性に優れます。
  */
 .user_info {
-	width:40%;
-	float:right;
+	width: 40%;
+	float: right;
 	text-align: right;
 	padding-top: 15px;
 }
+
 .user_info a {
 	text-decoration: none;
 }
@@ -119,29 +121,25 @@ header {
 }
 
 .user_info .pipeline {
-	padding:0 8px;
+	padding: 0 8px;
 }
-
-
 
 /* ---- タイトル共通 ---- */
-.search .title,
-.main .title,
-
-
-/* ---- ナビゲーションバー ---- */
-.navi_area {
+.search .title, .main .title, /* ---- ナビゲーションバー ---- */ .navi_area {
 	background: #edf9fe;
 }
+
 .navi_menu {
 	width: 960px;
-	padding:12px 0;
+	padding: 12px 0;
 	margin: 0 auto;
 }
+
 .navi_menu li {
 	display: inline-block;
 	width: 24%;
 }
+
 .navi_menu a {
 	display: inline-block;
 	width: 100%;
@@ -153,66 +151,51 @@ header {
 	background: #fff;
 	transition: 0.18s;
 }
+
 .navi_menu a:hover {
 	background: #3d98bf;
 	color: #fff;
 	text-shadow: 1px 1px 1px #12526d;
-	border-color : #3d98bf;
+	border-color: #3d98bf;
 }
-.navi_menu li:first-of-type a{
+
+.navi_menu li:first-of-type a {
 	border-radius: 6px 0px 0px 6px;
 }
-.navi_menu li:last-of-type a{
+
+.navi_menu li:last-of-type a {
 	border-radius: 0px 6px 6px 0px;
 }
 
 /* ---- サイドバー ---- */
-.search,
-
-.search .title,
-
-.search .form {
+.search, .search .title, .search .form {
 	padding: 15px 0 50px 5px;
 }
-.search .price,
 
-.search .price:link,
-.search .price:visited,
-.search .price:hover,
-.search .price:active,
-
-.search .price:hover {
+.search .price, .search .price:link, .search .price:visited, .search .price:hover,
+	.search .price:active, .search .price:hover {
 	background: #5fb4d9;
 	color: #fff;
 }
 
-.search li:last-of-type .price,
-
-
-
-/* ---- メイン ---- */
-.main {
+.search li:last-of-type .price, /* ---- メイン ---- */ .main {
 	float: right;
 	width: 76%;
 	padding-bottom: 80px;
 }
 
-.user .main .title,
-
-.main .title::before,
-
-.error_mess_maintenance,
-.complete_message,
-.check_message {
+.user .main .title, .main .title::before, .error_mess_maintenance,
+	.complete_message, .check_message {
 	padding-top: 20px;
 	font-size: 1.2em;
 }
-.complete_message,
-.complete_link {
+
+.complete_message, .complete_link {
 	font-size: 1.2em;
 	margin-top: 30px;
 	padding-left: 30px;
 }
+
 .complete_link a:hover {
 	color: #d34320;
 }
@@ -240,7 +223,7 @@ footer {
 
 small {
 	height: 30px;
-	line-height:30px;
+	line-height: 30px;
 	text-shadow: 1px 1px 1px #fff;
 	font-size: 8pt;
 }

@@ -55,7 +55,7 @@ public class MonthGoalRegistController {
 			/**
 			 * 今週の目標 登録確認処理
 			 *
-			 * @param form   会員情報フォーム
+			 * @param form   今月の目標フォーム
 			 * @param result 入力チェック結果
 			 * @return 入力値エラーあり："goal/month_goal_input" 目標情報登録画面へ
 			 *         入力値エラーなし："goal/month_goal_check" 目標情報登録確認画面へ
@@ -72,7 +72,7 @@ public class MonthGoalRegistController {
 			/**
 			 * 会員情報登録完了処理
 			 *
-			 * @param form 会員情報
+			 * @param form 今月の目標
 			 * @return "redirect:goal/month_goal_complete" 今月の目標 登録完了画面へ
 			 */
 			@RequestMapping(path = "/sns/monthGoal/complete", method = RequestMethod.POST)

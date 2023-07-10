@@ -39,7 +39,7 @@ public class PostingController {
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
-	public String showList(Model model, @ModelAttribute PostingForm form) {
+	public String showList(Model model) {
 
 		List<Posting> posting = postingRepository.findAll();
 		if (!posting.isEmpty()) {

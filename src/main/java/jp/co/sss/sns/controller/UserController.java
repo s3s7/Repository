@@ -38,10 +38,10 @@ public class UserController {
 
 	//ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session,Model model) {
 		// セッション情報を無効にする
 		session.invalidate();
-		return "redirect:/";
+		return "index/index";
 	}
 //	@RequestMapping(path = "/snssns/logout")
 //	public String doLogout(Model model) {
