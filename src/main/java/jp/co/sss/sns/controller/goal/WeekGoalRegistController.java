@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.sns.entity.goal;
 import jp.co.sss.sns.form.GoalForm;
+import jp.co.sss.sns.form.WeekGoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
 @Controller
 public class WeekGoalRegistController {
@@ -35,7 +36,7 @@ public class WeekGoalRegistController {
 		 * @return "" 今月の目標 登録入力画面へ
 		 */
 		@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.GET)
-		public String weekGoalRegist(GoalForm form) {
+		public String weekGoalRegist(WeekGoalForm form) {
 			return "goal/week_goal_input";
 		}
 		
@@ -59,7 +60,7 @@ public class WeekGoalRegistController {
 		 *         入力値エラーなし："goal/week_goal_check" 目標情報登録確認画面へ
 		 */
 		@RequestMapping(path = "/sns/weekGoal/check", method = RequestMethod.POST)
-		public String weekGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
+		public String weekGoalRegistCheck(@Valid @ModelAttribute WeekGoalForm form, BindingResult result) {
 			// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
 			if (result.hasErrors()) {
 				return "goal/week_goal_input";
@@ -74,7 +75,7 @@ public class WeekGoalRegistController {
 		 * @return "redirect:goal/week_goal_complete" 今週の目標 登録完了画面へ
 		 */
 		@RequestMapping(path = "/sns/weekGoal/complete", method = RequestMethod.POST)
-		public String registComplete(@ModelAttribute GoalForm form) {
+		public String registComplete(@ModelAttribute WeekGoalForm form) {
 		// 今日の目標情報の生成
 		goal goal = new goal();
 

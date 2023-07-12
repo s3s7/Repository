@@ -38,7 +38,7 @@ public class CommentRegistController {
 	@RequestMapping("/snssns/comment")
 	public String docomment(Model model, @Valid @ModelAttribute CommentForm form, BindingResult result) {
 		if (result.hasErrors()) {
-			// 別のところのこーど
+			// エラーが発生した場合
 			List<ObjectError> errorList = result.getAllErrors();
 			model.addAttribute("errorList", errorList);
 			return goComments(model, form);
