@@ -81,7 +81,7 @@ public class CommentRegistController {
 		return "comment/comment_complete";
 	}
 
-//	コメント数カウント処理
+	//コメント数カウント処理
 	@RequestMapping("/snssns/countComment")
 	public String countcomment(int commentId) {
 		Comment commentContents = new Comment();
