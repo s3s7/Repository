@@ -8,6 +8,7 @@
 <body>
  <h2 class="title">今月の目標登録</h2>
 		 <div class="user_goal_form_area"> 
+		 <!-- 今月の目標入力フォーム -->
 			<form method="post" th:action="@{/goal/daily_goal_check}" th:object="${goalForm}" class="user_goal_form">
 				 <ul th:if="${#fields.hasErrors('*')}"  th:class="input_list" >
   					<li th:each="err : ${#fields.errors('*')}" th:text="${err}" th:class="error_list" ></li>

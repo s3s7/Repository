@@ -8,6 +8,7 @@
 <body>
 	<h2 class="title">今日の目標登録</h2>
 	<div class="user_goal_form_area">
+		<!-- 今日の目標入力フォーム -->
 		<form th:action="@{/goal/daily_goal_check}" th:object="${goalForm}">
 			<label> <span class="input_title">今日の目標</span> <input
 				type="text" name="dayGoal" th:field="${dailyGoalContents}" />
