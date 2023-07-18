@@ -16,6 +16,14 @@ public class GoalForm {
 	@Size(max = 20)
 	private String dailyGoalContents;
 	
+	/**
+	 * 就寝時刻
+	 */
+//	@NotBlank
+//	@Size(max = 20)
+//	private String sleepyTime;
+	
+	
 	
 	public Integer getId() {
 		return id;
