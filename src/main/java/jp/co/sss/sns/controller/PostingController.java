@@ -120,52 +120,6 @@ public class PostingController {
 		model.addAttribute("posthing", postingList);
 		return "index/index";
 	}
-	// いいね実行
-//	@RequestMapping("/like/{postId}")
-////	@Transactional
-//	public String Like(@PathVariable("postId") int postId, @ModelAttribute("like")Like like, Model model,Authentication loginUser) {
-////		session.getAttribute("userId");
-//		
 
-	// すでにいいねしていた場合、いいねを取り消す
-//	  if(likeRepository.existsByUserAndPosting(loginUser.getPosting(), postId) == true) {
-//	      likeRepository.deleteByUserAndPosting(loginUser.getName(), postId);
-//	  }else {  //いいねしていなかった場合、投稿へのいいねを登録する
-//	    like.setPosting(posting);
-//	    like.setUser(session.getId());
-////	    LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-////	    like.setCreatedAt(ldt);
-//	    likeRepository.save(like);
-//	  }
-//		}
-//	@RequestMapping("/like/{postId}")
-//	@Transactional
-//	public String Like(@PathVariable("postId") int postId, @ModelAttribute("like") Like like, Authentication loginUser, Model model) {
-//	  //すでにいいねしていた場合、いいねを取り消す
-//	  if(likeRepository.existsByUsernameAndPostId(loginUser.getName(), postId) == true) {
-//	      likeRepository.deleteByUsernameAndPostId(loginUser.getName(), postId);
-//	  }else {  //いいねしていなかった場合、投稿へのいいねを登録する
-//	    like.setPostId(postId);
-//	    like.setUsername(loginUser.getName());
-//	    LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-//	    like.setCreatedAt(ldt);
-//	    likeRepository.save(like);
-//	  }
-//	  return "redirect:/index/index";
-//	    return "redirect:/postmain?postdetail";
-//	}
-//	@RequestMapping("/postmain")
-//	
-//	  public String goToPost(@ModelAttribute("posts") Posting posting,  Model model) {
-//	    //投稿ごとの「いいね」の総数を取得※1
-//	    Map<Integer, BigInteger> likeCount = likeRepository.findLikeCount();
-//	    model.addAttribute("user", userRepository.findByUserId(session.getAttribute(userId)));
-//	    model.addAttribute("posts", postingRepository.findAll());
-//	    model.addAttribute("likeCount", likeCount);
-//	    //自分が「いいね」した投稿一覧を取得※２
-//	    model.addAttribute("myLikes", likeRepository.findMyLikes(loginUser.getName()));
-//
-//	  return "postmain";
-//	}
 
 }
