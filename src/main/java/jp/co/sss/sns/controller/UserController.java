@@ -30,13 +30,13 @@ public class UserController {
 	@Autowired
 	PostingRepository postingrepository;
 
-	//ログインページ
+	// ログインページ
 	@RequestMapping("/snssns/index")
 	public String index() {
 		return "login";
 	}
 
-	//ログアウト機能
+	// ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
 	public String logout(HttpSession session) {
 		// セッション情報を無効にする
@@ -55,7 +55,7 @@ public class UserController {
 //		return "/index/index";
 //	}
 
-//	ログイン機能　入力チェックあり
+	//ログイン機能　入力チェックあり
 	@RequestMapping(path = "/snssns/doLogin")
 	public String doLogin(@Valid @ModelAttribute LoginForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {

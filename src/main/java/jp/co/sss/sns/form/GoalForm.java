@@ -19,9 +19,8 @@ public class GoalForm {
 	/**
 	 * 就寝時刻
 	 */
-//	@NotBlank
-//	@Size(max = 20)
-//	private String sleepyTime;
+	@NotBlank
+	private String sleepyTime;
 	
 	
 	

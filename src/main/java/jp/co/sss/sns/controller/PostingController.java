@@ -114,7 +114,7 @@ public class PostingController {
 		// 商品情報を全件検索(新着順)
 		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(pageable);
 		// エンティティ内の検索結果をJavaBeansにコピー
-//		List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
+		//List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
 
 		// 商品情報をViewへ渡す
 		model.addAttribute("posthing", postingList);

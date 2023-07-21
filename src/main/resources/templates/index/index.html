@@ -3,10 +3,10 @@
 	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8" />
-<title>ちょいブログ</title>
+<title>つぶやき</title>
 </head>
 <body>
-	<h3  class="title">ブログシステム</h3>
+	<h3  class="title">つぶやき</h3>
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">
@@ -27,7 +27,6 @@
 			<th>投稿日</th>
 			<th>タイトル</th>
 			<th>投稿内容</th>
-			<!-- 			<th>いいね！</th> -->
 			<th>コメント一覧</th>
 				<th:block th:if="${session.usersAuthority == 2}">
 			<th>コメント投稿</th></th:block>
@@ -79,24 +78,6 @@
 	</th:block>
 
 	</th:block>
-	<!-- もしいいねしていたら -->
-	<!-- list.contains()メソッドでその投稿にいいねしているかチェック-->
-	<!-- <th:block th:if="${myLikes.contains(post.postId) == true}"> -->
-	<!-- ぬりつぶされたハートアイコンを表示 -->
-	<!-- <a th:href="@{/like/__${post.postId}__}"><i class="fas fa-heart fa-2x pink-text text-accent-2"></i></a> -->
-	<!-- いいねの総数を表示 -->
-	<!-- Map.get()メソッド -->
-	<!-- 角かっこの抜いたところ２つあり -->
-	<!-- </th:block> -->
-
-	<!-- いいねしていなかったら -->
-	<!-- <th:block th:unless="${myLikes.contains(post.postId) == true}"> -->
-	<!-- 枠線のみのハートアイコンを表示 -->
-	<!-- <a th:href="@{/like/__${post.postId}__}"><i class="far fa-heart fa-2x pink-text text-accent-2"></i></a> -->
-	<!-- いいねの総数を表示 -->
-
-	<!-- </th:block> -->
-
-
+	
 </body>
 </html>
