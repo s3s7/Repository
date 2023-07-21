@@ -26,8 +26,7 @@ public class UserShowCustomerController {
 		UserBean userBean = new UserBean();
 		userBean = (UserBean) session.getAttribute("users");
 
-		// 表示対象の会員情報を取得
-		// User user = userRepository.getOne(userBean.getId());
+		// 表示対象の会員詳細情報を取得
 		User user = new User();
 		//getReferenceByIdは例外が起こりやすいため例外処理
 		try {

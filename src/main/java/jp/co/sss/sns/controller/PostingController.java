@@ -69,7 +69,6 @@ public class PostingController {
 		content = form.getTitle();
 
 		if (content != null) {
-			//List<ItemBean> itemBeanList = BeanCopy.copyEntityToItemBean(itemList.getContent());
 			model.addAttribute("contents", content);
 			// 条件を満たした場合投稿内容確認画面へ
 			return "posting/posting_check";

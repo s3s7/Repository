@@ -3,24 +3,14 @@
 	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8" />
-<title>つぶやき</title>
+<title>近況</title>
 </head>
 <body>
-	<h3  class="title">つぶやき</h3>
+	<h3  class="title">近況</h3>
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">
         <span>並び替え</span> <a href="/sns/newSort">新着順</a>
-        
-      <!--   <select>
-            <option value="00"></option>
-            <option
-                th:each="sortList : ${sortList}"
-                th:value="${sortList.code}"
-                th:text="${sortList.name}"
-                th:selected="${sortList.code == selectedValue}">
-            </option>
-        </select> -->
     </div>
 	<table>
 		<tr>
@@ -48,7 +38,7 @@
 			</td>
 
 			<!-- コメントするボタン（ログインした場合のみ表示） -->
-			<th:block th:if="${session.usersAuthority == 2}">
+			<th:block th:if="${session.users}">
 				<dd class="link_area">
 				<td><form action="/snssns/comments">
 						<div style="text-align: center;">

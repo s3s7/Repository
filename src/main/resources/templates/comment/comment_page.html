@@ -9,14 +9,6 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <h2 class="title">コメントする内容</h2>
 <!-- エラーメッセージコントローラー表示用 -->
 		<form th:action="@{/snssns/comment}" th:object="${commentForm}">
-<!-- <label> -->
-<!-- 							<span class="input_title" > -->
-<!-- 							タイトル</span> -->
-<!-- 							<textarea name="title" rows="1"   th:field = "*{title}" ></textarea> -->
-<!-- 							<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div> -->
-<!-- 							<span  style="color: red"></span><br/> -->
-
-<!-- 						</label> -->
 
 						<label>
 							<span class="input_title">コメントする内容</span>

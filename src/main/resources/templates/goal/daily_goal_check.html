@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
-<!-- 	th:replace="~{common/layout_5block :: layout(~{::title},~{::body/content()})}"> -->
 <head>
 <meta charset="UTF-8">
 <title>今日の目標内容確認 | スモールスタート</title>
 </head>
-<!-- 	<span  th:if="${#fields.hasErrors('title')" 	th:errors="*{title}"   style="color: red"></span><br/> -->
 <body>
 	<h2 class="title">今日の目標確認画面</h2>
 	<p class="check_message">以下の内容で設定します。</p>
@@ -22,7 +20,6 @@
 		</form>
 		<form method="post" th:action="@{/sns/dailyGoal}"
 			th:object="${postingForm}" class="posting_info_form">
-			<!-- <input type="hidden" name="title" th:value="${postingForm.title}" /> -->
 			<input type="hidden" name="contents"
 				th:value="${goalForm.dailyGoalContents}" /> <input type="submit"
 				value="設定する" class="send_button" />

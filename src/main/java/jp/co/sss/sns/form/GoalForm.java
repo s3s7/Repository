@@ -40,9 +40,5 @@ public class GoalForm {
 		this.dailyGoalContents = dailyGoalContents;
 	}
 
-
-	
-	
-	
 	
 }

@@ -18,7 +18,6 @@ import jp.co.sss.sns.repository.GoalRepository;
 @Controller
 public class MonthGoalRegistController {
 
-		
 		/**
 		 * 目標情報
 		 */
@@ -31,14 +30,13 @@ public class MonthGoalRegistController {
 		@Autowired
 		HttpSession session;
 		
-		
 			/**
 			 * 今月の目標入力画面表示処理
 			 *
 			 * @return "" 今月の目標 登録入力画面へ
 			 */
 			@RequestMapping(path = "/sns/monthGoal/input", method = RequestMethod.GET)
-			public String monthGoalRegist(MonthGoalForm form) {
+			public String monthGoalRegistGet(MonthGoalForm form) {
 				return "goal/month_goal_input";
 			}
 			
@@ -48,10 +46,10 @@ public class MonthGoalRegistController {
 			 * @param form 会員情報
 			 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 			 */
-//			@RequestMapping(path = "/goal/month_goal/input", method = RequestMethod.POST)
-//			public String registInputBack(UserForm form) {
-//				return "user/regist/user_regist_input";
-//			}
+			@RequestMapping(path = "/sns/monthGoal/input", method = RequestMethod.POST)
+			public String monthGoalRegistPost(MonthGoalForm form) {
+				return "goal/month_goal_input";
+			}
 		
 			/**
 			 * 今週の目標 登録確認処理

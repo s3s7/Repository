@@ -36,7 +36,7 @@ public class WeekGoalRegistController {
 		 * @return "" 今月の目標 登録入力画面へ
 		 */
 		@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.GET)
-		public String weekGoalRegist(WeekGoalForm form) {
+		public String weekGoalRegistGet(WeekGoalForm form) {
 			return "goal/week_goal_input";
 		}
 		
@@ -46,10 +46,10 @@ public class WeekGoalRegistController {
 		 * @param form 会員情報
 		 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 		 */
-//		@RequestMapping(path = "/goal/week_goal/input", method = RequestMethod.POST)
-//		public String registInputBack(UserForm form) {
-//			return "user/regist/user_regist_input";
-//		}
+		@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.POST)
+		public String weekGoalRegistPost(WeekGoalForm form) {
+			return "goal/week_goal_input";
+		}
 	
 		/**
 		 * 今週の目標 登録確認処理

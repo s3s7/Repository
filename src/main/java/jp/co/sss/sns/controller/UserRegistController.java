@@ -30,13 +30,6 @@ public class UserRegistController{
 	/**
 	 * 会員情報入力画面表示処理
 	 *
-	 * @param Model Viewとの値受渡し
-	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
-	 */
-
-	/**
-	 * 会員情報入力画面表示処理
-	 *
 	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 	 */
 	@RequestMapping(path = "/user/regist/input", method = RequestMethod.GET)
@@ -50,10 +43,10 @@ public class UserRegistController{
 	 * @param form 会員情報
 	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 	 */
-//	@RequestMapping(path = "/user/regist/input", method = RequestMethod.POST)
-//	public String registInputBack(UserForm form) {
-//		return "user/regist/user_regist_input";
-//	}
+	@RequestMapping(path = "/user/regist/input", method = RequestMethod.POST)
+	public String registInputBack(UserForm form) {
+		return "user/regist/user_regist_input";
+	}
 
 	/**
 	 * 会員情報 登録確認処理

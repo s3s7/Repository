@@ -5,7 +5,7 @@ public class Constant {
 	/**
 	 * 定数定義用クラス
 	 *
-	 * @author SystemShared
+	 * 
 	 */
 
 		/** 削除フラグの値(未削除状態) */
@@ -25,10 +25,9 @@ public class Constant {
 		
 		
 		/**
-		 * 商品画像のアップロード先 (注意) ファイルの保存場所はeclipseの環境構築の操作内容によってことなる場合があります。
-		 * ファイルアップロードに失敗した場合は、下記のパスを修正してください。
+		 * 
 		 */
-		public static final String FILE_UPLOAD_PATH = "C:/Users/edu/Documents/workspace-spring-tool-suite-4-4.0.0.RELEASE/shared_shop/src/main/resources/static/img";
+		public static final String FILE_UPLOAD_PATH = "/Users/shuntoyuuga/Documents/workspace-spring-tool-suite-4-4.12.1.RELEASE/sns/src/main/resources/static/image";
 		
 		/** CSS保存用フォルダの名前 */
 		public static final String CSS_FOLDER = "/css/";

@@ -36,24 +36,17 @@ public class UserController {
 		return "login";
 	}
 
-	// ログアウト機能
 	@RequestMapping(path = "/snssns/logout")
-	public String logout(HttpSession session) {
-		// セッション情報を無効にする
-		session.invalidate();
-		return "index/index";
+	public String doLogout(Model model) {
+		List<Posting> posting = postingrepository.findAll();
+		if (!posting.isEmpty()) {
+			session.setAttribute("posting", posting);
+		} else {
+			model.addAttribute("errMessage", "投稿記事は存在しません。");
+		}
+		session.removeAttribute("users");
+		return "/index/index";
 	}
-//	@RequestMapping(path = "/snssns/logout")
-//	public String doLogout(Model model) {
-//		List<Posting> posting = postingrepository.findAll();
-//		if (!posting.isEmpty()) {
-//			session.setAttribute("posting", posting);
-//		} else {
-//			model.addAttribute("errMessage", "投稿記事は存在しません。");
-//		}
-//		session.removeAttribute("users");
-//		return "/index/index";
-//	}
 
 	//ログイン機能　入力チェックあり
 	@RequestMapping(path = "/snssns/doLogin")
@@ -73,8 +66,6 @@ public class UserController {
 		if (user != null) {
 			// 会員情報が存在する場合、ログイン
 			BeanUtils.copyProperties(user, userBean);
-			// List<ItemBean> itemBeanList =
-			// BeanCopy.copyEntityToItemBean(itemList.getContent());
 			session.setAttribute("users", userBean);
 			return "index/index";
 
