@@ -7,19 +7,17 @@
 </head>
 <body>
 	<h2 class="title">今日の目標登録</h2>
-	<div class="user_goal_form_area">
+	<div class="day_goal_form_area">
 		<!-- 今日の目標入力フォーム -->
 		<form th:action="@{/goal/daily_goal_check}" th:object="${goalForm}">
 			<label> <span class="input_title">今日の目標</span> <input
-				type="text" name="dayGoal" th:field="${dailyGoalContents}" />
-			</label>
+				type="text" name="dayGoal" th:field="${goalForm.dailyGoalContents}" />
+			</label> 
 
 			<!-- 入眠時間入力フォーム -->
-			<label> <span class="input_title">入眠時間（この時間の30分前にLINEに通知が来ます）</span>
-				<textarea name="contents" rows="1" th:field="*{sleepOnset}"
-					style="color: red"></textarea> <span
-				th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}"></span>
-			</label>
+			 <label> <span class="input_title">入眠時間（この時間の30分前にLINEに通知が来ます）</span>
+				<input type="text" name="sleepyTime"  th:field="${goalForm.sleepyTime}" />
+			</label> 
 		</form>
 
 		<!-- 登録内容確認画面へボタン -->
@@ -28,7 +26,7 @@
 		</form>
 		<!-- 会員詳細画面に戻る -->
 		<form th:action="@{/sns/user/detail}">
-			<input type="submit" value="会員詳細画面へ" class="back_button" />
+			<input type="submit" value="会員詳細画面に戻る" class="back_button" />
 		</form>
 	</div>
 </body>

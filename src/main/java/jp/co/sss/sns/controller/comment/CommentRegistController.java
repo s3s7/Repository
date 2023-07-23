@@ -54,8 +54,8 @@ public class CommentRegistController {
 	}
 
 	// コメントするボタン
-	@RequestMapping("/snssns/doComment")
-	public String docomment(Model model, @ModelAttribute CommentForm form) {
+	@RequestMapping("/snssns/comment/complete")
+	public String commentComplete(Model model, @ModelAttribute CommentForm form) {
 		// コメント内容情報の生成
 		Comment comment = new Comment();
 
@@ -77,13 +77,13 @@ public class CommentRegistController {
 
 	// コメント完了画面表示
 	@RequestMapping("/snssns/commentComplete")
-	public String docommented() {
+	public String commentComplete() {
 		return "comment/comment_complete";
 	}
 
 	//コメント数カウント処理
 	@RequestMapping("/snssns/countComment")
-	public String countcomment(int commentId) {
+	public String countComment(int commentId) {
 		Comment commentContents = new Comment();
 		commentContents.setCommentId(commentId);
 		return "comment/comment_complete";

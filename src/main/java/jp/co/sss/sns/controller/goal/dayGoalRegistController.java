@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class dayGoalRegistController {
 	 * @return "" 今日の目標 登録入力画面へ
 	 */
 	@RequestMapping(path = "/sns/dailyGoal/input", method = RequestMethod.GET)
-	public String dailyGoalRegistGet(GoalForm form) {
+	public String dailyGoalRegistGet(Model model ,@ModelAttribute GoalForm form) {
 		return "goal/daily_goal_input";
 	}
 	
@@ -45,10 +46,10 @@ public class dayGoalRegistController {
 	 * @param form 会員情報
 	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 	 */
-	@RequestMapping(path = "/sns/dailyGoal/input", method = RequestMethod.POST)
-	public String dailyGoalRegistPost(GoalForm form) {
-		return "user/regist/user_regist_input";
-	}
+//	@RequestMapping(path = "/sns/dailyGoal/input", method = RequestMethod.POST)
+//	public String dailyGoalRegistPost(GoalForm form) {
+//		return "user/regist/user_regist_input";
+//	}
 
 	/**
 	 * 会員情報 登録確認処理
@@ -91,7 +92,7 @@ public class dayGoalRegistController {
 //		userBean.setAuthority(user.getAuthority());
 		session.setAttribute("goal", goal);
 
-		return "redirect:/goal/daily_goal_complete";
+		return "/goal/daily_goal_complete";
 	}
 
 	/**

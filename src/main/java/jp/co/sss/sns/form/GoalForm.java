@@ -22,8 +22,7 @@ public class GoalForm {
 	@NotBlank
 	private String sleepyTime;
 	
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -40,5 +39,12 @@ public class GoalForm {
 		this.dailyGoalContents = dailyGoalContents;
 	}
 
+	public String getSleepyTime() {
+		return sleepyTime;
+	}
+
+	public void setSleepyTime(String sleepyTime) {
+		this.sleepyTime = sleepyTime;
+	}
 	
 }

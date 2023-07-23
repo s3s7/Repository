@@ -18,11 +18,12 @@
 		<form th:action="@{/sns/user/detail}">
 			<input type="submit" value="会員詳細画面へ戻る" class="back_button" />
 		</form>
-		<form method="post" th:action="@{/sns/dailyGoal}"
+		<!-- 設定するボタン -->
+		<form method="post" th:action="@{/sns/dailyGoal/check}"
 			th:object="${postingForm}" class="posting_info_form">
 			<input type="hidden" name="contents"
 				th:value="${goalForm.dailyGoalContents}" /> <input type="submit"
-				value="設定する" class="send_button" />
+				value="登録内容確認画面へ" class="send_button" />
 		</form>
 	</div>
 </body>
