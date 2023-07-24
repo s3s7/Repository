@@ -4,10 +4,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class GoalForm {
-	/**
-	 * 目標ID
-	 */
-	private Integer id;
 
 	/**
 	 * 今日の目標
@@ -22,15 +18,6 @@ public class GoalForm {
 	@NotBlank
 	private String sleepyTime;
 	
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getDailyGoalContents() {
 		return dailyGoalContents;
 	}
