@@ -85,7 +85,7 @@ public class MonthGoalRegistController {
 			// 今日の目標情報を保存
 			goalRepository.save(goal);
 
-			// ログイン状態保存
+			// 状態保存
 //			UserBean userBean = new UserBean();
 //			userBean.setId(user.getId());
 //			userBean.setName(user.getName());

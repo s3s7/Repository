@@ -12,13 +12,15 @@
 		<form th:action="@{/goal/daily_goal_check}" th:object="${goalForm}">
 			<label> <span class="input_title">今日の目標</span> <input
 				type="text" name="dayGoal" th:field="${goalForm.dailyGoalContents}" />
-			</label> 
+			</label>
 
 			<!-- 入眠時間入力フォーム -->
-			 <label> <span class="input_title">入眠時間（この時間の30分前にLINEに通知が来ます）</span>
-				<input type="text" name="sleepyTime"  th:field="${goalForm.sleepyTime}" />
-			</label> 
+			<label> <span class="input_title">入眠時間（この時間の30分前にLINEに通知が来ます）</span>
+				<input type="text" name="sleepyTime"
+				th:field="${goalForm.sleepyTime}" />
+			</label>
 		</form>
+
 
 		<!-- 登録内容確認画面へボタン -->
 		<form th:action="@{/sns/dailyGoal/check}">
