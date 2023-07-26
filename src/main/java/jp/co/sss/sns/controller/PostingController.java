@@ -110,12 +110,12 @@ public class PostingController {
 
 	@RequestMapping(path = "/sns/newSort")
 	public String newSort(Model model, Pageable pageable) {
-		// 商品情報を全件検索(新着順)
+		// 記事情報を全件検索(新着順)
 		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(pageable);
 		// エンティティ内の検索結果をJavaBeansにコピー
 		//List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
 
-		// 商品情報をViewへ渡す
+		// 記事情報をViewへ渡す
 		model.addAttribute("posthing", postingList);
 		return "index/index";
 	}
