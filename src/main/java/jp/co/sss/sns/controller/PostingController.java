@@ -52,18 +52,18 @@ public class PostingController {
 
 	// 投稿ページ遷移処理
 	@RequestMapping("/snssns/posts")
-	public String postsposts(Model model, @ModelAttribute PostingForm form) {
+	public String postInput(Model model, @ModelAttribute PostingForm form) {
 		return "posting/posting_page";
 	}
 
 	// 投稿確認画面へ（登録）機能 入力チェックあり
 	@RequestMapping("/snssns/posting")
-	public String doLogin(Model model, @Valid @ModelAttribute PostingForm form, BindingResult result) {
+	public String postCheck(Model model, @Valid @ModelAttribute PostingForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			// エラーリスト
 			List<ObjectError> errorList = result.getAllErrors();
 			model.addAttribute("errorList", errorList);
-			return postsposts(model, form);
+			return postInput(model, form);
 		}
 		String content = form.getContents();
 		content = form.getTitle();
@@ -74,14 +74,14 @@ public class PostingController {
 			return "posting/posting_check";
 
 		} else {
-			return postsposts(model, form);
+			return postInput(model, form);
 		}
 
 	}
 
-	// 投稿するボタン
+	// 投稿するボタン（記事登録処理）
 	@RequestMapping("/snssns/dopost")
-	public String dopost(Model model, @ModelAttribute PostingForm form) {
+	public String postRegist(Model model, @ModelAttribute PostingForm form) {
 		// 投稿内容情報の生成
 		Posting posting = new Posting();
 
@@ -104,7 +104,7 @@ public class PostingController {
 
 	// 投稿完了画面表示
 	@RequestMapping("/snssns/complete")
-	public String doposted() {
+	public String postComplete() {
 		return "posting/posting_complete";
 	}
 
