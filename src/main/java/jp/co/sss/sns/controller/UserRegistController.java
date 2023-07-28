@@ -33,7 +33,7 @@ public class UserRegistController{
 	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 	 */
 	@RequestMapping(path = "/user/regist/input", method = RequestMethod.GET)
-	public String registInput(UserForm form) {
+	public String userRegistInput(UserForm form) {
 		return "user/regist/user_regist_input";
 	}
 
@@ -44,7 +44,7 @@ public class UserRegistController{
 	 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 	 */
 	@RequestMapping(path = "/user/regist/input", method = RequestMethod.POST)
-	public String registInputBack(UserForm form) {
+	public String userRegistInputBack(UserForm form) {
 		return "user/regist/user_regist_input";
 	}
 
@@ -57,7 +57,7 @@ public class UserRegistController{
 	 *         入力値エラーなし："user/regist/user_regist_check" 会員情報 登録確認画面へ
 	 */
 	@RequestMapping(path = "/user/regist/check", method = RequestMethod.POST)
-	public String registCheck(@Valid @ModelAttribute UserForm form, BindingResult result) {
+	public String userRegistCheck(@Valid @ModelAttribute UserForm form, BindingResult result) {
 		// 入力値にエラーがあった場合、会員情報 入力画面表示処理に戻る
 		if (result.hasErrors()) {
 			return "user/regist/user_regist_input";
@@ -72,7 +72,7 @@ public class UserRegistController{
 	 * @return "redirect:/user/regist/complete" 会員情報 登録完了画面へ
 	 */
 	@RequestMapping(path = "/user/regist/complete", method = RequestMethod.POST)
-	public String registComplete(@ModelAttribute UserForm form) {
+	public String userRegistComplete(@ModelAttribute UserForm form) {
 		// 会員情報の生成
 		User user = new User();
 
@@ -100,7 +100,7 @@ public class UserRegistController{
 	 * @return "user/regist/user_regist_complete" 会員情報 登録完了画面へ
 	 */
 	@RequestMapping(path = "/user/regist/complete", method = RequestMethod.GET)
-	public String registCompleteRedirect() {
+	public String userRegistCompleteRedirect() {
 		return "user/regist/user_regist_complete";
 	}
 }
