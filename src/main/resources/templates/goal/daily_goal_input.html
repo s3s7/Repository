@@ -20,6 +20,20 @@
 				th:field="${goalForm.sleepyTime}" />
 			</label>
 		</form>
+		
+<!-- 		<select id="singleSelect" name="selectedItem">
+     <option value="">---</option>
+     <option th:each="item : ${selectItems}" th:value="${item.value}" th:text="${item.value}" th:selected="${item.value} == *{selectedItem}">singleSelect</option>
+</select>
+ -->
+<input
+  type="time"
+  id="time"
+  name="予定の時刻"
+  value="08:30"
+  min="06:00"
+  max="10:30"
+/>
 
 
 		<!-- 登録内容確認画面へボタン -->

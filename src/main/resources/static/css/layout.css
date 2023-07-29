@@ -227,3 +227,6 @@ small {
 	text-shadow: 1px 1px 1px #fff;
 	font-size: 8pt;
 }
+
+input:valid + span::after { content: "OK"; } input:invalid + span::after {
+content: "NG"; }

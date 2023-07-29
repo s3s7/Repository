@@ -1,5 +1,7 @@
 package jp.co.sss.sns.form;
 
+import java.sql.Time;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -17,6 +19,9 @@ public class GoalForm {
 	 */
 	@NotBlank
 	private String sleepyTime;
+	
+	@NotBlank
+	private Time sleepyTime;
 	
 	public String getDailyGoalContents() {
 		return dailyGoalContents;
