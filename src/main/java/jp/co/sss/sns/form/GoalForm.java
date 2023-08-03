@@ -20,8 +20,8 @@ public class GoalForm {
 	@NotBlank
 	private String sleepyTime;
 	
-	@NotBlank
-	private Time sleepyTime;
+//	@NotBlank
+//	private Time sleepyTime;
 	
 	public String getDailyGoalContents() {
 		return dailyGoalContents;
