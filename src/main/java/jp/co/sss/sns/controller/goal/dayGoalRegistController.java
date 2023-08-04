@@ -1,5 +1,8 @@
 package jp.co.sss.sns.controller.goal;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -78,13 +81,14 @@ public class dayGoalRegistController {
 	public String dailyGoalRegistComplete(@ModelAttribute GoalForm form) {
 		// 今日の目標情報の生成
 		goal goal = new goal();
+		
+//		goal = (jp.co.sss.sns.entity.goal) dayGoalRegistController.getSelectedItems();
 
 		// 入力値を情報にコピー
 //		BeanUtils.copyProperties(form, goal);
 
 		// 今日の目標情報を保存
 		goalRepository.save(goal);
-
 		// 目標保存
 //		UserBean userBean = new UserBean();
 //		userBean.setId(user.getId());
@@ -95,6 +99,16 @@ public class dayGoalRegistController {
 		return "/goal/daily_goal_complete";
 	}
 
+//	private static Map<String,String> getSelectedItems(){
+//	     Map<String, String> selectMap = new LinkedHashMap<String, String>();
+//	     selectMap.put("key_A", "選択肢Ａは、これですよ");
+//	     selectMap.put("key_B", "選択肢Ｂは、これですよ");
+//	     selectMap.put("key_C", "選択肢Ｃは、これですよ");
+//	     selectMap.put("key_D", "選択肢Ｄは、これですよ");
+//	     selectMap.put("key_E", "選択肢Ｅは、これですよ");
+//	     return selectMap;
+//	 }   
+	
 	/**
 	 * 会員情報登録完了画面表示
 	 *
