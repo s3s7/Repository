@@ -15,7 +15,7 @@ import jp.co.sss.sns.form.GoalForm;
 import jp.co.sss.sns.form.WeekGoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
 @Controller
-public class WeekGoalRegistController {
+class WeekGoalRegistController {
 	
 	/**
 	 * 目標情報

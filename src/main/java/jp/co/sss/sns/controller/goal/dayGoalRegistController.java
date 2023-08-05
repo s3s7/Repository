@@ -19,7 +19,7 @@ import jp.co.sss.sns.form.GoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
 
 @Controller
-public class dayGoalRegistController {
+class dayGoalRegistController {
 
 	/**
 	 * 目標情報
@@ -99,9 +99,9 @@ public class dayGoalRegistController {
 		return "/goal/daily_goal_complete";
 	}
 
-//	private static Map<String,String> getSelectedItems(){
+//	private static Map<String,String> getSelectedTimes(){
 //	     Map<String, String> selectMap = new LinkedHashMap<String, String>();
-//	     selectMap.put("key_A", "選択肢Ａは、これですよ");
+//	     selectMap.put("key_A", "0:00");
 //	     selectMap.put("key_B", "選択肢Ｂは、これですよ");
 //	     selectMap.put("key_C", "選択肢Ｃは、これですよ");
 //	     selectMap.put("key_D", "選択肢Ｄは、これですよ");

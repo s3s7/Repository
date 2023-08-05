@@ -16,7 +16,7 @@ import jp.co.sss.sns.form.MonthGoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
 
 @Controller
-public class MonthGoalRegistController {
+class MonthGoalRegistController {
 
 		/**
 		 * 目標情報
