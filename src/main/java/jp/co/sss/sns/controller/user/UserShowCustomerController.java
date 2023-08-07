@@ -13,7 +13,7 @@ import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.repository.UserRepository;
 
 @Controller
-public class UserShowCustomerController {
+class UserShowCustomerController {
 	/**
 	 * 会員情報
 	 */

@@ -13,7 +13,7 @@ import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.util.Constant;
 
-public class UserDeleteController {
+class UserDeleteController {
 
 	/**
 	 * 会員情報
