@@ -21,7 +21,7 @@ import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
 
 @Controller
-public class UserController {
+class UserController {
 
 	@Autowired
 	UserRepository userrepository;

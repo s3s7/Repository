@@ -16,7 +16,7 @@ import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
 @Controller
-public class UserRegistAdminController {
+class UserRegistAdminController {
 		
 			/**
 			 * 会員情報
