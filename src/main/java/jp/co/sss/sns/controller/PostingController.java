@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -120,5 +122,42 @@ class PostingController {
 		return "index/index";
 	}
 
+	// 履歴画面へ遷移(日付昇順)
+//		@GetMapping("/money-record/history/date-asc/{categoryCode}/{startDate}/{endDate}")
+	@GetMapping("/snssns/dateAsc{endDate}")
+	public String showRecordsOrderByDateAsc(@ModelAttribute("categoryCode") String categoryCode,
+				@ModelAttribute("startDate") String startDate, @ModelAttribute("endDate") String endDate,
+				Model model) {
+
+//			// カテゴリ未選択の場合
+//			if (categoryCode.equals("all")) {
+//				categoryCode = "%";
+//			}
+//
+//			// カテゴリ一覧を取得
+//			Map<Integer, String> categories = CategoryCodeToName.Categories;
+//			Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
+//
+//			// 上記の条件で絞り込み検索を実施
+//			List<MoneyRecordList> records = moneyRecordRepository.findMoneyRecordListOrderByDateAsc(loginUser.getName(),
+//					categoryCode, startDate, endDate);
+//
+//			for (int i = 0; i < records.size(); i++) {
+//				if (records.get(i).getNote().length() > 13) {
+//					records.get(i).setNote(records.get(i).getNote().substring(0, 10) + "…");
+//				}
+//			}
+//
+//			// 履歴データがあるかチェック用
+//			boolean historyDataExists = mrService.existsHistoryData(records);
+//
+//			model.addAttribute("user", userRepository.findByUsername(loginUser.getName()));
+//			model.addAttribute("records", records);
+//			model.addAttribute("categoriesToIcon", categoriesToIcon);
+//			model.addAttribute("historyDataExists", historyDataExists);
+//			model.addAttribute("categories", categories);
+//
+//			return "record-history";
+		}
 
 }
