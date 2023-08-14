@@ -129,10 +129,13 @@ class PostingController {
 				@ModelAttribute("startDate") String startDate, @ModelAttribute("endDate") String endDate,
 				Model model) {
 
-//			// カテゴリ未選択の場合
+//			// 並び替え未選択の場合
 //			if (categoryCode.equals("all")) {
 //				categoryCode = "%";
 //			}
+		if (postingCode.equals(null)) {
+//			postingCode = "%";
+//		}
 //
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
