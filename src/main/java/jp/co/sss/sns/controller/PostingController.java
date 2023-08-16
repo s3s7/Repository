@@ -134,8 +134,8 @@ class PostingController {
 //				categoryCode = "%";
 //			}
 		if (postingCode.equals(null)) {
-//			postingCode = "%";
-//		}
+			postingCode = "%";
+		}
 //
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
