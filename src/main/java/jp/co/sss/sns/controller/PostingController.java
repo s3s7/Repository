@@ -140,6 +140,10 @@ class PostingController {
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
 //			Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
+
+		//		Map<Integer, String> categories = CategoryCodeToName.Categories;
+//		Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
+		
 //
 //			// 上記の条件で絞り込み検索を実施
 //			List<MoneyRecordList> records = moneyRecordRepository.findMoneyRecordListOrderByDateAsc(loginUser.getName(),
