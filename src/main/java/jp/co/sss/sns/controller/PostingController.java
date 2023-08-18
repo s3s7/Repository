@@ -141,8 +141,8 @@ class PostingController {
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
 //			Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
 
-		//		Map<Integer, String> categories = CategoryCodeToName.Categories;
-//		Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
+		//		Map<Integer, String> postings = PostingCodeToName.Postings;
+//		Map<Integer, String> postingsToIcon = PostingsCodeToIcon.PostingsToIcon;
 		
 //
 //			// 上記の条件で絞り込み検索を実施
