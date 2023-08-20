@@ -146,7 +146,7 @@ class PostingController {
 		
 //
 //			// 上記の条件で絞り込み検索を実施
-//			List<MoneyRecordList> records = moneyRecordRepository.findMoneyRecordListOrderByDateAsc(loginUser.getName(),
+//			List<MoneyRecordList> records = PostingRepository.findMoneyRecordListOrderByDateAsc(loginUser.getName(),
 //					categoryCode, startDate, endDate);
 //
 //			for (int i = 0; i < records.size(); i++) {
