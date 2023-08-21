@@ -160,7 +160,7 @@ class PostingController {
 //
 //			model.addAttribute("user", userRepository.findByUsername(loginUser.getName()));
 //			model.addAttribute("records", records);
-//			model.addAttribute("categoriesToIcon", categoriesToIcon);
+//			model.addAttribute("postingToIcon", postingToIcon);
 //			model.addAttribute("historyDataExists", historyDataExists);
 //			model.addAttribute("categories", categories);
 //
