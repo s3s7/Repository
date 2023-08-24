@@ -157,7 +157,9 @@ class PostingController {
 //
 //			// 履歴データがあるかチェック用
 //			boolean historyDataExists = mrService.existsHistoryData(records);
-//
+
+		//          boolean historyData  = mrService.existsHistoryData(records);
+		
 //			model.addAttribute("user", userRepository.findByUsername(loginUser.getName()));
 //			model.addAttribute("records", records);
 //			model.addAttribute("postingToIcon", postingToIcon);
