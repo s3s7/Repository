@@ -146,8 +146,8 @@ class PostingController {
 		Stream<String> st = Stream.ofNullable(null);
 		Stream<Integer> in = Stream.empty();
 		Optional<String> op = Optional.of(null);
-	 
-		
+	 op.get();
+	op.ifPresent(null);
 		
 	 
 //
