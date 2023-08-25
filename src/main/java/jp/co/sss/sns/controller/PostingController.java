@@ -4,8 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -136,11 +139,22 @@ class PostingController {
 		if (postingCode.equals(null)) {
 			postingCode = "%";
 		}
+		
+		//		
+		@SuppressWarnings("unchecked")
+		List<String> posting = (List<String>) new Posting();
+		Stream<String> st = Stream.ofNullable(null);
+		Stream<Integer> in = Stream.empty();
+		Optional<String> op = Optional.of(null);
+	 
+		
+		
+	 
 //
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
 //			Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
-
+		
 		//		Map<Integer, String> postings = PostingCodeToName.Postings;
 //		Map<Integer, String> postingsToIcon = PostingsCodeToIcon.PostingsToIcon;
 		
