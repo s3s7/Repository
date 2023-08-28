@@ -1,7 +1,6 @@
 package jp.co.sss.sns.controller;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -140,7 +139,7 @@ class PostingController {
 			postingCode = "%";
 		}
 		
-		//		
+		//		java gold
 		@SuppressWarnings("unchecked")
 		List<String> posting = (List<String>) new Posting();
 		Stream<String> st = Stream.ofNullable(null);
@@ -148,6 +147,10 @@ class PostingController {
 		Optional<String> op = Optional.of(null);
 	 op.get();
 	op.ifPresent(null);
+	FileReader re = null;
+	re = new FileReader("sample.txt");
+	
+	re.read();
 	
 //	P508
 //	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
