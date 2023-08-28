@@ -1,10 +1,11 @@
 package jp.co.sss.sns.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,6 @@ import java.util.stream.Stream;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -148,7 +148,13 @@ class PostingController {
 		Optional<String> op = Optional.of(null);
 	 op.get();
 	op.ifPresent(null);
-		
+	
+//	P508
+//	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
+//	Files.list(Paths.get("/")).forEach((p)-> {System.out.println(p.getFileName());
+	
+//	}
+//);		
 	 
 //
 //			// カテゴリ一覧を取得
