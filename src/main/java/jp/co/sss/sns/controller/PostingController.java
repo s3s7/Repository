@@ -1,6 +1,7 @@
 package jp.co.sss.sns.controller;
 
 import java.io.FileReader;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -151,6 +152,8 @@ class PostingController {
 	re = new FileReader("sample.txt");
 	
 	re.read();
+	
+//	Statement state = Statement();
 	
 //	P508
 //	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
