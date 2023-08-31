@@ -1,6 +1,8 @@
 package jp.co.sss.sns.controller;
 
 import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -152,6 +154,11 @@ class PostingController {
 	re = new FileReader("sample.txt");
 	
 	re.read();
+//	pablic static Path get(String first,String... more)
+	Path a =Paths.get("a","b","c","d","a.txt");
+	
+	Path dir = Paths.get(endDate,null);
+	Path pa = dir.resolve(Paths.get(null));
 	
 //	Statement state = Statement();
 	
