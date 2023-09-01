@@ -3,7 +3,6 @@ package jp.co.sss.sns.controller;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -11,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
@@ -160,6 +160,9 @@ class PostingController {
 	Path dir = Paths.get(endDate,null);
 	Path pa = dir.resolve(Paths.get(null));
 	
+	
+	Properties pro ;
+	pro.load(re);
 //	Statement state = Statement();
 	
 //	P508
