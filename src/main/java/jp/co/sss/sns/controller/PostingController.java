@@ -163,6 +163,8 @@ class PostingController {
 	
 	Properties pro ;
 	pro.load(re);
+	
+	re.close();
 //	Statement state = Statement();
 	
 //	P508
