@@ -1,6 +1,8 @@
 package jp.co.sss.sns.controller;
 
+import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -165,6 +167,8 @@ class PostingController {
 	pro.load(re);
 	
 	re.close();
+	
+	File files = new File();
 //	Statement state = Statement();
 	
 //	P508
