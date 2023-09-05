@@ -168,7 +168,9 @@ class PostingController {
 	
 	re.close();
 	
-	File files = new File();
+	File files = new File(files, endDate);
+	
+	
 //	Statement state = Statement();
 	
 //	P508
