@@ -2,7 +2,6 @@ package jp.co.sss.sns.controller;
 
 import java.io.File;
 import java.io.FileReader;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -13,6 +12,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
@@ -145,6 +148,16 @@ class PostingController {
 		}
 		
 		//		java gold
+		Executor executor;
+		Executors executors;
+		ExecutorService exec;
+		Future<Integer> future = exec.submit(() -> {
+			try {
+			}catch(InterruptedException e){
+				throw new RuntimeException(e);
+			}
+		},0);
+		
 		@SuppressWarnings("unchecked")
 		List<String> posting = (List<String>) new Posting();
 		Stream<String> st = Stream.ofNullable(null);
@@ -179,7 +192,8 @@ class PostingController {
 	
 //	}
 //);		
-	 
+//	 javagoldここまで
+	
 //
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
