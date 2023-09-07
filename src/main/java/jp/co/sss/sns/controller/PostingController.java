@@ -1,9 +1,11 @@
 package jp.co.sss.sns.controller;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -182,7 +184,8 @@ class PostingController {
 	re.close();
 	
 	File files = new File(files, endDate);
-	
+	FileFilter fi	= new FileFilter();
+	ResultSet re = new ResultSet();
 	
 //	Statement state = Statement();
 	
