@@ -164,6 +164,7 @@ class PostingController {
 		List<String> posting = (List<String>) new Posting();
 		Stream<String> st = Stream.ofNullable(null);
 		Stream<Integer> in = Stream.empty();
+		Stream.builder();
 //		in.collect(Collecter<String,String,String>.supplier());
 		Optional<String> op = Optional.of(null);
 	 op.get();
@@ -182,11 +183,12 @@ class PostingController {
 	Properties pro ;
 	pro.load(re);
 	
-	re.close();
+	
 	
 	File files = new File(files, endDate);
 	FileFilter fi	= new FileFilter();
 	ResultSet re = new ResultSet();
+	re.close();
 //	ProductLoader pro = ProductLoader();
 	
 //	Statement state = Statement();
