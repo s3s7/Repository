@@ -3,8 +3,10 @@ package jp.co.sss.sns.controller;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
@@ -179,19 +183,21 @@ class PostingController {
 	Path dir = Paths.get(endDate,null);
 	Path pa = dir.resolve(Paths.get(null));
 	
-	
 	Properties pro ;
 	pro.load(re);
 	
-	
-	
 	File files = new File(files, endDate);
+	Files fil = new Files();
+	AtomicInteger ato = null;
+	ato.addAndGet(0);
+	Consumer<T> f = a -> System::out.println(a);
 	FileFilter fi	= new FileFilter();
-	ResultSet re = new ResultSet();
+	ResultSet res = new ResultSet();
 	re.close();
 //	ProductLoader pro = ProductLoader();
 	
 //	Statement state = Statement();
+	PreparedStatement sa = PreparedStatement();
 	
 //	P508
 //	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
