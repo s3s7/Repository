@@ -173,6 +173,7 @@ class PostingController {
 		Optional<String> op = Optional.of(null);
 	 op.get();
 	op.ifPresent(null);
+	op.isPresent();
 	FileReader re = null;
 	re = new FileReader("sample.txt");
 	
