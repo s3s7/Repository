@@ -167,8 +167,16 @@ class PostingController {
 		@SuppressWarnings("unchecked")
 		List<String> posting = (List<String>) new Posting();
 		Stream<String> st = Stream.ofNullable(null);
-		Stream<Integer> in = Stream.empty();
+		Stream<String> in = Stream.empty();
 		Stream.builder();
+		Stream.iterate(0, null);
+		Stream.generate(null);
+		Stream.distinct(null);
+		Stream.filter(i -> i);
+		Stream.peek(System.out.println(in));
+	
+		
+
 //		in.collect(Collecter<String,String,String>.supplier());
 		Optional<String> op = Optional.of(null);
 	 op.get();
@@ -195,6 +203,7 @@ class PostingController {
 	FileFilter fi	= new FileFilter();
 	ResultSet res = new ResultSet();
 	re.close();
+	
 //	ProductLoader pro = ProductLoader();
 	
 //	Statement state = Statement();
