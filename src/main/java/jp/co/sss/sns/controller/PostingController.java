@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
@@ -175,7 +176,7 @@ class PostingController {
 		Stream.filter(i -> i);
 		Stream.peek(System.out.println(in));
 	
-		Stream.concat(null, null)
+		Stream.concat(null, null);
 
 //		in.collect(Collecter<String,String,String>.supplier());
 		Optional<String> op = Optional.of(null);
@@ -194,11 +195,14 @@ class PostingController {
 	
 	Properties pro ;
 	pro.load(re);
+//	pro.lines(Paths.get(dir.txt));
 	
 	File files = new File(files, endDate);
 	Files fil = new Files();
 	AtomicInteger ato = null;
 	ato.addAndGet(0);
+	String str = "a";
+	Supplier<String> sup = a -> a;
 	Consumer<T> f = a -> System::out.println(a);
 	FileFilter fi	= new FileFilter();
 	ResultSet res = new ResultSet();
