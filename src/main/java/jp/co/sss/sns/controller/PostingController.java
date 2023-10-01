@@ -175,7 +175,7 @@ class PostingController {
 		Stream.filter(i -> i);
 		Stream.peek(System.out.println(in));
 	
-		
+		Stream.concat(null, null)
 
 //		in.collect(Collecter<String,String,String>.supplier());
 		Optional<String> op = Optional.of(null);
