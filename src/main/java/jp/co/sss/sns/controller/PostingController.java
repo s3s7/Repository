@@ -175,6 +175,7 @@ class PostingController {
 		Stream.distinct(null);
 		Stream.filter(i -> i);
 		Stream.peek(System.out.println(in));
+		Stream.reduce(0,null);
 	
 		Stream.concat(null, null);
 
