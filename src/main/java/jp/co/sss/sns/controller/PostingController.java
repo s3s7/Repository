@@ -40,10 +40,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.sss.shop.bean.ItemBean;
-import jp.co.sss.shop.entity.Category;
-import jp.co.sss.shop.entity.Item;
-import jp.co.sss.shop.util.BeanCopy;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.LikeRepository;
@@ -130,18 +126,47 @@ class PostingController {
 	public String postComplete() {
 		return "posting/posting_complete";
 	}
-
+	
+	// 記事情報を全件検索(新着順)
 	@RequestMapping(path = "/sns/newSort")
-	public String newSort(Model model, Pageable pageable,Integer postingId) {
-		// 記事情報を全件検索(新着順)
-		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(postingId,pageable);
+	public String newSort(Model model, Pageable pageable,Integer postingId) throws Exception {
+		Posting posting = new Posting();
+		// セッションにカテゴリIDが保存されている場合は取得
+		try {
+		if (session.getAttribute("sortPostingId") != null) {
+			
+			postingId = (Integer) session.getAttribute("sortPostingId");
+			// カテゴリ情報をセット
+			posting.setId(postingId);
+		}
+	
+		} catch (Exception e){
+//			System.out.println("s");
+			// nullの場合は検索から取得し記事IDを使用
+			posting.setId(postingId);
+		}
+		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
+		
+		System.out.println("s");
 		// エンティティ内の検索結果をJavaBeansにコピー
 		//List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
-
 		// 記事情報をViewへ渡す
 		model.addAttribute("posthing", postingList);
+		model.addAttribute("sortNumber", 2);
 		return "index/index";
 	}
+	
+	// 記事情報を全件検索(古い順)
+		@RequestMapping(path = "/sns/oldSort")
+		public String oldSort(Model model, Pageable pageable,Integer postingId) {
+		
+			List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
+			
+			// 記事情報をViewへ渡す
+			model.addAttribute("posthing", postingList);
+			model.addAttribute("sortNumber", 3);
+			return "index/index";
+		}
 	
 //	/**
 //	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理
