@@ -23,6 +23,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
@@ -39,6 +40,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.sss.shop.bean.ItemBean;
+import jp.co.sss.shop.entity.Category;
+import jp.co.sss.shop.entity.Item;
+import jp.co.sss.shop.util.BeanCopy;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.LikeRepository;
@@ -51,8 +56,6 @@ class PostingController {
 	PostingRepository postingRepository;
 	@Autowired
 	HttpSession session;
-	@Autowired
-	LikeRepository likeRepository;
 	@Autowired
 	UserRepository userRepository;
 
@@ -68,6 +71,7 @@ class PostingController {
 		}
 		return "index/index";
 	}
+	
 
 	// 投稿ページ遷移処理
 	@RequestMapping("/snssns/posts")
@@ -128,9 +132,9 @@ class PostingController {
 	}
 
 	@RequestMapping(path = "/sns/newSort")
-	public String newSort(Model model, Pageable pageable) {
+	public String newSort(Model model, Pageable pageable,Integer postingId) {
 		// 記事情報を全件検索(新着順)
-		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(pageable);
+		Page<Posting> postingList = postingRepository.findByOrderByInsertDateDesc(postingId,pageable);
 		// エンティティ内の検索結果をJavaBeansにコピー
 		//List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
 
@@ -138,81 +142,117 @@ class PostingController {
 		model.addAttribute("posthing", postingList);
 		return "index/index";
 	}
+	
+//	/**
+//	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理
+//	 *
+//	 * @param model    Viewとの値受渡し
+//	 * @param pageable ページング情報
+//	 * @return "/item/list/item_list" 商品一覧画面へ
+//	 *
+//	 * @author Kai Naoki
+//	 */
+//	@RequestMapping(path = "/item/list/category/2")
+//	public String showPostFOrderByInsertDateDesc(Integer postingId, Model model, Pageable pageable) {
+//		Posting posting = new Posting();
+//
+//		// セッションにカテゴリIDが保存されている場合は取得
+//		if (session.getAttribute("sortPostingId") != null) {
+//			postingId = (Integer) session.getAttribute("sortPostingId");
+//			// カテゴリ情報をセット
+//			posting.setId(postingId);
+//		} else {
+//			// nullの場合はカテゴリ検索から取得したカテゴリIDを使用
+//			posting.setId(postingId);
+//		}
+//
+//		// カテゴリに該当する商品情報を検索(売れ筋順)
+//		Page<Posting> postList = PostingRepository.findBypostingOrderByInsertDatedesc(postingId, pageable);
+//
+//		// 商品情報をViewへ渡す
+//		model.addAttribute("pages", postList);
+//		model.addAttribute("sortNumber", 4);
+//
+//		// セッションにカテゴリIDを一時保存
+//		session.setAttribute("sortpostingId", postingId);
+//
+//		return "item/list/item_list";
+//	}
 
 	// 履歴画面へ遷移(日付昇順)
 //		@GetMapping("/money-record/history/date-asc/{categoryCode}/{startDate}/{endDate}")
-	@GetMapping("/snssns/dateAsc{endDate}")
-	public String showRecordsOrderByDateAsc(@ModelAttribute("categoryCode") String categoryCode,
-				@ModelAttribute("startDate") String startDate, @ModelAttribute("endDate") String endDate,
-				Model model) {
-
-//			// 並び替え未選択の場合
-//			if (categoryCode.equals("all")) {
-//				categoryCode = "%";
-//			}
-		if (postingCode.equals(null)) {
-			postingCode = "%";
-		}
+//	@GetMapping("/snssns/dateAsc{endDate}")
+//	public String showRecordsOrderByDateAsc(@ModelAttribute("postingCode") String posthingCode,
+//				@ModelAttribute("startDate") String startDate, @ModelAttribute("endDate") String endDate,
+//				Model model) {
+//
+////			// 並び替え未選択の場合
+////			if (categoryCode.equals("all")) {
+////				categoryCode = "%";
+////			}
+//		if (postingCode.equals(null)) {
+//			postingCode = "%";
+//		}
 		
 		//		java gold
-		Executor executor;
-		Executors executors;
-		ExecutorService exec;
-		Future<Integer> future = exec.submit(() -> {
-			try {
-			}catch(InterruptedException e){
-				throw new RuntimeException(e);
-			}
-		},0);
-		
-		@SuppressWarnings("unchecked")
-		List<String> posting = (List<String>) new Posting();
-		Stream<String> st = Stream.ofNullable(null);
-		Stream<String> in = Stream.empty();
-		Stream.builder();
-		Stream.iterate(0, null);
-		Stream.generate(null);
-		Stream.distinct(null);
-		Stream.filter(i -> i);
-		Stream.peek(System.out.println(in));
-		Stream.reduce(0,null);
-	
-		Stream.concat(null, null);
-
-//		in.collect(Collecter<String,String,String>.supplier());
-		Optional<String> op = Optional.of(null);
-	 op.get();
-	op.ifPresent(null);
-	op.isPresent();
-	FileReader re = null;
-	re = new FileReader("sample.txt");
-	
-	re.read();
-//	pablic static Path get(String first,String... more)
-	Path a =Paths.get("a","b","c","d","a.txt");
-	
-	Path dir = Paths.get(endDate,null);
-	Path pa = dir.resolve(Paths.get(null));
-	
-	Properties pro ;
-	pro.load(re);
-//	pro.lines(Paths.get(dir.txt));
-	
-	File files = new File(files, endDate);
-	Files fil = new Files();
-	AtomicInteger ato = null;
-	ato.addAndGet(0);
-	String str = "a";
-	Supplier<String> sup = a -> a;
-	Consumer<T> f = a -> System::out.println(a);
-	FileFilter fi	= new FileFilter();
-	ResultSet res = new ResultSet();
-	re.close();
-	
-//	ProductLoader pro = ProductLoader();
-	
-//	Statement state = Statement();
-	PreparedStatement sa = PreparedStatement();
+//		Executor executor;
+//		Executors executors;
+//		ExecutorService exec;
+//		Future<Integer> future = exec.submit(() -> {
+//			try {
+//			}catch(InterruptedException e){
+//				throw new RuntimeException(e);
+//			}
+//		},0);
+//		
+//		@SuppressWarnings("unchecked")
+//		List<String> posting = (List<String>) new Posting();
+//		Stream<String> st = Stream.ofNullable(null);
+//		Stream<String> in = Stream.empty();
+//		Stream.builder();
+//		Stream.iterate(0, null);
+//		Stream.generate(null);
+//		Stream.distinct(null);
+//		Stream.filter(i -> i);
+//		Stream.peek(System.out.println(in));
+//		Stream.reduce(0,null);
+//	IntStream.average();
+//		Stream.concat(null, null);
+//
+////		in.collect(Collecter<String,String,String>.supplier());
+//		Optional<String> op = Optional.of(null);
+//	 op.get();
+//	op.ifPresent(null);
+//	op.isPresent();
+//	FileReader re = null;
+//	re = new FileReader("sample.txt");
+//	
+//	re.read();
+////	pablic static Path get(String first,String... more)
+//	Path a =Paths.get("a","b","c","d","a.txt");
+//	
+//	Path dir = Paths.get(endDate,null);
+//	Path pa = dir.resolve(Paths.get(null));
+//	
+//	Properties pro ;
+//	pro.load(re);
+////	pro.lines(Paths.get(dir.txt));
+//	
+//	File files = new File(files, endDate);
+//	Files fil = new Files();
+//	AtomicInteger ato = null;
+//	ato.addAndGet(0);
+//	String str = "a";
+//	Supplier<String> sup = a -> a;
+//	Consumer<T> f = a -> System::out.println(a);
+//	FileFilter fi	= new FileFilter();
+//	ResultSet res = new ResultSet();
+//	re.close();
+//	
+////	ProductLoader pro = ProductLoader();
+//	
+////	Statement state = Statement();
+//	PreparedStatement sa = PreparedStatement();
 	
 //	P508
 //	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
@@ -255,4 +295,4 @@ class PostingController {
 //			return "record-history";
 		}
 
-}
+//}

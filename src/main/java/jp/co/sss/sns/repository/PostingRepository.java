@@ -12,7 +12,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 //	List<Posting> findByMonth(@Param("date1") Date date1, @Param("date2") Date date2);
 	// 記事情報を新着順で検索
 //		public Page<Posting> findByDeleteFlagOrderByInsertDateDesc(int deleteFlag, Pageable pageable);
-	public Page<Posting> findByOrderByInsertDateDesc(Pageable pageable);
+	public Page<Posting> findByOrderByInsertDateDesc(Integer postingId,Pageable pageable);
 //		// 商品情報を売れ筋順で検索
 //		@Query(value = JPQLConstant.FIND_ALL_ITEMS_ORDER_BY_ORDERNUM, nativeQuery = true)
 //		public Page<Item> findByDeleteFlagOrderByOrderNumDesc(Pageable pageable);
