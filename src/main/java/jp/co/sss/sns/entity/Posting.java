@@ -1,5 +1,6 @@
 package jp.co.sss.sns.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,8 +22,8 @@ public class Posting {
 //	@SequenceGenerator(name = "seq_item_reviews_gen", sequenceName = "seq_item_reviews", allocationSize = 1)
     private int id;
     @Column
+//    private LocalDateTime  insertDate;
     private Date  insertDate;
-    
     @Column
     private String contents;
 
@@ -40,6 +41,13 @@ public class Posting {
 		this.id = id;
 	}
 
+//	public LocalDateTime getInsertDate() {
+//		return insertDate;
+//	}
+//
+//	public void setInsertDate(LocalDateTime insertDate) {
+//		this.insertDate = insertDate;
+//	}
 	public Date getInsertDate() {
 		return insertDate;
 	}
@@ -48,6 +56,7 @@ public class Posting {
 		this.insertDate = insertDate;
 	}
 
+	
 	public String getContents() {
 		return contents;
 	}

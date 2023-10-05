@@ -67,7 +67,6 @@ class PostingController {
 		}
 		return "index/index";
 	}
-	
 
 	// 投稿ページ遷移処理
 	@RequestMapping("/snssns/posts")
@@ -110,12 +109,14 @@ class PostingController {
 		// 投稿時間の取得
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 		Date date = new Date();
-		//SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+//		LocalDateTime date = LocalDateTime.now();
+		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
 			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+
 		posting.setInsertDate(date);
 		postingRepository.save(posting);
 		return "redirect:/snssns/complete";
@@ -126,48 +127,49 @@ class PostingController {
 	public String postComplete() {
 		return "posting/posting_complete";
 	}
-	
+
 	// 記事情報を全件検索(新着順)
 	@RequestMapping(path = "/sns/newSort")
-	public String newSort(Model model, Pageable pageable,Integer postingId) throws Exception {
+	public String newSort(Model model, Pageable pageable, Integer postingId) throws Exception {
 		Posting posting = new Posting();
 		// セッションにカテゴリIDが保存されている場合は取得
 		try {
-		if (session.getAttribute("sortPostingId") != null) {
-			
-			postingId = (Integer) session.getAttribute("sortPostingId");
-			// カテゴリ情報をセット
-			posting.setId(postingId);
-		}
-	
-		} catch (Exception e){
+			if (session.getAttribute("sortPostingId") != null) {
+
+				postingId = (Integer) session.getAttribute("sortPostingId");
+				// カテゴリ情報をセット
+				posting.setId(postingId);
+			}
+
+		} catch (Exception e) {
 //			System.out.println("s");
 			// nullの場合は検索から取得し記事IDを使用
 			posting.setId(postingId);
 		}
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
-		
+
 		System.out.println("s");
 		// エンティティ内の検索結果をJavaBeansにコピー
-		//List<PostingBean> postingBeanList = BeanCopy.copyEntityToItemBean(postingList.getContent());
+		// List<PostingBean> postingBeanList =
+		// BeanCopy.copyEntityToItemBean(postingList.getContent());
 		// 記事情報をViewへ渡す
 		model.addAttribute("posthing", postingList);
 		model.addAttribute("sortNumber", 2);
 		return "index/index";
 	}
-	
+
 	// 記事情報を全件検索(古い順)
-		@RequestMapping(path = "/sns/oldSort")
-		public String oldSort(Model model, Pageable pageable,Integer postingId) {
-		
-			List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
-			
-			// 記事情報をViewへ渡す
-			model.addAttribute("posthing", postingList);
-			model.addAttribute("sortNumber", 3);
-			return "index/index";
-		}
-	
+	@RequestMapping(path = "/sns/oldSort")
+	public String oldSort(Model model, Date date) {
+
+		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
+
+		// 記事情報をViewへ渡す
+		model.addAttribute("posthing", postingList);
+		model.addAttribute("sortNumber", 3);
+		return "index/index";
+	}
+
 //	/**
 //	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理
 //	 *
@@ -175,7 +177,6 @@ class PostingController {
 //	 * @param pageable ページング情報
 //	 * @return "/item/list/item_list" 商品一覧画面へ
 //	 *
-//	 * @author Kai Naoki
 //	 */
 //	@RequestMapping(path = "/item/list/category/2")
 //	public String showPostFOrderByInsertDateDesc(Integer postingId, Model model, Pageable pageable) {
@@ -218,8 +219,8 @@ class PostingController {
 //		if (postingCode.equals(null)) {
 //			postingCode = "%";
 //		}
-		
-		//		java gold
+
+	// java gold
 //		Executor executor;
 //		Executors executors;
 //		ExecutorService exec;
@@ -278,23 +279,23 @@ class PostingController {
 //	
 ////	Statement state = Statement();
 //	PreparedStatement sa = PreparedStatement();
-	
+
 //	P508
 //	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
 //	Files.list(Paths.get("/")).forEach((p)-> {System.out.println(p.getFileName());
-	
+
 //	}
 //);		
 //	 javagoldここまで
-	
+
 //
 //			// カテゴリ一覧を取得
 //			Map<Integer, String> categories = CategoryCodeToName.Categories;
 //			Map<Integer, String> categoriesToIcon = CategoryCodeToIcon.CategoriesToIcon;
-		
-		//		Map<Integer, String> postings = PostingCodeToName.Postings;
+
+	// Map<Integer, String> postings = PostingCodeToName.Postings;
 //		Map<Integer, String> postingsToIcon = PostingsCodeToIcon.PostingsToIcon;
-		
+
 //
 //			// 上記の条件で絞り込み検索を実施
 //			List<MoneyRecordList> records = PostingRepository.findPostingRecordListOrderByDateAsc(loginUser.getName(),
@@ -309,8 +310,8 @@ class PostingController {
 //			// 履歴データがあるかチェック用
 //			boolean historyDataExists = mrService.existsHistoryData(records);
 
-		//          boolean historyData  = mrService.existsHistoryData(records);
-		
+	// boolean historyData = mrService.existsHistoryData(records);
+
 //			model.addAttribute("user", userRepository.findByUsername(loginUser.getName()));
 //			model.addAttribute("records", records);
 //			model.addAttribute("postingToIcon", postingToIcon);
@@ -318,6 +319,6 @@ class PostingController {
 //			model.addAttribute("categories", categories);
 //
 //			return "record-history";
-		}
+}
 
 //}

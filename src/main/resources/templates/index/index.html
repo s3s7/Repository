@@ -21,7 +21,6 @@
         
     </div>
     
-    
 	<table>
 		<tr>
 			<th>投稿日</th>
@@ -35,7 +34,7 @@
 		</tr>
 		<tr th:each="posting: ${session.posting}">
 			
-			<td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm:ss')}"></td>
+		<td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm:ss')}"></td>
 			<td style="text-align: center;" th:text="${posting.title}"></td>
 			<td style="text-align: center;" th:text="${posting.contents}"></td>
 
