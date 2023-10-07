@@ -142,16 +142,12 @@ class PostingController {
 			}
 
 		} catch (Exception e) {
-//			System.out.println("s");
 			// nullの場合は検索から取得し記事IDを使用
 			posting.setId(postingId);
 		}
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
 
 		System.out.println("s");
-		// エンティティ内の検索結果をJavaBeansにコピー
-		// List<PostingBean> postingBeanList =
-		// BeanCopy.copyEntityToItemBean(postingList.getContent());
 		// 記事情報をViewへ渡す
 		model.addAttribute("posthing", postingList);
 		model.addAttribute("sortNumber", 2);
@@ -160,7 +156,7 @@ class PostingController {
 
 	// 記事情報を全件検索(古い順)
 	@RequestMapping(path = "/sns/oldSort")
-	public String oldSort(Model model, Date date) {
+	public String oldSort(Model model) {
 
 		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
 
@@ -169,6 +165,18 @@ class PostingController {
 		model.addAttribute("sortNumber", 3);
 		return "index/index";
 	}
+	
+	// 記事情報を全件検索(古い順)
+		@RequestMapping(path = "/sns/commentSort")
+		public String commentSort(Model model) {
+
+			List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
+
+			// 記事情報をViewへ渡す
+			model.addAttribute("posting", commentList);
+			model.addAttribute("sortNumber", 3);
+			return "index/index";
+		}
 
 //	/**
 //	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理

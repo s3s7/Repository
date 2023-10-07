@@ -18,6 +18,10 @@
         <a >古い順</a></th:block>
         <th:block th:if="${sortNumber != 3}">
         <a href="/sns/oldSort">古い順</a></th:block>
+         <th:block th:if="${sortNumber == 4}">
+        <a >コメント数が多い順</a></th:block>
+        <th:block th:if="${sortNumber != 4}">
+        <a href="/sns/commentSort">コメント数が多い順</a></th:block>
         
     </div>
     

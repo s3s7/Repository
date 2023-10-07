@@ -16,10 +16,16 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	public List<Posting> findAllByOrderByInsertDateAsc();
 
 	// 記事情報を古い順で検索
-//
 //	@Query(value = "select 'p.insert_date'" + "from sns_posting p order by 'p.insert_date' asc", nativeQuery = true)
 	public List<Object[]> findAllByOrderByInsertDateDesc();
 //	public String[] getFindDate(Object date);
+	
+//	コメント数が多い順
+	@Query(value = "select *" + "from sns_posting p where (select c.comment_content from comment c order by c.comment desc"
+			+ "  order by 'p.insert_date' asc", nativeQuery = true)
+	public List<Object[]> findAllByOrderByCommentDesc();
+	
+	
 
 //	default String[] findAllDate(String date) {
 //		List<String> list = new ArrayList<String>();
@@ -43,10 +49,10 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 //		@Query(value = JPQLConstant.FIND_ITEMS_BY_CATEGORIES_ORDER_BY_QUANTITY, nativeQuery = true)
 //		public Page<Item> findByCategoryAndDeleteFlagOrderByOrderNumDesc(Integer categoryId, Pageable pageable);
 //
-//		//オリジナル機能 商品名検索（新着順）
+//		//商品名検索（新着順）
 //		public Page<Item> findByDeleteFlagAndNameLikeOrderByInsertDateDesc(int deleteFlag,String name,Pageable pageable);
 //
-//		//オリジナル機能 商品名検索（売れ筋順）
+//		//商品名検索（売れ筋順）
 //		@Query(value = JPQLConstant.FIND_ITEMS_BY_ITEMS_ORDER_BY_QUANTITY, nativeQuery = true)
 //		public Page<Item> findByNameLikeAndDeleteFlagOrderByOrderNumDesc(String name,Pageable pageable);
 //	
