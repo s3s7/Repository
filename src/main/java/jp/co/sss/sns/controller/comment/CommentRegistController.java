@@ -29,19 +29,19 @@ public class CommentRegistController {
 	CommentRepository commentRepository;
 	
 	// コメントページ遷移処理
-	@RequestMapping("/snssns/comments")
-	public String goComments(Model model, @ModelAttribute CommentForm form) {
+	@RequestMapping("/snssns/commentPage")
+	public String commentPage(Model model, @ModelAttribute CommentForm form) {
 		return "comment/comment_page";
 	}
 
 	// コメント機能 入力チェック付き
-	@RequestMapping("/snssns/comment")
-	public String docomment(Model model, @Valid @ModelAttribute CommentForm form, BindingResult result) {
+	@RequestMapping("/snssns/commentInput")
+	public String commentInput(Model model, @Valid @ModelAttribute CommentForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			// エラーが発生した場合
 			List<ObjectError> errorList = result.getAllErrors();
 			model.addAttribute("errorList", errorList);
-			return goComments(model, form);
+			return commentPage(model, form);
 		}
 		String commentContent = form.getCommentContents();
 		if (commentContent != null) {
@@ -49,11 +49,11 @@ public class CommentRegistController {
 			// 条件を満たした場合コメント内容確認画面へ
 			return "comment/comment_check";
 		} else {
-			return goComments(model, form);
+			return commentPage(model, form);
 		}
 	}
 
-	// コメントするボタン
+	// コメント投稿ボタン
 	@RequestMapping("/snssns/comment/complete")
 	public String commentComplete(Model model, @ModelAttribute CommentForm form) {
 		// コメント内容情報の生成
@@ -82,8 +82,8 @@ public class CommentRegistController {
 	}
 
 	//コメント数カウント処理
-	@RequestMapping("/snssns/countComment")
-	public String countComment(int commentId) {
+	@RequestMapping("/snssns/commentCount")
+	public String commentCount(int commentId) {
 		Comment commentContents = new Comment();
 		commentContents.setCommentId(commentId);
 		return "comment/comment_complete";

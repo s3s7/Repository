@@ -8,7 +8,7 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <body>	
 <h2 class="title">コメントする内容</h2>
 <!-- エラーメッセージコントローラー表示用 -->
-		<form th:action="@{/snssns/comment}" th:object="${commentForm}">
+		<form th:action="@{/snssns/commentInput}" th:object="${commentForm}">
 
 						<label>
 							<span class="input_title">コメントする内容</span>
