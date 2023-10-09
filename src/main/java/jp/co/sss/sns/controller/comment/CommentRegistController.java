@@ -62,7 +62,7 @@ public class CommentRegistController {
 		// 入力値をリポジトリ保存
 		comment.setCommentContents(form.getCommentContents());
 		//投稿時間の取得
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
 		 Date date = new Date();
 		 //SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
