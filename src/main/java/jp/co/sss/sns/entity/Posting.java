@@ -30,8 +30,6 @@ public class Posting {
     @Column
     private String title;
     
-//	@Column(insertable = false)
-//    private Integer deleteFlag;
     
 	public int getId() {
 		return id;
@@ -41,13 +39,6 @@ public class Posting {
 		this.id = id;
 	}
 
-//	public LocalDateTime getInsertDate() {
-//		return insertDate;
-//	}
-//
-//	public void setInsertDate(LocalDateTime insertDate) {
-//		this.insertDate = insertDate;
-//	}
 	public Date getInsertDate() {
 		return insertDate;
 	}
@@ -73,13 +64,6 @@ public class Posting {
 		this.title = title;
 	}
 
-//	public Integer getDeleteFlag() {
-//		return deleteFlag;
-//	}
-//
-//	public void setDeleteFlag(Integer deleteFlag) {
-//		this.deleteFlag = deleteFlag;
-//	}
 
 
 }
