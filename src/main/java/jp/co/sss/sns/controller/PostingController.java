@@ -228,73 +228,7 @@ class PostingController {
 //			postingCode = "%";
 //		}
 
-	// java gold
-//		Executor executor;
-//		Executors executors;
-//		ExecutorService exec;
-//		Future<Integer> future = exec.submit(() -> {
-//			try {
-//			}catch(InterruptedException e){
-//				throw new RuntimeException(e);
-//			}
-//		},0);
-//		
-//		@SuppressWarnings("unchecked")
-//		List<String> posting = (List<String>) new Posting();
-//		Stream<String> st = Stream.ofNullable(null);
-//		Stream<String> in = Stream.empty();
-//		Stream.builder();
-//		Stream.iterate(0, null);
-//		Stream.generate(null);
-//		Stream.distinct(null);
-//		Stream.filter(i -> i);
-//		Stream.peek(System.out.println(in));
-//		Stream.reduce(0,null);
-//	IntStream.average();
-//		Stream.concat(null, null);
-//
-////		in.collect(Collecter<String,String,String>.supplier());
-//		Optional<String> op = Optional.of(null);
-//	 op.get();
-//	op.ifPresent(null);
-//	op.isPresent();
-//	FileReader re = null;
-//	re = new FileReader("sample.txt");
-//	
-//	re.read();
-////	pablic static Path get(String first,String... more)
-//	Path a =Paths.get("a","b","c","d","a.txt");
-//	
-//	Path dir = Paths.get(endDate,null);
-//	Path pa = dir.resolve(Paths.get(null));
-//	
-//	Properties pro ;
-//	pro.load(re);
-////	pro.lines(Paths.get(dir.txt));
-//	
-//	File files = new File(files, endDate);
-//	Files fil = new Files();
-//	AtomicInteger ato = null;
-//	ato.addAndGet(0);
-//	String str = "a";
-//	Supplier<String> sup = a -> a;
-//	Consumer<T> f = a -> System::out.println(a);
-//	FileFilter fi	= new FileFilter();
-//	ResultSet res = new ResultSet();
-//	re.close();
-//	
-////	ProductLoader pro = ProductLoader();
-//	
-////	Statement state = Statement();
-//	PreparedStatement sa = PreparedStatement();
 
-//	P508
-//	System.setSecurityManager(new SecurityManager()); これがないとAccessControlExceptionが発生
-//	Files.list(Paths.get("/")).forEach((p)-> {System.out.println(p.getFileName());
-
-//	}
-//);		
-//	 javagoldここまで
 
 //
 //			// カテゴリ一覧を取得
