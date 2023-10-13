@@ -53,7 +53,7 @@
 			<!-- コメントするボタン（ログインした場合のみ表示） -->
 			<th:block th:if="${session.users}">
 				<dd class="link_area">
-				<td><form action="/snssns/comments">
+				<td><form action="/snssns/commentPage">
 						<div style="text-align: center;">
 							<input type="hidden" name="id" th:value="${posting.id}" /> <input
 								type="submit" value="コメントする" />
