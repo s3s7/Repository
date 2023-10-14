@@ -12,7 +12,7 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 
 						<label>
 							<span class="input_title">コメントする内容</span>
-							<textarea name="commentContents" rows="6" th:field = "*{commentContents}" style="color: red"></textarea>
+							<textarea name="commentContents" rows="6" th:field = "*{commentContents}"></textarea>
 							<div th:if="${#fields.hasErrors('commentContents')}" th:errors="*{commentContents}"></div>
 
 						</label> 
