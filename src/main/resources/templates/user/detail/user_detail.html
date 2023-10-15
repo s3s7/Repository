@@ -11,42 +11,46 @@
 		<ul class="input_list">
 			<li><span class="input_title">会員名</span> <span
 				class="input_value" th:text="${users.userName}"></span></li>
-		<li><span class="input_title">今月の目標</span> <span
+			<li><span class="input_title">今月の目標</span> <span
 				class="input_value" th:text="${users.monthGoal}"></span></li>
-											<th:block th:if="${session.users}">
-		<div>
-			<a href="/sns/monthGoal/input">更新する</a>
-		</div>
-	</th:block>
-		
-		<li><span class="input_title">今週の目標</span> <span
+			<th:block th:if="${session.users}">
+				<div>
+					<a href="/sns/monthGoal/input">更新する</a>
+				</div>
+			</th:block>
+
+			<li><span class="input_title">今週の目標</span> <span
 				class="input_value" th:text="${users.weekGoal}"></span></li>
-									<th:block th:if="${session.users}">
-		<div>
-			<a href="/sns/weekGoal/input">更新する</a>
-		</div>
-	</th:block>
-		
-		<li><span class="input_title">今日の目標</span> <span
+			<th:block th:if="${session.users}">
+				<div>
+					<a href="/sns/weekGoal/input">更新する</a>
+				</div>
+			</th:block>
+
+			<li><span class="input_title">今日の目標</span> <span
 				class="input_value" th:text="${users.dayGoal}"></span></li>
-				
-					<th:block th:if="${session.users}">
-		<div>
-			<a href="/sns/dailyGoal/input">更新する</a>
-		</div>
-	</th:block>
-		
+
+			<th:block th:if="${session.users}">
+				<div>
+					<a href="/sns/dailyGoal/input">更新する</a>
+				</div>
+			</th:block>
+
 		</ul>
 	</div>
 
- <div class="detail_button_area">
+	<div class="detail_button_area">
 		<form th:action="@{/snssns/findAll}">
 			<input type="submit" value="戻る" />
 		</form>
-		<form th:action="@{/user/delete/check}" method="post">
+		<!-- <form th:action="@{/snssns/user/delete/check}" method="post">
 			<input type="submit" value="退会する" class="delete" />
-		</form>
-	</div> 
+		</form> -->
+	</div>
+	<div>
+		<!-- 	<a href="/sns/src/main/user/delete/check">退会する</a>  -->
+		<a href="/snssns/user/delete/checks">投稿する</a>
+	</div>
 
 </body>
 </html>

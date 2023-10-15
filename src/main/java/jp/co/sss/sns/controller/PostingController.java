@@ -178,6 +178,7 @@ class PostingController {
 			return "index/index";
 		}
 
+		
 //	/**
 //	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理
 //	 *

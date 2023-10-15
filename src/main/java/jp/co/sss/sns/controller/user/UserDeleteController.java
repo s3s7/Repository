@@ -4,15 +4,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
+import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.util.Constant;
 
+@Controller
 class UserDeleteController {
 
 	/**
@@ -34,8 +38,9 @@ class UserDeleteController {
 	 * @param session セッション情報
 	 * @return "user/delete/user_delete_check" 会員情報 削除確認画面へ
 	 */
-	@RequestMapping(path = "/user/delete/check", method = RequestMethod.POST)
-	public String deleteCheck(Model model, HttpSession session) {
+//	@PostMapping(path = "/sns/user/delete/check")
+	@RequestMapping("/snssns/user/delete/checks")
+	public String deleteCheck(Model model) {
 
 		UserBean userBean = new UserBean();
 		userBean = (UserBean) session.getAttribute("user");
@@ -48,7 +53,6 @@ class UserDeleteController {
 
 		// 会員情報をViewに渡す
 		model.addAttribute("user", userBean);
-
 		return "user/delete/user_delete_check";
 	}
 
