@@ -37,7 +37,7 @@ class UserController {
 	}
 
 	@RequestMapping(path = "/snssns/logout")
-	public String doLogout(Model model) {
+	public String Logout(Model model) {
 		List<Posting> posting = postingrepository.findAll();
 		if (!posting.isEmpty()) {
 			session.setAttribute("posting", posting);
@@ -50,7 +50,7 @@ class UserController {
 
 	//ログイン機能　入力チェックあり
 	@RequestMapping(path = "/snssns/doLogin")
-	public String doLogin(@Valid @ModelAttribute LoginForm form, BindingResult result, Model model) {
+	public String Login(@Valid @ModelAttribute LoginForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("errMessage", "ユーザIDまたはパスワードが間違っています。");
 			return "index/index";
