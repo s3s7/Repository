@@ -18,6 +18,7 @@ import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.util.Constant;
 
+@EnableWebSecurity
 @Controller
 class UserDeleteController {
 
