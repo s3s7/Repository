@@ -18,7 +18,7 @@ import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.util.Constant;
 
-@EnableWebSecurity
+//@RequiredArgsConstructor 
 @Controller
 class UserDeleteController {
 
@@ -123,13 +123,13 @@ class UserDeleteController {
 	}
 	
 	// ユーザーを削除
-		@Transactional
-		@GetMapping("/deleteUser")
-		public String deleteUser(Authentication loginUser) {
-
-			userService.deleteUserInfo(loginUser.getName());
-
-			return "redirect:/logout?setting";
-		}
+//		@Transactional
+//		@GetMapping("/deleteUser")
+//		public String deleteUser(Authentication loginUser) {
+//
+//			userService.deleteUserInfo(loginUser.getName());
+//
+//			return "redirect:/logout?setting";
+//		}
 	
 }

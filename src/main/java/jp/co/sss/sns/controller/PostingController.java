@@ -1,50 +1,29 @@
 package jp.co.sss.sns.controller;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
-import jp.co.sss.sns.repository.LikeRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
+
 
 @Controller
 class PostingController {
