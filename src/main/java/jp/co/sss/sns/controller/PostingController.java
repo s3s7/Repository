@@ -24,7 +24,7 @@ import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
 
-
+@RequiredArgsConstructor
 @Controller
 class PostingController {
 	@Autowired
