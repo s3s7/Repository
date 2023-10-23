@@ -22,7 +22,10 @@
         <a >コメント数が多い順</a></th:block>
         <th:block th:if="${sortNumber != 4}">
         <a href="/sns/commentSort">コメント数が多い順</a></th:block>
-        
+          <th:block th:if="${sortNumber == 4}">
+        <a >コメント数が少ない順</a></th:block>
+        <th:block th:if="${sortNumber != 4}">
+        <a href="/sns/commentSort">コメント数が少ない順</a></th:block>
     </div>
     
 	<table>
