@@ -19,6 +19,7 @@ import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.LoginForm;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
+import lombok.Data;
 
 @Controller
 class UserController {

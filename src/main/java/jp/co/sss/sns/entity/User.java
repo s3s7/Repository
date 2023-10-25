@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "sns_user")
 public class User {
@@ -57,69 +62,5 @@ public class User {
 	 */
 	@Column
 	private String monthGoal;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(Integer authority) {
-		this.authority = authority;
-	}
-
-	public Integer getDeleteFlag() {
-		return deleteFlag;
-	}
-
-	public void setDeleteFlag(Integer deleteFlag) {
-		this.deleteFlag = deleteFlag;
-	}
-
-	public String getDayGoal() {
-		return dayGoal;
-	}
-
-	public void setDayGoal(String dayGoal) {
-		this.dayGoal = dayGoal;
-	}
-
-	public String getWeekGoal() {
-		return weekGoal;
-	}
-
-	public void setWeekGoal(String weekGoal) {
-		this.weekGoal = weekGoal;
-	}
-
-	public String getMonthGoal() {
-		return monthGoal;
-	}
-
-	public void setMonthGoal(String monthGoal) {
-		this.monthGoal = monthGoal;
-	}
 
 }

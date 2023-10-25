@@ -7,6 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "sns_goal")
 public class goal {
@@ -37,36 +43,5 @@ public class goal {
 			@Column
 			private String monthGoalContents;
 
-			public Integer getId() {
-				return id;
-			}
-
-			public void setId(Integer id) {
-				this.id = id;
-			}
-
-			public String getDayGoalContents() {
-				return dayGoalContents;
-			}
-
-			public void setDayGoalContents(String dayGoalContents) {
-				this.dayGoalContents = dayGoalContents;
-			}
-
-			public String getWeekGoalContents() {
-				return weekGoalContents;
-			}
-
-			public void setWeekGoalContents(String weekGoalContents) {
-				this.weekGoalContents = weekGoalContents;
-			}
-
-			public String getMonthGoalContents() {
-				return monthGoalContents;
-			}
-
-			public void setMonthGoalContents(String monthGoalContents) {
-				this.monthGoalContents = monthGoalContents;
-			}
 		}
 

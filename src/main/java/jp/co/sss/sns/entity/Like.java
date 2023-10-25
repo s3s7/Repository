@@ -8,6 +8,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "sns_like")
 
@@ -25,28 +30,5 @@ public class Like {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	public long getLikeId() {
-		return likeId;
-	}
-
-	public void setLikeId(long likeId) {
-		this.likeId = likeId;
-	}
-
-	public Posting getPosting() {
-		return posting;
-	}
-
-	public void setPosting(Posting posting) {
-		this.posting = posting;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 }
