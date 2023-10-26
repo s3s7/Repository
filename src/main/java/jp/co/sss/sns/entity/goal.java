@@ -43,5 +43,37 @@ public class goal {
 			@Column
 			private String monthGoalContents;
 
+			public Integer getId() {
+				return id;
+			}
+
+			public void setId(Integer id) {
+				this.id = id;
+			}
+
+			public String getDayGoalContents() {
+				return dayGoalContents;
+			}
+
+			public void setDayGoalContents(String dayGoalContents) {
+				this.dayGoalContents = dayGoalContents;
+			}
+
+			public String getWeekGoalContents() {
+				return weekGoalContents;
+			}
+
+			public void setWeekGoalContents(String weekGoalContents) {
+				this.weekGoalContents = weekGoalContents;
+			}
+
+			public String getMonthGoalContents() {
+				return monthGoalContents;
+			}
+
+			public void setMonthGoalContents(String monthGoalContents) {
+				this.monthGoalContents = monthGoalContents;
+			}
+
 		}
 

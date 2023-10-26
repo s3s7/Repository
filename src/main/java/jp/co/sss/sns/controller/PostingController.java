@@ -28,10 +28,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 class PostingController {
-	
-	private final PostingRepository postingRepository;
-	private final HttpSession session;
-	private final UserRepository userRepository;
+
+	// DI
+	@Autowired
+	PostingRepository postingRepository;
+	@Autowired
+	HttpSession session;
+	@Autowired
+	UserRepository userRepository;
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
@@ -143,20 +147,19 @@ class PostingController {
 		model.addAttribute("sortNumber", 3);
 		return "index/index";
 	}
-	
+
 	// 記事情報を全件検索(古い順)
-		@RequestMapping(path = "/sns/commentSort")
-		public String commentSort(Model model) {
+	@RequestMapping(path = "/sns/commentSort")
+	public String commentSort(Model model) {
 
-			List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
+		List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
 
-			// 記事情報をViewへ渡す
-			model.addAttribute("posting", commentList);
-			model.addAttribute("sortNumber", 3);
-			return "index/index";
-		}
+		// 記事情報をViewへ渡す
+		model.addAttribute("posting", commentList);
+		model.addAttribute("sortNumber", 3);
+		return "index/index";
+	}
 
-		
 //	/**
 //	 * 商品一覧画面（カテゴリ検索、売れ筋順） 表示処理
 //	 *
@@ -206,8 +209,6 @@ class PostingController {
 //		if (postingCode.equals(null)) {
 //			postingCode = "%";
 //		}
-
-
 
 //
 //			// カテゴリ一覧を取得
