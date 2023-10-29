@@ -5,6 +5,7 @@
 </head>
 <body>
 	<div th:fragment="layout-header" class="container">
+	
 		<h3>近況</h3>
 		<p class="error" th:text="${userDetailErrMessage}"></p>
 		<th:block th:if="${session.users}">

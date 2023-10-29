@@ -72,7 +72,7 @@ class UserDeleteController {
 		userBean = (UserBean) session.getAttribute("user");
 
 		// 削除対象の会員情報を取得
-		User user = userRepository.getOne(userBean.getId());
+		User user = userRepository.getReferenceById(userBean.getId());
 
 		// 削除フラグを立てる
 		user.setDeleteFlag(Constant.DELETED);
