@@ -7,7 +7,7 @@ import jp.co.sss.sns.repository.UserRepository;
 @Service
 public class UserService {
 
-//DI
+	//DI
 	private final UserRepository userRepository;
 
 	public UserService(UserRepository userRepository) {

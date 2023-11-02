@@ -24,6 +24,7 @@ import lombok.Data;
 @Controller
 class UserController {
 
+	// DI	
 	@Autowired
 	UserRepository userrepository;
 	@Autowired

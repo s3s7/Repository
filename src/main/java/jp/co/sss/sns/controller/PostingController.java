@@ -91,7 +91,6 @@ class PostingController {
 		// 投稿時間の取得
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 		Date date = new Date();
-//		LocalDateTime date = LocalDateTime.now();
 		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
 			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
