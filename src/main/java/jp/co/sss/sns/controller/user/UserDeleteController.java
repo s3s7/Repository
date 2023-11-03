@@ -16,6 +16,7 @@ import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
+import jp.co.sss.sns.service.UserService;
 import jp.co.sss.sns.util.Constant;
 
 //@RequiredArgsConstructor 
@@ -27,6 +28,9 @@ class UserDeleteController {
 	 */
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserService userService;
 
 	/**
 	 * セッション
@@ -123,13 +127,14 @@ class UserDeleteController {
 	}
 	
 	// ユーザーを削除
-//		@Transactional
-//		@GetMapping("/deleteUser")
-//		public String deleteUser(Authentication loginUser) {
-//
-//			userService.deleteUserInfo(loginUser.getName());
-//
-//			return "redirect:/logout?setting";
-//		}
+		@Transactional
+		@GetMapping("/deleteUser")
+		public String deleteUser(Authentication loginUser) {
+
+			userService.deleteUserInfo(loginUser.getName());
+			
+
+			return "redirect:/logout?setting";
+		}
 	
 }
