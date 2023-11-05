@@ -2,8 +2,8 @@ package jp.co.sss.sns.controller.user;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -18,6 +18,7 @@ import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.service.UserService;
 import jp.co.sss.sns.util.Constant;
+
 
 //@RequiredArgsConstructor 
 @Controller
