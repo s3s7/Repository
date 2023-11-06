@@ -4,8 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,11 +48,11 @@ class UserDeleteController {
 	 * @return "user/delete/user_delete_check" 会員情報 削除確認画面へ
 	 */
 //	@PostMapping(path = "/sns/user/delete/check")
-	@RequestMapping("/snssns/user/delete/checks")
-	public String deleteCheck(Model model,@ModelAttribute UserForm form) {
+	@RequestMapping(path = "/snssns/user/delete/checks", method = RequestMethod.GET)
+	public String deleteCheck(Model model,@ModelAttribute UserForm form,HttpSession session) {
 
 		UserBean userBean = new UserBean();
-		userBean = (UserBean) session.getAttribute("user");
+		userBean = (UserBean) session.getAttribute("users");
 		System.out.println("a");
 		// 削除対象の会員情報を取得
 		User user = userRepository.getOne(userBean.getId());
@@ -74,7 +75,7 @@ class UserDeleteController {
 	public String deleteComplete(HttpSession session) {
 
 		UserBean userBean = new UserBean();
-		userBean = (UserBean) session.getAttribute("user");
+		userBean = (UserBean) session.getAttribute("users");
 
 		// 削除対象の会員情報を取得
 		User user = userRepository.getReferenceById(userBean.getId());
@@ -130,12 +131,9 @@ class UserDeleteController {
 	// ユーザーを削除
 		@Transactional
 		@PostMapping("/deleteUser")
-		public String deleteUser(Integer id, Model model) {
+		public String deleteUser(Authentication loginUser) {
 
-			User user = userRepository.findById(id).orElse(null);
-
-			// 情報をViewに渡す
-			model.addAttribute("user", user);
+			userService.deleteUserInfo(loginUser.getName());
 
 			return "user/delete/item_delete_check";
 		}
