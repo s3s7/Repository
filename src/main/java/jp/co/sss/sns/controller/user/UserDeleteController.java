@@ -2,13 +2,13 @@ package jp.co.sss.sns.controller.user;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -129,13 +129,17 @@ class UserDeleteController {
 	
 	// ユーザーを削除
 		@Transactional
-		@GetMapping("/deleteUser")
-		public String deleteUser(Authentication loginUser) {
+		@PostMapping("/deleteUser")
+		public String deleteUser(Integer id, Model model) {
 
-			userService.deleteUserInfo(loginUser.getName());
+			User user = userRepository.findById(id).orElse(null);
+
+			// 情報をViewに渡す
+			model.addAttribute("user", user);
+
+			return "user/delete/item_delete_check";
+		}
 			
 
-			return "redirect:/logout?setting";
 		}
 	
-}

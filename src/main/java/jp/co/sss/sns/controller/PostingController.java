@@ -136,27 +136,27 @@ class PostingController {
 	}
 
 	// 記事情報を全件検索(古い順)
-	@RequestMapping(path = "/sns/oldSort")
-	public String oldSort(Model model) {
-
-		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
-
-		// 記事情報をViewへ渡す
-		model.addAttribute("posthing", postingList);
-		model.addAttribute("sortNumber", 3);
-		return "index/index";
-	}
+//	@RequestMapping(path = "/sns/oldSort")
+//	public String oldSort(Model model) {
+//
+//		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
+//
+//		// 記事情報をViewへ渡す
+//		model.addAttribute("posthing", postingList);
+//		model.addAttribute("sortNumber", 3);
+//		return "index/index";
+//	}
 
 	// 記事情報を全件検索(古い順)
-	@RequestMapping(path = "/sns/commentSort")
-	public String commentSort(Model model) {
-
-		List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
-
-		// 記事情報をViewへ渡す
-		model.addAttribute("posting", commentList);
-		model.addAttribute("sortNumber", 3);
-		return "index/index";
-	}
+//	@RequestMapping(path = "/sns/commentSort")
+//	public String commentSort(Model model) {
+//
+//		List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
+//
+//		// 記事情報をViewへ渡す
+//		model.addAttribute("posting", commentList);
+//		model.addAttribute("sortNumber", 3);
+//		return "index/index";
+//	}
 }
 
