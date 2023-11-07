@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import javax.transaction.Transactional;
 import org.springframework.ui.Model;
@@ -55,7 +54,7 @@ class UserDeleteController {
 		userBean = (UserBean) session.getAttribute("users");
 		System.out.println("a");
 		// 削除対象の会員情報を取得
-		User user = userRepository.getOne(userBean.getId());
+		User user = userRepository.getReferenceById(userBean.getId());
 
 		// Userエンティティの各フィールドの値をUserBeanにコピー
 		BeanUtils.copyProperties(user, userBean);
@@ -79,10 +78,11 @@ class UserDeleteController {
 
 		// 削除対象の会員情報を取得
 		User user = userRepository.getReferenceById(userBean.getId());
-
+//		String user = userRepository.getReferenceByUserName(userBean.getUserName());
 		// 削除フラグを立てる
 		user.setDeleteFlag(Constant.DELETED);
-
+		
+//		userService.deleteUserInfo(user);
 		// 会員情報を保存
 		userRepository.save(user);
 
@@ -129,14 +129,14 @@ class UserDeleteController {
 	}
 	
 	// ユーザーを削除
-		@Transactional
-		@PostMapping("/deleteUser")
-		public String deleteUser(Authentication loginUser) {
-
-			userService.deleteUserInfo(loginUser.getName());
-
-			return "user/delete/item_delete_check";
-		}
+//		@Transactional
+//		@PostMapping("/deleteUser")
+//		public String deleteUser(Authentication loginUser) {
+//
+//			userService.deleteUserInfo(loginUser.getName());
+//
+//			return "user/delete/item_delete_check";
+//		}
 			
 
 		}

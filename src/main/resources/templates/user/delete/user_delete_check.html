@@ -13,12 +13,12 @@
 			<li><span class="input_title">氏名</span> <span
 				class="input_value" th:text="${user.userName}"></span></li>
 		</ul>
-		 <form th:action="@{/user/delete/complete}" method="post">
+	 <form th:action="@{/user/delete/complete}" method="post">
 			<input type="submit" value="退会" class="send_button delete" />
-		</form>
-		<!-- <form th:action="@{/deleteUser}" method="post">
+		</form> -
+		<!--  <form th:action="@{/deleteUser}" method="post">
 			<input type="submit" value="退会" class="send_button delete" />
-		</form> -->
+		</form>  -->
 		<form method="post" th:action="@{/user/detail}">
 			<input type="submit" value="戻る" class="back_button" />
 		</form>

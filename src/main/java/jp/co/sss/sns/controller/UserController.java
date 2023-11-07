@@ -62,10 +62,10 @@ class UserController {
 		String password = form.getPassword();
 		// 会員情報を検索
 		User user = userrepository.findByUserNameAndPassword(userName, password);
-
+		Integer userDeleteFlag = user.getDeleteFlag();
 		UserBean userBean = new UserBean();
 
-		if (user != null) {
+		if (user != null && userDeleteFlag < 1) {
 			// 会員情報が存在する場合、ログイン
 			BeanUtils.copyProperties(user, userBean);
 			session.setAttribute("users", userBean);
