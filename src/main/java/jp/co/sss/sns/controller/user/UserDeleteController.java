@@ -46,7 +46,6 @@ class UserDeleteController {
 	 * @param session セッション情報
 	 * @return "user/delete/user_delete_check" 会員情報 削除確認画面へ
 	 */
-//	@PostMapping(path = "/sns/user/delete/check")
 	@RequestMapping(path = "/snssns/user/delete/checks", method = RequestMethod.GET)
 	public String deleteCheck(Model model,@ModelAttribute UserForm form,HttpSession session) {
 
