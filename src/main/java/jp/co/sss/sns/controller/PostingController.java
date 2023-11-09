@@ -25,7 +25,6 @@ import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Controller
 class PostingController {
 

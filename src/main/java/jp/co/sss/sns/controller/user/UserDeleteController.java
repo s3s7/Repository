@@ -20,7 +20,6 @@ import jp.co.sss.sns.service.UserService;
 import jp.co.sss.sns.util.Constant;
 
 
-//@RequiredArgsConstructor 
 @Controller
 class UserDeleteController {
 
@@ -77,11 +76,9 @@ class UserDeleteController {
 
 		// 削除対象の会員情報を取得
 		User user = userRepository.getReferenceById(userBean.getId());
-//		String user = userRepository.getReferenceByUserName(userBean.getUserName());
 		// 削除フラグを立てる
 		user.setDeleteFlag(Constant.DELETED);
 		
-//		userService.deleteUserInfo(user);
 		// 会員情報を保存
 		userRepository.save(user);
 
