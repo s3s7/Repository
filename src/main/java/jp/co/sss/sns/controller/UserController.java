@@ -24,7 +24,7 @@ import lombok.Data;
 @Controller
 class UserController {
 
-	// DI	
+	// DI
 	@Autowired
 	UserRepository userrepository;
 	@Autowired
@@ -38,6 +38,7 @@ class UserController {
 		return "login";
 	}
 
+//	ログアウト
 	@RequestMapping(path = "/snssns/logout")
 	public String Logout(Model model) {
 		List<Posting> posting = postingrepository.findAll();
@@ -50,7 +51,7 @@ class UserController {
 		return "/index/index";
 	}
 
-	//ログイン機能　入力チェックあり
+	// ログイン機能 入力チェックあり
 	@RequestMapping(path = "/snssns/doLogin")
 	public String Login(@Valid @ModelAttribute LoginForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
