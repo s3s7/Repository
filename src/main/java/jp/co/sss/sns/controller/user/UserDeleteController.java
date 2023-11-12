@@ -21,9 +21,7 @@ import jp.co.sss.sns.util.Constant;
 @Controller
 class UserDeleteController {
 
-	/**
-	 * 会員情報
-	 */
+//	DI
 	@Autowired
 	UserRepository userRepository;
 	
