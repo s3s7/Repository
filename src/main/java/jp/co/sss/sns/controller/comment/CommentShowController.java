@@ -20,15 +20,9 @@ import jp.co.sss.sns.repository.CommentRepository;
 @Controller
 public class CommentShowController {
 
-	/**
-	 * 商品レビュー情報
-	 */
+//	DI
 	@Autowired
 	CommentRepository commentRepository;
-
-	/**
-	 * セッション情報
-	 */
 	@Autowired
 	HttpSession session;
 
@@ -45,5 +39,19 @@ public class CommentShowController {
 
 		return "/comment/comment_read";
 	}
+	
+	
+	// 記事情報を全件検索(古い順)
+		@RequestMapping(path = "/sns/commentSort")
+		public String commentSort(Model model) {
+	
+//			List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
+			List<Object[]> commentList = commentRepository.findByPostingIdOrderByCountpDesc();
+			
+			// 記事情報をViewへ渡す
+			model.addAttribute("posting", commentList);
+			model.addAttribute("sortNumber", 3);
+			return "index/index";
+		}
 
 }

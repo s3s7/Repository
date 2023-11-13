@@ -127,7 +127,6 @@ class PostingController {
 		}
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
 
-		System.out.println("s");
 		// 記事情報をViewへ渡す
 		model.addAttribute("posthing", postingList);
 		model.addAttribute("sortNumber", 2);

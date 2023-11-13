@@ -19,10 +19,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	public List<Object[]> findAllByOrderByInsertDateDesc();
 //	public String[] getFindDate(Object date);
 	
-//	コメント数が多い順
-	@Query(value = "select *" + "from sns_posting p where (select c.comment_content from comment c order by c.comment desc"
-			+ "  order by 'p.insert_date' asc", nativeQuery = true)
-	public List<Object[]> findAllByOrderByCommentDesc();
+
 	
 	
 
