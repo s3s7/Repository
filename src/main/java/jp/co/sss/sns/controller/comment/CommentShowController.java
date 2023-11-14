@@ -41,17 +41,5 @@ public class CommentShowController {
 	}
 	
 	
-	// 記事情報を全件検索(古い順)
-		@RequestMapping(path = "/sns/commentSort")
-		public String commentSort(Model model) {
 	
-//			List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
-			List<Object[]> commentList = commentRepository.findByPostingIdOrderByCountpDesc();
-			
-			// 記事情報をViewへ渡す
-			model.addAttribute("posting", commentList);
-			model.addAttribute("sortNumber", 3);
-			return "index/index";
-		}
-
 }

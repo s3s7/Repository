@@ -25,9 +25,12 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int commentId;
 
-	@ManyToOne
-	@JoinColumn(name = "posting_id", referencedColumnName = "id")
-	private Posting posting;
+//	@ManyToOne
+//	@JoinColumn(name = "posting_id", referencedColumnName = "id")
+	@Column(name = "posting_id")
+//	private Posting postingId;
+	private int postingId;
+	
 
 	@Column
 	private String commentContents;
@@ -43,12 +46,12 @@ public class Comment {
 		this.commentId = commentId;
 	}
 
-	public Posting getPosting() {
-		return posting;
+	public int getPostingId() {
+		return postingId;
 	}
 
-	public void setPosting(Posting posting) {
-		this.posting = posting;
+	public void setPostingId(int postingId) {
+		this.postingId = postingId;
 	}
 
 	public String getCommentContents() {

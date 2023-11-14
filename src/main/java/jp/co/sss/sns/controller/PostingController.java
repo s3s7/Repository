@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
+import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 
 @Controller
 class PostingController {
@@ -35,6 +35,8 @@ class PostingController {
 	HttpSession session;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	CommentRepository commentRepository;
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
@@ -146,15 +148,17 @@ class PostingController {
 //	}
 
 	// 記事情報を全件検索(古い順)
-//	@RequestMapping(path = "/sns/commentSort")
-//	public String commentSort(Model model) {
-//
-//		List<Object[]> commentList = postingRepository.findAllByOrderByCommentDesc();
-//
-//		// 記事情報をViewへ渡す
-//		model.addAttribute("posting", commentList);
-//		model.addAttribute("sortNumber", 3);
-//		return "index/index";
-//	}
+			@RequestMapping(path = "/sns/commentSort")
+			public String commentSort(Model model) {
+		
+//				List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
+				List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
+				
+				// 記事情報をViewへ渡す
+				model.addAttribute("posting", commentList);
+				model.addAttribute("sortNumber", 3);
+				return "index/index";
+			}
+
 }
 
