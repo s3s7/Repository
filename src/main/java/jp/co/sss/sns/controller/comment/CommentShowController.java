@@ -15,7 +15,6 @@ import jp.co.sss.sns.repository.CommentRepository;
 
 /**
  * コメント一覧表示機能のコントローラクラス
- *
  */
 @Controller
 public class CommentShowController {
@@ -39,7 +38,5 @@ public class CommentShowController {
 
 		return "/comment/comment_read";
 	}
-	
-	
 	
 }
