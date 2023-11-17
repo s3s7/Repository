@@ -131,7 +131,7 @@ class PostingController {
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
 
 		// 記事情報をViewへ渡す
-		model.addAttribute("posthing", postingList);
+		model.addAttribute("posting", postingList);
 		model.addAttribute("sortNumber", 2);
 		return "index/index";
 	}
@@ -143,7 +143,7 @@ class PostingController {
 //		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
 //
 //		// 記事情報をViewへ渡す
-//		model.addAttribute("posthing", postingList);
+//		model.addAttribute("posting", postingList);
 //		model.addAttribute("sortNumber", 3);
 //		return "index/index";
 //	}
