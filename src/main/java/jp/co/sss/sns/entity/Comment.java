@@ -38,37 +38,5 @@ public class Comment {
 	@Column
 	private Date insertDate;
 
-	public int getCommentId() {
-		return commentId;
-	}
-
-	public void setCommentId(int commentId) {
-		this.commentId = commentId;
-	}
-
-	public int getPostingId() {
-		return postingId;
-	}
-
-	public void setPostingId(int postingId) {
-		this.postingId = postingId;
-	}
-
-	public String getCommentContents() {
-		return commentContents;
-	}
-
-	public void setCommentContents(String commentContents) {
-		this.commentContents = commentContents;
-	}
-
-	public Date getInsertDate() {
-		return insertDate;
-	}
-
-	public void setInsertDate(Date insertDate) {
-		this.insertDate = insertDate;
-	}
-	
 	
 }
