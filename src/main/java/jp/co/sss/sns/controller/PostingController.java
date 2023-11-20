@@ -24,20 +24,16 @@ import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 @Controller
 class PostingController {
 
 	// DI
-	@Autowired
-	PostingRepository postingRepository;
-	@Autowired
-	HttpSession session;
-	@Autowired
-	UserRepository userRepository;
-	@Autowired
-	CommentRepository commentRepository;
+	private final PostingRepository postingRepository;
+	private final HttpSession session;
+	private final CommentRepository commentRepository;
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")

@@ -12,18 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.entity.Comment;
 import jp.co.sss.sns.repository.CommentRepository;
+import jp.co.sss.sns.repository.PostingRepository;
+import lombok.RequiredArgsConstructor;
 
-/**
- * コメント一覧表示機能のコントローラクラス
- */
+@RequiredArgsConstructor
 @Controller
 public class CommentShowController {
 
 //	DI
-	@Autowired
-	CommentRepository commentRepository;
-	@Autowired
-	HttpSession session;
+	private final CommentRepository commentRepository;
+	private final HttpSession session;
 
 //		コメント一覧表示
 	@RequestMapping("comment/list/{id}")

@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
+import jp.co.sss.sns.repository.CommentRepository;
+import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
 import jp.co.sss.sns.service.UserService;
 import jp.co.sss.sns.util.Constant;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 @Controller
 class UserDeleteController {
 
 //	DI
-	@Autowired
-	UserRepository userRepository;
-	
-	@Autowired
-	UserService userService;
+	private final UserRepository userRepository;
+	private final UserService userService;
 
 	/**
 	 * セッション

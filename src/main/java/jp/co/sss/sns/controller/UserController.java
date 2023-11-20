@@ -17,20 +17,20 @@ import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.LoginForm;
+import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 class UserController {
 
 	// DI
-	@Autowired
-	UserRepository userrepository;
-	@Autowired
-	HttpSession session;
-	@Autowired
-	PostingRepository postingrepository;
+	private final UserRepository userrepository;
+	private final HttpSession session;
+	private final PostingRepository postingrepository;
 
 	// ログインページ
 	@RequestMapping("/snssns/index")
