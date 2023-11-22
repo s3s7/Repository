@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.repository.UserRepository;
+import jp.co.sss.sns.service.UserService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 class UserShowCustomerController {
-	/**
-	 * 会員情報
-	 */
-	@Autowired
-	UserRepository userRepository;
+	
+	private final	UserRepository userRepository;
 	// 会員詳細画面表示処理
 	@RequestMapping(path = "/sns/user/detail")
 	public String userShowCostomerDetail(Model model, HttpSession session) {

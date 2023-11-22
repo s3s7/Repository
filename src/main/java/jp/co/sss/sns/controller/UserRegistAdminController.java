@@ -1,5 +1,6 @@
 package jp.co.sss.sns.controller;
 import javax.servlet.http.HttpSession;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -14,18 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
+import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 class UserRegistAdminController {
 		
-			/**
-			 * 会員情報
-			 */
-			@Autowired
-			UserRepository userRepository;
+			private final	UserRepository userRepository;
 
-			@Autowired
-			HttpSession session;
+			private final	HttpSession session;
 			
 			/**
 			 * 会員情報入力画面表示処理

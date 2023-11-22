@@ -14,21 +14,18 @@ import jp.co.sss.sns.entity.goal;
 import jp.co.sss.sns.form.GoalForm;
 import jp.co.sss.sns.form.MonthGoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
+import jp.co.sss.sns.repository.UserRepository;
+import jp.co.sss.sns.service.UserService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 class MonthGoalRegistController {
 
-		/**
-		 * 目標情報
-		 */
-		@Autowired
-		GoalRepository goalRepository;
+	
+	private final GoalRepository goalRepository;
 		
-		/**
-		 * セッション
-		 */
-		@Autowired
-		HttpSession session;
+	private final HttpSession session;
 		
 			/**
 			 * 今月の目標入力画面表示処理

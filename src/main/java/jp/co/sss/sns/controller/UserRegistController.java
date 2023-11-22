@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,17 +14,14 @@ import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 class UserRegistController{
-/**
-	 * 会員情報
-	 */
-	@Autowired
-	UserRepository userRepository;
+	private final UserRepository userRepository;
 
-	@Autowired
-	HttpSession session;
+	private final HttpSession session;
 
 	/**
 	 * 会員情報入力画面表示処理

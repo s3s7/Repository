@@ -14,20 +14,17 @@ import jp.co.sss.sns.entity.goal;
 import jp.co.sss.sns.form.GoalForm;
 import jp.co.sss.sns.form.WeekGoalForm;
 import jp.co.sss.sns.repository.GoalRepository;
+import jp.co.sss.sns.repository.UserRepository;
+import jp.co.sss.sns.service.UserService;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 class WeekGoalRegistController {
 	
-	/**
-	 * 目標情報
-	 */
-	@Autowired
-	GoalRepository goalRepository;
+	private final GoalRepository goalRepository;
 	
-	/**
-	 * セッション
-	 */
-	@Autowired
-	HttpSession session;
+	private final HttpSession session;
 	
 	
 		/**

@@ -29,12 +29,6 @@ class UserDeleteController {
 	private final UserService userService;
 
 	/**
-	 * セッション
-	 */
-	@Autowired
-	HttpSession session;
-
-	/**
 	 * 会員情報削除確認処理
 	 *
 	 * @param model Viewとの値受渡し

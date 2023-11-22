@@ -22,6 +22,7 @@ import jp.co.sss.sns.entity.Comment;
 import jp.co.sss.sns.form.CommentForm;
 import jp.co.sss.sns.repository.CommentRepository;
 
+
 @Controller
 public class CommentRegistController {
 
