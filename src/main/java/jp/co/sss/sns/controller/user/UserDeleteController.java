@@ -114,6 +114,8 @@ class UserDeleteController {
 		return "user/detail/user_detail";
 	}
 	
+	
+	
 	// ユーザーを削除
 //		@Transactional
 //		@PostMapping("/deleteUser")

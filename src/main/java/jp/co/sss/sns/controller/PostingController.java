@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -45,6 +46,7 @@ class PostingController {
 		} else {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
 		}
+		
 		return "index/index";
 	}
 
@@ -166,7 +168,7 @@ class PostingController {
 							
 							// 記事情報をViewへ渡す
 							model.addAttribute("posting", commentList);
-							model.addAttribute("sortNumber", 4);
+							model.addAttribute("sortNumber", 5);
 							return "index/index";
 						}
 

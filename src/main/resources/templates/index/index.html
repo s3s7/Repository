@@ -11,7 +11,8 @@
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">
-        <span>並び替え</span> <th:block th:if="${sortNumber == 2}">
+        <span>並び替え</span> 
+        <th:block th:if="${sortNumber == 2}">
         <a >新着順</a></th:block>
         <th:block th:if="${sortNumber != 2}">
         <a href="/sns/newSort">新着順</a></th:block>
