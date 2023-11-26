@@ -46,7 +46,7 @@ class PostingController {
 		} else {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
 		}
-		
+
 		return "index/index";
 	}
 
@@ -147,30 +147,29 @@ class PostingController {
 //	}
 
 	// コメントが多い順検索
-			@RequestMapping(path = "/sns/commentManySort")
-			public String commentManySort(Model model) {
-		
+	@RequestMapping(path = "/sns/commentManySort")
+	public String commentManySort(Model model) {
+
 //				List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
-				List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
-				
-				// 記事情報をViewへ渡す
-				model.addAttribute("posting", commentList);
-				model.addAttribute("sortNumber", 4);
-				return "index/index";
-			}
-			
-			// コメントが少ない順検索
-						@RequestMapping(path = "/sns/commentLessSort")
-						public String commentLessSort(Model model) {
-					
+		List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
+
+		// 記事情報をViewへ渡す
+		model.addAttribute("posting", commentList);
+		model.addAttribute("sortNumber", 4);
+		return "index/index";
+	}
+
+	// コメントが少ない順検索
+	@RequestMapping(path = "/sns/commentLessSort")
+	public String commentLessSort(Model model) {
+
 //							List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
-							List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
-							
-							// 記事情報をViewへ渡す
-							model.addAttribute("posting", commentList);
-							model.addAttribute("sortNumber", 5);
-							return "index/index";
-						}
+		List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
+
+		// 記事情報をViewへ渡す
+		model.addAttribute("posting", commentList);
+		model.addAttribute("sortNumber", 5);
+		return "index/index";
+	}
 
 }
-
