@@ -25,7 +25,7 @@ import jp.co.sss.sns.repository.CommentRepository;
 
 @Controller
 public class CommentRegistController {
-
+	// DI
 	@Autowired
 	CommentRepository commentRepository;
 	
@@ -35,7 +35,7 @@ public class CommentRegistController {
 		return "comment/comment_page";
 	}
 
-	// コメント機能 入力チェック付き
+	// コメント機能 
 	@RequestMapping("/snssns/commentInput")
 	public String commentInput(Model model, @Valid @ModelAttribute CommentForm form, BindingResult result) {
 		if (result.hasErrors()) {
