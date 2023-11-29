@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -145,8 +147,161 @@ public class CommentRegistController {
 //			}
 		
 		}//tryの
+//		B109
+		try (Scanner sc = new Scanner(System.in)) {
+			 int N;
+				int M;
+				int H;
+				int W;
+				int P;
+				int Q;
+				String A;
+				int i; // iは (1 ≦ i ≦ N)
+				String p_i;
+				List <String> pl = new ArrayList<>();
+				List <String> ql = new ArrayList<>();
+				String q_i;
+				int a_i;
+				int b_i;
+				
+//					入力内容読み取り
+					N = sc.nextInt();
+					H = sc.nextInt();
+					W = sc.nextInt();
+					P = sc.nextInt();
+					Q = sc.nextInt();
+					
+					i = 1;
+					if (1 <= i && i <= N ) {
+//				最後の行読み取り
+						// String L = sc.nextLine();
+//						A_iの最後まで読み取りのため繰り返し
+						for (; i <= N ; i++) {
+//							A = sc.next();
+							p_i = sc.next() + "";
+							pl.add(p_i);
+							q_i = sc.next();
+							ql.add(q_i);
+						}
+						int A_i = N * i;
+//						if (1 <= H && W <= 100&& 1<=N && N< H*W && 0<= P && P<H && 0<= Q && Q < W && 0<= p_i && p_i< H && 0<= q_i && q_i < W )
+//						{
+//		        表示処理
+						for (int ii = 0; i <= N ; i++) {
+							System.out.println(pl.get(ii) + ql.get(ii));
+						}
+							System.out.println("\n");
+//						}
+					}
+		    
+		}//try
 		
-		return "comment/comment_complete";
-	}
+//	B73
+	try (Scanner sc = new Scanner(System.in)) {
+		String A; 
+		String N;
+		String M;
+		String Q;
+			int i; // iは (1 ≦ i ≦ N)
+			String A_i;
+			List <String> Al = new ArrayList<>();
+			List <String> Sl = new ArrayList<>();
+			List <String> El = new ArrayList<>();
+			String S_i;
+			String E_i;
+			Boolean b;
+			Boolean AGAndM;
+			String AG;
+			int AG2;
+			String KukanFirst;
+			String KukanLast;
+			String str;
+//			AlTotalに入れ直す？ いやその後の
+			String AlTotal ;
+			List <String> SlTotal = new ArrayList<>();
+//				入力内容読み取り
+				N = sc.next();
+				Q = sc.next();
+				M= sc.next();
+				
+				i = 1;
+				
+				if (1 <= i && i <= Integer.parseInt(N) ) {
+//			最後の行読み取り
+					// String L = sc.nextLine();
+//					A_iの最後まで読み取りのため繰り返し
+					for (; i <= Integer.parseInt(N); i++) {
+//						A = sc.next();
+						A_i = sc.next() + "";
+						Al.add(A_i);
+//						平均用に合計を出す
+						AG = AG + S_i;
+					}
+//					S_iの最後まで読み取りのため繰り返し
+					for (; i <= Integer.parseInt(Q); i++) {
+//						A = sc.next();
+						S_i = sc.next() + "";
+						b = Integer.parseInt(Q) < Integer.parseInt(S_i);
+						Sl.add(S_i);
 
-}
+						E_i = sc.next() + "";
+						b = Integer.parseInt(Q) < Integer.parseInt(E_i);
+						El.add(E_i);
+//						平均用に合計を出す
+//						SG = SG + S_i;
+//						EG = EG + E_i;
+					}
+					AG2 = Integer.parseInt(AG) / Integer.parseInt(M);
+//					このあとi番目のS_iとE_iのlistがMを上回っていたら足さない。下回っていたら、上回るまでループで足す
+					
+					AGAndM = AG2 <= Integer.parseInt(M);
+//						 合計以下の場合
+						if(AGAndM) {
+					for(int i2=0; i2 <= Integer.parseInt(Q); i2++)
+					{
+						KukanFirst = Al.get(Integer.parseInt(Sl.get(i2)));
+						KukanLast = Al.get(Integer.parseInt(El.get(i2)));
+//						S_iとE_iの指定の範囲を足す
+						for(int KukanFirstCount =Integer.parseInt(KukanFirst); Integer.parseInt(KukanFirst)   < Integer.parseInt(KukanLast) ;  KukanFirstCount++){
+							
+//							AlTotal = Arrays.asList(str.split(Al.get(i3) + 1));
+//							Alに	一つずつ足していき
+							AlTotal  = Al.get(KukanFirstCount - 1) + 1;
+							Al.set(KukanFirstCount - 1,Al.get(KukanFirstCount - 1) + 1);
+							if (Integer.parseInt(AlTotal) / Integer.parseInt(M) >= Integer.parseInt(M))
+							{
+								rerun?;
+								
+							}
+									
+								
+									
+						}
+						}
+					}
+					}
+//					もしQより大きければ
+					if(b) {
+//					int A_i = N * i;
+//					if (1 <= H && W <= 100&& 1<=N && N< H*W && 0<= P && P<H && 0<= Q && Q < W && 0<= p_i && p_i< H && 0<= q_i && q_i < W )
+//					{
+//	        表示処理
+					for (int ii = 0; ii < Integer.parseInt(N) ; ii++) {
+						System.out.print(pl.get(ii) + ql.get(ii));
+					}
+					
+					}
+//					もしQより小さければ
+					else {
+						for (int ii = 0; ii < Integer.parseInt(N)  ; ii++) {
+							System.out.print(Al.get(ii));
+						}
+					}
+					
+						System.out.print("\n");
+//					}
+				}
+	    
+	// try
+	return"comment/comment_complete";
+}}
