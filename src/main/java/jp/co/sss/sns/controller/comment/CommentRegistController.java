@@ -207,17 +207,17 @@ public class CommentRegistController {
 			List <String> Al = new ArrayList<>();
 			List <String> Sl = new ArrayList<>();
 			List <String> El = new ArrayList<>();
-			String S_i;
+			String S_i = "0";
 			String E_i;
 			Boolean b;
 			Boolean AGAndM;
-			String AG;
+			String AG ="0";
 			int AG2;
 			String KukanFirst;
 			String KukanLast;
 			String str;
 //			AlTotalに入れ直す？ いやその後の
-			String AlTotal ;
+			String AlTotal ="0";
 			List <String> SlTotal = new ArrayList<>();
 //				入力内容読み取り
 				N = sc.next();
@@ -265,29 +265,30 @@ public class CommentRegistController {
 						for(int KukanFirstCount =Integer.parseInt(KukanFirst); Integer.parseInt(KukanFirst)   < Integer.parseInt(KukanLast) ;  KukanFirstCount++){
 							
 //							AlTotal = Arrays.asList(str.split(Al.get(i3) + 1));
-//							Alに	一つずつ足していき
+//							Al,Elに一つずつ足していき
 							AlTotal  = Al.get(KukanFirstCount - 1) + 1;
 							Al.set(KukanFirstCount - 1,Al.get(KukanFirstCount - 1) + 1);
+							El.set(KukanFirstCount - 1,Al.get(KukanFirstCount - 1) + 1);
+//							平均がMを上回っていたら抜ける
 							if (Integer.parseInt(AlTotal) / Integer.parseInt(M) >= Integer.parseInt(M))
 							{
-								rerun?;
+								break;
 								
 							}
-									
-								
-									
 						}
 						}
 					}
 					}
 //					もしQより大きければ
+			int QAndAve =	Integer.parseInt(AlTotal) / Integer.parseInt(M);
+				b = Integer.parseInt(Q) > QAndAve;
 					if(b) {
 //					int A_i = N * i;
 //					if (1 <= H && W <= 100&& 1<=N && N< H*W && 0<= P && P<H && 0<= Q && Q < W && 0<= p_i && p_i< H && 0<= q_i && q_i < W )
 //					{
 //	        表示処理
 					for (int ii = 0; ii < Integer.parseInt(N) ; ii++) {
-						System.out.print(pl.get(ii) + ql.get(ii));
+						System.out.print(Al.get(ii) + El.get(ii));
 					}
 					
 					}
@@ -303,5 +304,125 @@ public class CommentRegistController {
 				}
 	    
 	// try
+	
+	try (Scanner sc = new Scanner(System.in)) {
+		String A;
+		String N;
+		String M;
+		String X;
+		int i; // iは (1 ≦ i ≦ N)
+		String A_i;
+		List<String> Al = new ArrayList<>();
+		String[] A_i_j;
+		List<String> Sl = new ArrayList<>();
+		List<String> El = new ArrayList<>();
+		String R_X = "0";
+		String S_X;
+		Boolean b;
+		Boolean AGAndM;
+		String AG = "0";
+		int AG2;
+		String KukanFirst;
+		String KukanLast;
+		String str;
+//			AlTotalに入れ直す？ いやその後の
+		String AlTotal = "0";
+		List<String> SlTotal = new ArrayList<>();
+//				入力内容読み取り
+		N = sc.next();
+		M = sc.next();
+
+		i = 1;
+
+//				if (1 <= i && i <= Integer.parseInt(N) ) {
+
+//					A_iの最後まで読み取りのため繰り返し
+		for (int ii = 0; ii <
+				Integer.parseInt(N); ii++) {
+			//	A = sc.next();
+			A_i = sc.next() + "";
+			Al.add(A_i);
+			// Mがもし2以上であればM回繰り返す
+			if (Integer.parseInt(M) > 2) {
+				for (int iii = 0; iii < Integer.parseInt(M); iii++) {
+					A_i = sc.next() + "";
+					Al.add(A_i);
+				}
+			}
+			
+//						平均用に合計を出す
+			AG = AG + R_X;
+		}
+		X = sc.next();
+
+//					R_Xの最後まで読み取りのため繰り返し
+		for (int iq = 0; iq < Integer.parseInt(X); iq++) {
+//						A = sc.next();
+			R_X = sc.next() + "";
+			b = Integer.parseInt(X) < Integer.parseInt(R_X);
+			Sl.add(R_X);
+
+			S_X = sc.next() + "";
+			b = Integer.parseInt(X) < Integer.parseInt(S_X);
+			El.add(S_X);
+//						平均用に合計を出す
+//						SG = SG + R_X;
+//						EG = EG + S_X;
+		}
+//					最後の行読み取り
+		String L = sc.nextLine();
+		AG2 = Integer.parseInt(AG) / Integer.parseInt(M);
+//					このあとi番目のR_XとS_XのlistがMを上回っていたら足さない。下回っていたら、上回るまでループで足す
+
+		AGAndM = AG2 <= Integer.parseInt(M);
+//						 合計以下の場合
+		if (AGAndM) {
+			for (int i2 = 0; i2 < Integer.parseInt(X); i2++) {
+
+				KukanFirst = Al.get(Integer.parseInt(Sl.get(i2)));
+
+				KukanLast = Al.get(Integer.parseInt(El.get(i2)) - 1);
+//						R_XとS_Xの指定の範囲を足す
+				for (int KukanFirstCount = Integer.parseInt(KukanFirst); Integer.parseInt(KukanFirst) < Integer
+						.parseInt(KukanLast); KukanFirstCount++) {
+
+//							AlTotal = Arrays.asList(str.split(Al.get(i3) + 1));
+//							Al,Elに一つずつ足していき
+					AlTotal = Al.get(KukanFirstCount - 1) + 1;
+					Al.set(KukanFirstCount - 1, Al.get(KukanFirstCount - 1) + 1);
+					El.set(KukanFirstCount - 1, Al.get(KukanFirstCount - 1) + 1);
+//							平均がMを上回っていたら抜ける
+					if (Integer.parseInt(AlTotal) / Integer.parseInt(M) >= Integer.parseInt(M)) {
+						break;
+					}
+				}
+			}
+		}
+//					}
+//					もしXより大きければ
+		System.out.print(Al.get(0) + El.get(0));
+		int XAndAve = Integer.parseInt(AlTotal) / Integer.parseInt(M);
+		b = Integer.parseInt(X) > XAndAve;
+		if (b) {
+//					int A_i = N * i;
+//					if (1 <= H && W <= 100&& 1<=N && N< H*W && 0<= P && P<H && 0<= X && X < W && 0<= p_i && p_i< H && 0<= q_i && q_i < W )
+//					{
+//	        表示処理
+			for (int ii = 0; ii < Integer.parseInt(N); ii++) {
+				System.out.print(Al.get(ii) + El.get(ii));
+			}
+
+		}
+//					もしXより小さければ
+		else {
+			for (int ii = 0; ii < Integer.parseInt(N); ii++) {
+				System.out.print(Al.get(ii));
+			}
+		}
+
+		System.out.print("\n");
+//					}
+	}
+
 	return"comment/comment_complete";
 }}
