@@ -423,6 +423,35 @@ public class CommentRegistController {
 		System.out.print("\n");
 //					}
 	}
-
+//********
+	{
+		 var sc = new Scanner(System.in);
+	     var N = sc.nextInt();
+	     var X = sc.nextInt();
+	     var K = sc.nextInt();
+	     
+	     var To = 4 * N ; 
+	     var Matagu = 1;
+	     var ZanK = K - To;
+	     var TotalCm = 0;
+	     
+	     
+//	     K　- 4 * N -1　このときに 3 + 4 回があった分だけ6cm　か3cm 3.equal(To) || 3+4.equal(To)  3,6増えていく 
+	     var H = 4* K;
+//	     K <= 4 は　最低Xcm +  ZanK / 3
+	     if ("3".equals(To) )
+	     {
+	    	 TotalCm = X ;
+//	    	 回になるまで、totalで計算する　3回だった時にそれ以降の残りの回数で
+	    	 for(var i = TotalCm; i < ZanK;i++)
+	    	 {
+	    		 TotalCm = X + TotalCm;
+	    	 }
+	     
+	      }else if ( "7".equals(To))
+	     {
+	    	 TotalCm = X + TotalCm;
+	    	 
+	     }}
 	return"comment/comment_complete";
 }}
