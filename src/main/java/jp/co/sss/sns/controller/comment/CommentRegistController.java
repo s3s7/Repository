@@ -430,28 +430,41 @@ public class CommentRegistController {
 	     var X = sc.nextInt();
 	     var K = sc.nextInt();
 	     
-	     var To = 4 * N ; 
+	     var Total4N = 4 * N ; 
 	     var Matagu = 1;
-	     var ZanK = K - To;
+	     var ZanK = K - Total4N;
 	     var TotalCm = 0;
 	     
+	     var PlusCm = 0;
 	     
 //	     K　- 4 * N -1　このときに 3 + 4 回があった分だけ6cm　か3cm 3.equal(To) || 3+4.equal(To)  3,6増えていく 
 	     var H = 4* K;
-//	     K <= 4 は　最低Xcm +  ZanK / 3
-	     if ("3".equals(To) )
-	     {
-	    	 TotalCm = X ;
-//	    	 回になるまで、totalで計算する　3回だった時にそれ以降の残りの回数で
-	    	 for(var i = TotalCm; i < ZanK;i++)
-	    	 {
-	    		 TotalCm = X + TotalCm;
-	    	 }
+//	     K <= 4 は　最低Xcm +  ZanK / 3 　4*NはK以下で３以上は確定
 	     
-	      }else if ( "7".equals(To))
-	     {
-	    	 TotalCm = X + TotalCm;
-	    	 
-	     }}
+	    	 TotalCm = X ;
+	  	 for(var i = 0; i < ZanK ;i++)
+    	 {
+    		 TotalCm = X + TotalCm;
+    	 }
+//     {
+//    	 TotalCm = X + TotalCm;
+//     }
+//    あまり 0の時も必要？　　3のとき
+     if(X > 1&&TotalCm % 3 == 1)
+     {
+    	PlusCm =X / 3 ;
+    	PlusCm = PlusCm + 3;
+     }
+//     Xが3以上で、Xのあまりが0と2の時は足さない。　いらないかこの処理1以外はこれらしかないから。
+     else if (X % 3 == 0 || X % 3 == 2 )
+     {
+    	 PlusCm =X / 3 ;
+     }
+     System.out.println(PlusCm);
+     System.out.println();
+	}
+	
+	
+	
 	return"comment/comment_complete";
 }}
