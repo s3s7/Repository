@@ -464,7 +464,117 @@ public class CommentRegistController {
      System.out.println();
 	}
 	
+	{ var sc = new Scanner(System.in);
+	   
+//	   var move = new int[] {-1, 1};
+	   
+	   var H = sc.nextInt();
+	   var W = sc.nextInt();
+//	   var S = new String[W/H * H/W][W* W];
+	   int[][] S = new int[W/H * H/W][W* W];
+	   
+	   for (var i = 0; i < H; i++) {
+	       S [i][0] = sc.nextInt();
+	       
+	       
+	       for (var ii = 1; ii < W; i++) {
+	           S[i][ii] = sc.nextInt();
+	           
+	       }
+	   }
+	   
+	   
+	   
+//	   すべてたして2分の１を出す　そして　その数になるまで箱に入れる。 
+//	   配列の要素をHまでの行ごとに取り出して足す　その配列を作る
+//	   その後にその配列をそれぞれ2で割る。　
+//	   2で割った数までの数字を足しす。そこに一致するまでがアリス。それ以外はB
+//	   その配列を表示する
+//	   int[]result = Stream.of(S).mapToInt(Integer::parseInt).toArray();
 	
+//	   配列の要素をHまでの行ごとに取り出して足す　その配列を作る
+	   var sum = new int[H] ;
+	   var sumHan =  new int[W] ;
+	   for (int i=0;i<H;i++) {
+		   sum[i]=  S[i][0];
+	   
+		   for(int ii=0; ii<W;ii++) {
+			   sum[ii] += S[i][ii]; 
+		   }
+//		   その後にその配列をそれぞれ2で割る。
+		sumHan[i]=   sum[i] / 2;
+		 
+		   
+	   }
+//	   2で割った数までの数字を足してそこに一致するまでがアリス。それ以外はB
+//	   1,23などの数値まで繰り返したい。while？  複数条件？
+	for(int i=0; i<H;i++) {
+		  for(int ii=0; ii<W;ii++) {
+//			  半分まで一致するまで足す
+			  for(int iii=0; sum[i]<=sumHan[i];iii++) 
+			  sum[i] += S[i][ii]; 
+		   }
+		
+		
+		sum[i] += S[i][i]; 
+		   
+
+		   
+	   }
+//	一致する要素すうにBを入れる
+//	その箱の数値とSの数値が一致しているところをB　それ以降はA
+	for(int i=0; i<H;i++) {
+		  for(int ii=0; ii<W;ii++) {
+//			 
+			  for(int iii=0; sum[i]<=sumHan[i];iii++) 
+			 if(S[i][ii] == sum[i]) {
+			  S[i][ii]= Integer.parseInt("B");
+			 }
+			 else {  S[i][ii]= Integer.parseInt("A");}
+		   }
+		
+		
+		sum[i] += S[i][i]; 
+		   
+
+		   
+	   }
+	      
+	   var alice = new int[W] ;
+//	   var alice = new int[W] ;
+	   for(int i = 0; alice[i]<sumHan; i++)
+	   {
+		   alice[0] = S[i];
+		   for (var ii = 1; ii < W; i++) {
+	           alice S[i][ii] = sc.nextInt();
+	           
+	       }
+	   }
+	   
+//		}
+	//   
+	//   //平均値を取得
+	//   double average = sum / SS.length;
+	//   
+	   for (var i = 0; i < H; i++) {
+	       for (var j = 0; j < W; j++) {
+	           System.out.print(S[i][j]);
+	       }
+	       System.out.println();
+
+	}
+	  
+	   if(S)
+	   {
+		   System.out.println("No");
+		}
+	   else  {
+		   System.out.println("Yes");
+		   for ()
+		   {
+			   System.out.print("Yes");
+		   }
+	   }
 	
 	return"comment/comment_complete";
 }}
