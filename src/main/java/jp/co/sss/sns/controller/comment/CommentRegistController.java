@@ -538,23 +538,7 @@ public class CommentRegistController {
 	      
 	   var alice = new int[W] ;
 //	   var alice = new int[W] ;
-	   for(int i = 0; alice[i]<sumHan; i++)
-	   {
-		   alice[0] = S[i];
-		   for (var ii = 1; ii < W; i++) {
-	           alice S[i][ii] = sc.nextInt();
-	           
-	       }
 	   }
 	   
-//		}
-	//   //平均値を取得
-	   for (var i = 0; i < H; i++) {
-	       for (var j = 0; j < W; j++) {
-	           System.out.print(S[i][j]);
-	       }
-	       System.out.println();
-
-	}
 	return"comment/comment_complete";
 }}
