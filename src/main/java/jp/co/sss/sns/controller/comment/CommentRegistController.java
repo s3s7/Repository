@@ -533,11 +533,7 @@ public class CommentRegistController {
 			 else {  S[i][ii]= Integer.parseInt("A");}
 		   }
 		
-		
 		sum[i] += S[i][i]; 
-		   
-
-		   
 	   }
 	      
 	   var alice = new int[W] ;
@@ -552,10 +548,7 @@ public class CommentRegistController {
 	   }
 	   
 //		}
-	//   
 	//   //平均値を取得
-	//   double average = sum / SS.length;
-	//   
 	   for (var i = 0; i < H; i++) {
 	       for (var j = 0; j < W; j++) {
 	           System.out.print(S[i][j]);
@@ -563,18 +556,5 @@ public class CommentRegistController {
 	       System.out.println();
 
 	}
-	  
-	   if(S)
-	   {
-		   System.out.println("No");
-		}
-	   else  {
-		   System.out.println("Yes");
-		   for ()
-		   {
-			   System.out.print("Yes");
-		   }
-	   }
-	
 	return"comment/comment_complete";
 }}
