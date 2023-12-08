@@ -539,6 +539,23 @@ public class CommentRegistController {
 	   var alice = new int[W] ;
 //	   var alice = new int[W] ;
 	   }
+	{try(Scanner sc = new Scanner(System.in)){
+
+		   var H = sc.nextInt();
+		   var W = sc.nextInt();
+//		   var S = new String[W/H * H/W][W* W];
+		   int[][] S = new int[W/H * H/W][W* W];
+		   
+		   
+		   for (var i = 0; i < H; i++) {
+		       S [i][0] = sc.nextInt();
+		       
+		       
+		       for (var ii = 1; ii < W; i++) {
+		           S[i][ii] = sc.nextInt();
+		           
+		       }
+		   }}}
 	   
 	return"comment/comment_complete";
 }}
