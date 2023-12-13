@@ -8,9 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.jpa.repository.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -21,10 +26,14 @@ public class Posting {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @Column
+	
+
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 //    private LocalDateTime  insertDate;
-    private Date  insertDate;
-    @Column
+//	@Temporal(TemporalType.TIMESTAMP)
+	private Date  insertDate;
+   
+	@Column
     private String contents;
 
     @Column

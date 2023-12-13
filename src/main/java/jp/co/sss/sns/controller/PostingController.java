@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -90,7 +91,8 @@ class PostingController {
 		posting.setTitle(form.getTitle());
 		// 投稿時間の取得
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
-		Date date = new Date();
+		Date  date = new Date();
+		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
 		try {
 			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
@@ -127,6 +129,7 @@ class PostingController {
 			posting.setId(postingId);
 		}
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
+//		List<Posting> posts = postingRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
 
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
