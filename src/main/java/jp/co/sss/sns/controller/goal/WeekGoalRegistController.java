@@ -22,8 +22,8 @@ import lombok.RequiredArgsConstructor;
 @Controller
 class WeekGoalRegistController {
 	
+//	DI
 	private final GoalRepository goalRepository;
-	
 	private final HttpSession session;
 	
 	

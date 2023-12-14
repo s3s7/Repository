@@ -22,9 +22,8 @@ import lombok.RequiredArgsConstructor;
 @Controller
 class MonthGoalRegistController {
 
-	
+	// DI
 	private final GoalRepository goalRepository;
-		
 	private final HttpSession session;
 		
 			/**
