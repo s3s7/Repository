@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 class UserRegistController{
+	// DI
 	private final UserRepository userRepository;
-
 	private final HttpSession session;
 
 	/**
