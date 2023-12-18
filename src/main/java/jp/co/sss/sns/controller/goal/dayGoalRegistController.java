@@ -97,7 +97,6 @@ class dayGoalRegistController {
 //	private static Map<String,String> getSelectedTimes(){
 //	     Map<String, String> selectMap = new LinkedHashMap<String, String>();
 //	     selectMap.put("key_A", "0:00");
-//	     selectMap.put("key_B", "選択肢Ｂは、これですよ");
 //	     selectMap.put("key_E", "選択肢Ｅは、これですよ");
 //	     return selectMap;
 //	 }   
