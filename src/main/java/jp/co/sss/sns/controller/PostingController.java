@@ -3,16 +3,15 @@ package jp.co.sss.sns.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +24,7 @@ import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.PostingRepository;
-import jp.co.sss.sns.repository.UserRepository;
+import jp.co.sss.sns.service.PostingService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -36,6 +35,7 @@ class PostingController {
 	private final PostingRepository postingRepository;
 	private final HttpSession session;
 	private final CommentRepository commentRepository;
+	private final PostingService postingservice;
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
@@ -93,14 +93,25 @@ class PostingController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
 		Date  date = new Date();
 		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
-		try {
-			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		 // DateからInstantを取得し、それをLocalDateTimeに変換
+       ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    // DateTimeFormatterを作成
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 
-		posting.setInsertDate(date);
+       // LocalDateTimeを指定した形式でフォーマット
+       String formattedDateTime = ldt.format(formatter);
+		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+//		try {
+//		     
+////			ldt = formatter.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+
+		 LocalDateTime localDateTime = LocalDateTime.parse(formattedDateTime, formatter);
+        // 結果を表示
+		
+		posting.setInsertDate(localDateTime);
 		postingRepository.save(posting);
 		return "redirect:/snssns/complete";
 	}
@@ -128,14 +139,20 @@ class PostingController {
 			// nullの場合は検索から取得し記事IDを使用
 			posting.setId(postingId);
 		}
+		
+		
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
 //		List<Posting> posts = postingRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
 
+		postingList= postingservice.getPostingsInNewOrder();
+		
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
 		model.addAttribute("sortNumber", 2);
 		return "index/index";
 	}
+	
+	 
 
 	// 記事情報を全件検索(古い順)
 //	@RequestMapping(path = "/sns/oldSort")

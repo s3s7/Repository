@@ -1,6 +1,6 @@
 package jp.co.sss.sns.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
 
-import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
@@ -29,9 +27,9 @@ public class Posting {
 	
 
 	@DateTimeFormat(pattern="dd/MM/yyyy")
-//    private LocalDateTime  insertDate;
+    private LocalDateTime  insertDate;
 //	@Temporal(TemporalType.TIMESTAMP)
-	private Date  insertDate;
+//	private Date  insertDate;
    
 	@Column
     private String contents;

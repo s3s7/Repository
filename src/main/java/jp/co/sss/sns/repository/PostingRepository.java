@@ -2,6 +2,7 @@ package jp.co.sss.sns.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,6 +14,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 //	List<Posting> findByMonth(@Param("date1") Date date1, @Param("date2") Date date2);
 	// 記事情報を新着順で検索
 	public List<Posting> findAllByOrderByInsertDateAsc();
+//	List<Posting> findAll(Sort sort);
 
 	// 記事情報を古い順で検索
 //	@Query(value = "select 'p.insert_date'" + "from sns_posting p order by 'p.insert_date' asc", nativeQuery = true)

@@ -43,7 +43,8 @@
 		</tr>
 		<tr th:each="posting: ${session.posting}">
 			
-		<td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm')}"></td>
+		<!-- <td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm')}"></td> -->
+		<td style="text-align: center;"  th:text="$*{#temporals.format(myDateTime, 'yyyy/MM/dd HH:mm')}"></td>
 			<td style="text-align: center;" th:text="${posting.title}"></td>
 			<td style="text-align: center;" th:text="${posting.contents}"></td>
 
