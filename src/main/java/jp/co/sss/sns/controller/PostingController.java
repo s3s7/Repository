@@ -152,8 +152,6 @@ class PostingController {
 		return "index/index";
 	}
 	
-	 
-
 	// 記事情報を全件検索(古い順)
 //	@RequestMapping(path = "/sns/oldSort")
 //	public String oldSort(Model model) {
