@@ -2,12 +2,12 @@ package jp.co.sss.sns.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Posting;
 
+@Repository
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
 //	@Query("SELECT pos FROM Posting pos WHERE pos.date >= :date1 AND pos.date < :date2")

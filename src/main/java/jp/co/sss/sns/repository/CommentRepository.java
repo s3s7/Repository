@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Comment;
+
+@Repository
 public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 
 //		User findByUserIdAndPassword(String userId,String password);
