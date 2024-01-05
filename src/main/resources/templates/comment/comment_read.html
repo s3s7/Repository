@@ -30,6 +30,16 @@
 			<a href="/snssns/commentPage">コメントする</a>
 		</div>
 	</th:block>
+	
+	<th:block th:unless="${session.users}">
+				<dd class="link_area">
+				<td><form action="/snssns/index">
+						<div style="text-align: right;">
+							<input type="hidden" name="id" th:value="${posting_comment.get(0).commentId}" /> <input
+								type="submit" value="ログインして、コメントする" />
+			</div>		</form></td>
+			
+			</th:block>
 
 	</th:block>
 

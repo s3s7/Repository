@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Comment;
 
-@Repository
 public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 
 //		User findByUserIdAndPassword(String userId,String password);

@@ -26,7 +26,7 @@ public class Comment {
 	private int commentId;
 
 //	@ManyToOne
-//	@JoinColumn(name = "posting_id", referencedColumnName = "id")
+	@JoinColumn(name = "posting_id", referencedColumnName = "id")
 	@Column(name = "posting_id")
 //	private Posting postingId;
 	private int postingId;

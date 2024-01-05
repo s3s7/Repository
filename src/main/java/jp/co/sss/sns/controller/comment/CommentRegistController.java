@@ -4,12 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +16,25 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.entity.Comment;
+import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.CommentForm;
 import jp.co.sss.sns.repository.CommentRepository;
+import jp.co.sss.sns.repository.PostingRepository;
+import jp.co.sss.sns.service.PostingService;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 public class CommentRegistController {
 	// DI
 	@Autowired
-	CommentRepository commentRepository;
+	private final CommentRepository commentRepository;
+	private final PostingRepository postingRepository;
+	private final HttpSession session;
 
 	// コメントページ遷移処理
 	@RequestMapping("/snssns/commentPage")
@@ -56,11 +62,14 @@ public class CommentRegistController {
 	}
 
 	// コメント投稿ボタン
-	@RequestMapping("/snssns/comment/complete")
-	public String commentComplete(Model model, @ModelAttribute CommentForm form) {
+	@RequestMapping("/snssns/comment/complete/{id}")
+	public String commentComplete(@PathVariable int id,Model model, @Valid @ModelAttribute CommentForm form) {
 		// コメント内容情報の生成
 		Comment comment = new Comment();
-
+//		postingのIdをとってきたい。それを外部キーとしてセットしたい。　現在の
+		
+		session.setAttribute("postingId", id);
+		
 		// 入力値をリポジトリ保存
 		comment.setCommentContents(form.getCommentContents());
 		// 投稿時間の取得
@@ -73,8 +82,9 @@ public class CommentRegistController {
 			e.printStackTrace();
 		}
 		comment.setInsertDate(date);
+		comment.setPostingId(id);
 		commentRepository.save(comment);
-		return "redirect:/snssns/commentComplete";
+		return "redirect:/snssns/comment/complete";
 	}
 
 	// コメント完了画面表示

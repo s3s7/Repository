@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Posting;
 
-@Repository
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
 //	@Query("SELECT pos FROM Posting pos WHERE pos.date >= :date1 AND pos.date < :date2")
@@ -20,9 +19,6 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 //	@Query(value = "select 'p.insert_date'" + "from sns_posting p order by 'p.insert_date' asc", nativeQuery = true)
 	public List<Object[]> findAllByOrderByInsertDateDesc();
 //	public String[] getFindDate(Object date);
-	
-
-	
 	
 
 //	default String[] findAllDate(String date) {

@@ -21,7 +21,7 @@
 			<input type="submit" value="コメント画面へ戻る" class="back_button" />
 		</form>
 		<!-- 投稿するボタン -->
-		<form method="post" th:action="@{/snssns/commentComplete}"
+		<form method="post" th:action="@{/snssns/comment/complete}"
 			th:object="${commentForm}" class="comment_info_form">
 			<input type="hidden" name="commentContents"
 				th:value="${commentForm.commentContents}" /> <input type="submit"
