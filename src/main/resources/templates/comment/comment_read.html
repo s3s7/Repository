@@ -31,11 +31,12 @@
 		</div>
 	</th:block>
 	
-	<th:block th:unless="${session.users}">
+	<th:block th:unless="${session.users != null }">
 				<dd class="link_area">
 				<td><form action="/snssns/index">
 						<div style="text-align: right;">
-							<input type="hidden" name="id" th:value="${posting_comment.get(0).commentId}" /> <input
+							<input type="hidden" name="id" th:value="${posting_id}" /> 
+							<input
 								type="submit" value="ログインして、コメントする" />
 			</div>		</form></td>
 			

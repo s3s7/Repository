@@ -1,5 +1,8 @@
 package jp.co.sss.sns.controller.comment;
 
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -27,16 +30,17 @@ public class CommentShowController {
 	public String showCommentList(@PathVariable int id, Model model) {
 
 		// 選択されたコメントIDに該当するコメント情報を取得
-		List<Comment> comment = commentRepository.findByPostingIdOrderByInsertDateDesc(id);
-		if (!comment.isEmpty()) {
+		List<Comment> comment;
+		try {
+			 comment = commentRepository.findByPostingIdOrderByInsertDateDesc(id);
 			// コメント情報をViewへ渡す
-			model.addAttribute("posting_comment", comment);
-			model.addAttribute("posting_id", id);
-
-		} else {
+				model.addAttribute("posting_comment", comment);
+				model.addAttribute("posting_comment_id", id);
+				model.addAttribute("posting_id", id);
+		} catch (Exception e) {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
 		}
-		
+
 		return "/comment/comment_read";
 	}
 	
