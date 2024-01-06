@@ -35,7 +35,6 @@ public class CommentShowController {
 			 comment = commentRepository.findByPostingIdOrderByInsertDateDesc(id);
 			// コメント情報をViewへ渡す
 				model.addAttribute("posting_comment", comment);
-				model.addAttribute("posting_comment_id", id);
 				model.addAttribute("posting_id", id);
 		} catch (Exception e) {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
