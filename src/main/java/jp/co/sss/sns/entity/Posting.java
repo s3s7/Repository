@@ -29,7 +29,6 @@ public class Posting {
 	@DateTimeFormat(pattern="dd/MM/yyyy")
     private LocalDateTime  insertDate;
 //	@Temporal(TemporalType.TIMESTAMP)
-//	private Date  insertDate;
    
 	@Column
     private String contents;
