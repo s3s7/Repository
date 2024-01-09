@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 class UserController {
 
-	// DI
+	//DI
 	private final UserRepository userrepository;
 	private final HttpSession session;
 	private final PostingRepository postingrepository;
@@ -38,7 +38,7 @@ class UserController {
 		return "login";
 	}
 
-//	ログアウト
+//ログアウト
 	@RequestMapping(path = "/snssns/logout")
 	public String Logout(Model model) {
 		List<Posting> posting = postingrepository.findAll();
