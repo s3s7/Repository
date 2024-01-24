@@ -1,7 +1,9 @@
 package jp.co.sss.sns.entity;
 
-import java.time.LocalDateTime;
 
+
+import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -22,18 +24,17 @@ import lombok.Setter;
 public class Posting {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-	@DateTimeFormat(pattern="dd/MM/yyyy")
-    private LocalDateTime  insertDate;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDateTime insertDate;
 //	@Temporal(TemporalType.TIMESTAMP)
-   
-	@Column
-    private String contents;
 
-    @Column
-    private String title;
+	@Column
+	private String contents;
+
+	@Column
+	private String title;
 
 }

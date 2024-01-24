@@ -1,17 +1,21 @@
 package jp.co.sss.sns.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import jp.co.sss.sns.entity.Posting;
 
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
-//	@Query("SELECT pos FROM Posting pos WHERE pos.date >= :date1 AND pos.date < :date2")
-//	List<Posting> findByMonth(@Param("date1") Date date1, @Param("date2") Date date2);
 	// 記事情報を新着順で検索
+//	@Query("SELECT pos FROM Posting pos WHERE pos.date >= :date1 AND pos.date < :date2")
+	
+//	List<Posting> findByMonth(@Param("date1") LocalDateTime date1, @Param("date2") LocalDateTime date2);
+//	List<Posting> findByMonth();
 	public List<Posting> findAllByOrderByInsertDateAsc();
 //	List<Posting> findAll(Sort sort);
 
@@ -20,6 +24,8 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	public List<Object[]> findAllByOrderByInsertDateDesc();
 //	public String[] getFindDate(Object date);
 	
+	//商品名検索（新着順）
+//	public List<Posting> findByNameLikeOrderByInsertDate(String name);
 
 //	default String[] findAllDate(String date) {
 //		List<String> list = new ArrayList<String>();
@@ -43,8 +49,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 //		@Query(value = JPQLConstant.FIND_ITEMS_BY_CATEGORIES_ORDER_BY_QUANTITY, nativeQuery = true)
 //		public Page<Item> findByCategoryAndDeleteFlagOrderByOrderNumDesc(Integer categoryId, Pageable pageable);
 //
-//		//商品名検索（新着順）
-//		public Page<Item> findByDeleteFlagAndNameLikeOrderByInsertDateDesc(int deleteFlag,String name,Pageable pageable);
+	
 //
 //		//商品名検索（売れ筋順）
 //		@Query(value = JPQLConstant.FIND_ITEMS_BY_ITEMS_ORDER_BY_QUANTITY, nativeQuery = true)

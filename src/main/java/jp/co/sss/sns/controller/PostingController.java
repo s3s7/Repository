@@ -1,6 +1,5 @@
 package jp.co.sss.sns.controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -12,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +35,7 @@ class PostingController {
 	private final PostingRepository postingRepository;
 	private final HttpSession session;
 	private final CommentRepository commentRepository;
-	private final PostingService postingservice;
+	private final PostingService postingService;
 
 	// 投稿記事一覧表示機能
 	@RequestMapping("/snssns/findAll")
@@ -43,11 +43,10 @@ class PostingController {
 
 		List<Posting> posting = postingRepository.findAll();
 		if (!posting.isEmpty()) {
-			session.setAttribute("posting", posting);
+			model.addAttribute("posting", posting);
 		} else {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
 		}
-
 		return "index/index";
 	}
 
@@ -109,7 +108,8 @@ class PostingController {
 //		}
 
 		 LocalDateTime localDateTime = LocalDateTime.parse(formattedDateTime, formatter);
-        // 結果を表示
+		 
+		 // 結果を表示
 		
 		posting.setInsertDate(localDateTime);
 		postingRepository.save(posting);
@@ -131,7 +131,7 @@ class PostingController {
 			if (session.getAttribute("sortPostingId") != null) {
 
 				postingId = (Integer) session.getAttribute("sortPostingId");
-				// カテゴリ情報をセット
+				// 情報をセット
 				posting.setId(postingId);
 			}
 
@@ -140,11 +140,11 @@ class PostingController {
 			posting.setId(postingId);
 		}
 		
-		
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
-//		List<Posting> posts = postingRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
+//		List<Posting> postingLists = postingRepository.findByMonth();
+//		List<Posting> postingList = postingService.findAllByInsertDateAsc();
 
-		postingList= postingservice.getPostingsInNewOrder();
+//		postingList= postingService.getPostingsInNewOrder(postingList);
 		
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
@@ -189,5 +189,37 @@ class PostingController {
 		model.addAttribute("sortNumber", 5);
 		return "index/index";
 	}
+	
+	//タイトル検索　新着順
+//	@RequestMapping(path = "/postingName/search")
+//	public String showPostingName(Model model, String name) {
+//
+//		Posting posting = new Posting();
+//
+//		// セッションに商品名検索ワードが保存されている場合は取得
+//		if (session.getAttribute("names") != null) {
+//			name = (String) session.getAttribute("names");
+//			//前画面の商品名検索欄で入力された商品名検索ワードをセット
+//			posting = new Posting();
+//			posting.setTitle(name);
+//		} else {
+//			// nullの場合は前画面の商品名検索欄に入力された商品名検索ワードを使用
+//			posting = new Posting();
+//			posting.setTitle(name);
+//		}
+//
+//
+//
+//		List<Posting> postingList = postingRepository.findByNameLikeOrderByInsertDate("%" + name + "%");
+//
+//		// エンティティ内の検索結果をJavaBeansにコピー
+////		List<PostingBean> postingBeanList = BeanCopy.copyEntityToPostingBean(postingList.getContent());
+//
+//		// 商品情報をViewへ渡す
+//		model.addAttribute("pages", postingList);
+////		model.addAttribute("postings", postingBeanList);
+//		model.addAttribute("sortNumber", 6);
+//		return "posting/list/posting_list";
+//	}
 
 }

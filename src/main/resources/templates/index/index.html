@@ -7,7 +7,7 @@
 <title>近況</title>
 </head>
 <body>
-	<h3  >近況</h3>
+	<h3 >みんなの近況！</h3>
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">
@@ -29,6 +29,17 @@
         <th:block th:if="${sortNumber != 5}">
         <a href="/sns/commentLessSort">コメント数が少ない順</a></th:block>
     </div>
+   <!--  <form class="row s12" th:action="@{/postingName/search}"
+								th:object="${swords}" method="post">
+								<div class="input-field">
+									<i class="material-icons prefix">search</i> <input
+										id="input_text" type="text" data-length="10"
+										th:field="*{word}"> <label for="icon_prefix2">検索ワード</label>
+									<div class="col s12 center">
+										<button class="waves-effect waves-light btn">検索</button>
+									</div>
+								</div>
+							</form> -->
     
 	<table>
 		<tr>
@@ -41,7 +52,7 @@
 			<th:block th:unless="${session.users == 0}">
 			<th>コメント投稿</th></th:block>
 		</tr>
-		<tr th:each="posting: ${session.posting}">
+		<tr th:each="posting: ${posting}">
 			
 		<!-- <td style="text-align: center;"  th:text="${#dates.format(posting.insertDate, 'yyyy/MM/dd/hh:mm')}"></td> -->
 		<td style="text-align: center;"  th:text="${#temporals.format(posting.insertDate, 'yyyy/MM/dd HH:mm')}"></td>
