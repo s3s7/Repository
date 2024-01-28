@@ -30,17 +30,17 @@ public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 			, nativeQuery = true)
 //	@Query(value = "select c.posting_id,count(c.posting_id) co" + "from sns_comment c"
 //			+ "group by c.posting_id order by co desc")
-	 List<Object[]> findAllByOrderByCoDesc();
+	 public List<Comment> findAllByOrderByCoDesc();
 //	@Query(value = "select *" + "from sns_posting p where (select c.comment_content from comment c order by c.comment desc"
 //			+ "  order by 'p.insert_date' asc", nativeQuery = true) 
 //	
 //	 List<Object[]> findByPostingIdAndCountpOrderByCountpDesc();
 	
 //		コメント数が少ない順
-		@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
-				+ "group by C.posting_id "+ "order by CO asc"
-				, nativeQuery = true)
+//		@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
+//				+ "group by C.posting_id "+ "order by CO asc"
+//				, nativeQuery = true)
 //		@Query(value = "select c.posting_id,count(c.posting_id) co" + "from sns_comment c"
 //				+ "group by c.posting_id order by co desc")
-		 List<Object[]> findAllByOrderByCoAsc();
+//		public List<Comment> findAllByOrderByCoAsc();
 }

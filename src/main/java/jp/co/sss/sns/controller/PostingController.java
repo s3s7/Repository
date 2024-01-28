@@ -11,8 +11,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +18,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.sss.sns.entity.Comment;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.PostingForm;
 import jp.co.sss.sns.repository.CommentRepository;
@@ -124,7 +123,7 @@ class PostingController {
 
 	// 記事情報を全件検索(新着順)
 	@RequestMapping(path = "/sns/newSort")
-	public String newSort(Model model, Pageable pageable, Integer postingId) throws Exception {
+	public String newSort(Model model, Integer postingId) throws Exception {
 		Posting posting = new Posting();
 		// セッションにカテゴリIDが保存されている場合は取得
 		try {
@@ -141,10 +140,6 @@ class PostingController {
 		}
 		
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
-//		List<Posting> postingLists = postingRepository.findByMonth();
-//		List<Posting> postingList = postingService.findAllByInsertDateAsc();
-
-//		postingList= postingService.getPostingsInNewOrder(postingList);
 		
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
@@ -153,23 +148,36 @@ class PostingController {
 	}
 	
 	// 記事情報を全件検索(古い順)
-//	@RequestMapping(path = "/sns/oldSort")
-//	public String oldSort(Model model) {
-//
-//		List<Object[]> postingList = postingRepository.findAllByOrderByInsertDateDesc();
-//
-//		// 記事情報をViewへ渡す
-//		model.addAttribute("posting", postingList);
-//		model.addAttribute("sortNumber", 3);
-//		return "index/index";
-//	}
+	@RequestMapping(path = "/sns/oldSort")
+	public String oldSort(Model model,Integer postingId) throws Exception {
+		Posting posting = new Posting();
+		// セッションにカテゴリIDが保存されている場合は取得
+		try {
+			if (session.getAttribute("sortPostingId") != null) {
+
+				postingId = (Integer) session.getAttribute("sortPostingId");
+				// 情報をセット
+				posting.setId(postingId);
+			}
+
+		} catch (Exception e) {
+			// nullの場合は検索から取得し記事IDを使用
+			posting.setId(postingId);
+		}
+		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
+
+		// 記事情報をViewへ渡す
+		model.addAttribute("posting", postingList);
+		model.addAttribute("sortNumber", 3);
+		return "index/index";
+	}
 
 	// コメントが多い順検索
 	@RequestMapping(path = "/sns/commentManySort")
 	public String commentManySort(Model model) {
 
 //				List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
-		List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
+		List<Comment> commentList = commentRepository.findAllByOrderByCoDesc();
 
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", commentList);
@@ -182,7 +190,7 @@ class PostingController {
 	public String commentLessSort(Model model) {
 
 //							List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
-		List<Object[]> commentList = commentRepository.findAllByOrderByCoDesc();
+		List<Comment> commentList = commentRepository.findAllByOrderByCoDesc();
 
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", commentList);

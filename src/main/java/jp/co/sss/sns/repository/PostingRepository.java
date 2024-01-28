@@ -12,17 +12,10 @@ import jp.co.sss.sns.entity.Posting;
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
 	// 記事情報を新着順で検索
-//	@Query("SELECT pos FROM Posting pos WHERE pos.date >= :date1 AND pos.date < :date2")
-	
-//	List<Posting> findByMonth(@Param("date1") LocalDateTime date1, @Param("date2") LocalDateTime date2);
-//	List<Posting> findByMonth();
 	public List<Posting> findAllByOrderByInsertDateAsc();
-//	List<Posting> findAll(Sort sort);
 
 	// 記事情報を古い順で検索
-//	@Query(value = "select 'p.insert_date'" + "from sns_posting p order by 'p.insert_date' asc", nativeQuery = true)
-	public List<Object[]> findAllByOrderByInsertDateDesc();
-//	public String[] getFindDate(Object date);
+	public List<Posting> findAllByOrderByInsertDateDesc();
 	
 	//商品名検索（新着順）
 //	public List<Posting> findByNameLikeOrderByInsertDate(String name);
