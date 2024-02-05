@@ -24,7 +24,7 @@ public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 	List<Comment> findByPostingId(int id);
 	List<Comment> findByPostingIdOrderByInsertDateDesc(int id);
 	
-//	コメント数が多い順 コメントテーブルのpostingIdごとの数をカウントし、並び替える
+//	コメント数が多い順 コメントテーブルのpostingIdごとの数をカウントし、並び替える　コメントidにアクセスできていない？
 	@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
 			+ "group by C.posting_id "+ "order by CO"
 			, nativeQuery = true)
