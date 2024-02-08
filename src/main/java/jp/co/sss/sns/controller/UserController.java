@@ -6,21 +6,19 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.LoginForm;
-import jp.co.sss.sns.repository.CommentRepository;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.repository.UserRepository;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -31,6 +29,8 @@ class UserController {
 	private final UserRepository userrepository;
 	private final HttpSession session;
 	private final PostingRepository postingrepository;
+	private final PostingController postingCo;
+	
 
 	// ログインページ
 	@RequestMapping("/snssns/index")
@@ -52,7 +52,7 @@ class UserController {
 	}
 
 	// ログイン機能 入力チェックあり
-	@RequestMapping(path = "/snssns/doLogin")
+	@PostMapping(path = "/snssns/doLogin")
 	public String Login(@Valid @ModelAttribute LoginForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("errMessage", "ユーザIDまたはパスワードが間違っています。");
@@ -70,7 +70,7 @@ class UserController {
 			// 会員情報が存在する場合、ログイン
 			BeanUtils.copyProperties(user, userBean);
 			session.setAttribute("users", userBean);
-			return "index/index";
+			return postingCo.showList(model);
 
 		} else {
 			// 会員情報がない場合エラーメッセージ

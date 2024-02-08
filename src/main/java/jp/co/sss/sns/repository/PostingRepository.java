@@ -1,14 +1,12 @@
 package jp.co.sss.sns.repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Posting;
-
+@Repository
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
 	// 記事情報を新着順で検索

@@ -8,7 +8,7 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <body>
 
 <div>ログイン</div>
-<form  action="/snssns/doLogin">
+<form  th:action="@{/snssns/doLogin}"  method="post">
 ユーザ名:<input  type="text" name="userName" /> 
 パスワード:<input type="password" name="password" /> 
 <input type="submit" value="ログイン" />

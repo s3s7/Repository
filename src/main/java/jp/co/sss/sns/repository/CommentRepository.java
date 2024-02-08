@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Comment;
 
@@ -25,9 +24,12 @@ public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 	List<Comment> findByPostingIdOrderByInsertDateDesc(int id);
 	
 //	コメント数が多い順 コメントテーブルのpostingIdごとの数をカウントし、並び替える　コメントidにアクセスできていない？
+//	@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
+//			+ "group by C.posting_id "+ "order by CO"
+//			, nativeQuery = true)
 	@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
-			+ "group by C.posting_id "+ "order by CO"
-			, nativeQuery = true)
+	+ "group by C.posting_id "+ "order by CO"
+	, nativeQuery = true)
 //	@Query(value = "select c.posting_id,count(c.posting_id) co" + "from sns_comment c"
 //			+ "group by c.posting_id order by co desc")
 	 public List<Comment> findAllByOrderByCoDesc();
