@@ -16,7 +16,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	public List<Posting> findAllByOrderByInsertDateDesc();
 	
 	//商品名検索（新着順）
-//	public List<Posting> findByNameLikeOrderByInsertDate(String name);
+	public List<Posting> findByNameLikeOrderByInsertDate(String title);
 
 	
 	

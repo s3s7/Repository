@@ -178,9 +178,10 @@ class PostingController {
 
 //				List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
 		List<Comment> commentList = commentRepository.findAllByOrderByCoDesc();
+//		List<Comment> commentList = commentRepository.findAll();
 
 		// 記事情報をViewへ渡す
-		model.addAttribute("posting", commentList);
+		model.addAttribute("postings", commentList);
 		model.addAttribute("sortNumber", 4);
 		return "index/index";
 	}
@@ -199,35 +200,31 @@ class PostingController {
 	}
 	
 	//タイトル検索　新着順
-//	@RequestMapping(path = "/postingName/search")
-//	public String showPostingName(Model model, String name) {
-//
-//		Posting posting = new Posting();
-//
-//		// セッションに商品名検索ワードが保存されている場合は取得
-//		if (session.getAttribute("names") != null) {
-//			name = (String) session.getAttribute("names");
-//			//前画面の商品名検索欄で入力された商品名検索ワードをセット
-//			posting = new Posting();
-//			posting.setTitle(name);
-//		} else {
-//			// nullの場合は前画面の商品名検索欄に入力された商品名検索ワードを使用
-//			posting = new Posting();
-//			posting.setTitle(name);
-//		}
-//
-//
-//
-//		List<Posting> postingList = postingRepository.findByNameLikeOrderByInsertDate("%" + name + "%");
-//
-//		// エンティティ内の検索結果をJavaBeansにコピー
-////		List<PostingBean> postingBeanList = BeanCopy.copyEntityToPostingBean(postingList.getContent());
-//
-//		// 商品情報をViewへ渡す
-//		model.addAttribute("pages", postingList);
-////		model.addAttribute("postings", postingBeanList);
-//		model.addAttribute("sortNumber", 6);
-//		return "posting/list/posting_list";
-//	}
+	@RequestMapping(path = "/postingName/search")
+	public String searchPostingName(Model model, String title) {
+
+		Posting posting = new Posting();
+
+		// セッションに商品名検索ワードが保存されている場合は取得
+		if (session.getAttribute("names") != null) {
+			title = (String) session.getAttribute("names");
+			//前画面の商品名検索欄で入力された商品名検索ワードをセット
+			posting.setTitle(title);
+		} else {
+			// nullの場合は前画面の商品名検索欄に入力された商品名検索ワードを使用
+			posting.setTitle(title);
+		}
+
+		List<Posting> postingList = postingRepository.findByNameLikeOrderByInsertDate("%" + title + "%");
+
+		// エンティティ内の検索結果をJavaBeansにコピー
+//		List<PostingBean> postingBeanList = BeanCopy.copyEntityToPostingBean(postingList.getContent());
+
+		// 商品情報をViewへ渡す
+		model.addAttribute("pages", postingList);
+//		model.addAttribute("postings", postingBeanList);
+		model.addAttribute("sortNumber", 6);
+		return "posting/list/posting_list";
+	}
 
 }

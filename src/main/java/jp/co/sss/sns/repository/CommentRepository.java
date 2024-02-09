@@ -27,8 +27,8 @@ public interface  CommentRepository  extends JpaRepository<Comment,Integer> {
 //	@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
 //			+ "group by C.posting_id "+ "order by CO"
 //			, nativeQuery = true)
-	@Query(value = "select C.posting_id,count(C.posting_id) CO " + "FROM sns_comment C "
-	+ "group by C.posting_id "+ "order by CO"
+	@Query(value = "select count(C.posting_id) CO " + "FROM sns_comment C "
+	+ "group by sns_comment.posting_id "+ "order by CO"
 	, nativeQuery = true)
 //	@Query(value = "select c.posting_id,count(c.posting_id) co" + "from sns_comment c"
 //			+ "group by c.posting_id order by co desc")
