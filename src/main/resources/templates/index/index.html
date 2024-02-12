@@ -28,6 +28,16 @@
         <a >コメント数が少ない順</a></th:block>
         <th:block th:if="${sortNumber != 5}">
         <a href="/sns/commentLessSort">コメント数が少ない順</a></th:block>
+        <div 
+				th:if="${session.user == null or session.user.authority == 2}">
+				<a class="title">近況タイトル検索</a>
+				<div class="form">
+					<!-- 商品一覧画面以外で表示 -->
+				<form th:action="@{/postingTitle/search}" method="get">
+					<input type="text" name="title"> <input type="submit"
+						value="検索">
+				</form>
+			 </div>	
     </div>
    <!--  <form class="row s12" th:action="@{/postingName/search}"
 								th:object="${swords}" method="post">

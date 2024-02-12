@@ -200,31 +200,31 @@ class PostingController {
 	}
 	
 	//タイトル検索　新着順
-	@RequestMapping(path = "/postingName/search")
-	public String searchPostingName(Model model, String title) {
+	@RequestMapping(path = "/postingTitle/search")
+	public String searchPostingTitle(Model model, String title) {
 
 		Posting posting = new Posting();
 
-		// セッションに商品名検索ワードが保存されている場合は取得
-		if (session.getAttribute("names") != null) {
-			title = (String) session.getAttribute("names");
+		// セッションに近況タイトル検索ワードが保存されている場合は取得
+		if (session.getAttribute("titles") != null) {
+			title = (String) session.getAttribute("titles");
 			//前画面の商品名検索欄で入力された商品名検索ワードをセット
 			posting.setTitle(title);
 		} else {
-			// nullの場合は前画面の商品名検索欄に入力された商品名検索ワードを使用
+			// nullの場合は前画面の近況タイトル検索欄に入力された近況タイトル検索ワードを使用
 			posting.setTitle(title);
 		}
 
-		List<Posting> postingList = postingRepository.findByNameLikeOrderByInsertDate("%" + title + "%");
+		List<Posting> postingList = postingRepository.findByTitleLikeOrderByInsertDateDesc("%" + title + "%");
 
 		// エンティティ内の検索結果をJavaBeansにコピー
 //		List<PostingBean> postingBeanList = BeanCopy.copyEntityToPostingBean(postingList.getContent());
 
-		// 商品情報をViewへ渡す
-		model.addAttribute("pages", postingList);
+		// 近況タイトルをViewへ渡す
+		model.addAttribute("posting", postingList);
 //		model.addAttribute("postings", postingBeanList);
-		model.addAttribute("sortNumber", 6);
-		return "posting/list/posting_list";
+//		model.addAttribute("sortNumber", 6);
+		return "index/index";
 	}
 
 }
