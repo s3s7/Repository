@@ -14,12 +14,9 @@ public interface  UserRepository  extends JpaRepository<User,Integer>{
 //	List<User> findByUserIdQuery(@Param("keyword")String userId);
 //	public String userId
 //	int countByUser(@Param("keyword")String keyword);
-	
 	User findByUserNameAndPassword(String userName,String password);
-
 	User getReferenceById(Integer id);
-String getReferenceByUserName(String userName);
+	String getReferenceByUserName(String userName);
 	void deleteByUserName(String userName);
-//	User deleteByUserName(String userName);
 	
 }

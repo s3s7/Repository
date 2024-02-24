@@ -226,5 +226,7 @@ class PostingController {
 //		model.addAttribute("sortNumber", 6);
 		return "index/index";
 	}
+	
+	
 
 }

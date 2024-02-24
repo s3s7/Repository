@@ -16,17 +16,13 @@ public class PostingService {
     public PostingService(PostingRepository postingRepository) {
         this.postingRepository = postingRepository;
     }
+  
+    // 記事削除機能
+	public void deletePosting(int postingId) {
 
-    public List<Posting> getPostingsInNewOrder(List<Posting> postingList) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "insertDate");
-//    	 Sort sort =   Collections.sort(postingList);
-        return postingRepository.findAll(sort);
-        
-        
-    }
-    
-    public List<Posting> findAllByInsertDateAsc() {
-        Sort sort = Sort.by("insertDate").ascending();
-        return postingRepository.findAll(sort);
-    }
+		// 記事に関する全情報を削除
+		postingRepository.deleteByPostingId(postingId);
+//			postRepository.deleteByUsername(username);
+//			commentRepository.deleteByUsername(username);
+	}
 }
