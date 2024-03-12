@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 class UserDeleteController {
 
-//	DI
+	//	DI
 	private final UserRepository userRepository;
 	private final UserService userService;
 

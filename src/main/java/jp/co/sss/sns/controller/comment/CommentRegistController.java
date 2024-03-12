@@ -63,28 +63,43 @@ public class CommentRegistController {
 
 	// コメント投稿ボタン
 	@RequestMapping("/snssns/comment/complete/{id}")
-	public String commentComplete(@PathVariable int id,Model model, @Valid @ModelAttribute CommentForm form) {
-		// コメント内容情報の生成
-		Comment comment = new Comment();
-//		postingのIdをとってきたい。それを外部キーとしてセットしたい。　現在の
-		
-		session.setAttribute("postingId", id);
-		
-		// 入力値をリポジトリ保存
-		comment.setCommentContents(form.getCommentContents());
-		// 投稿時間の取得
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
-		Date date = new Date();
-		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
-		try {
-			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		comment.setInsertDate(date);
-		comment.setPostingId(id);
-		commentRepository.save(comment);
-		return "redirect:/snssns/comment/complete";
+//	public String commentComplete(@PathVariable int id,Model model, @Valid @ModelAttribute CommentForm form) {
+	public String commentComplete(@PathVariable int id,Model model, @Valid @ModelAttribute Comment comment) {
+		//		// コメント内容情報の生成
+//		Comment comment = new Comment();
+////		postingのIdをとってきたい。それを外部キーとしてセットしたい。　現在の
+//		
+//		session.setAttribute("postingId", id);
+//		
+//		// 入力値をリポジトリ保存
+//		comment.setCommentContents(form.getCommentContents());
+//		// 投稿時間の取得
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
+//		Date date = new Date();
+//		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
+//		try {
+//			date = sdf.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now()));
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		comment.setInsertDate(date);
+//		comment.setPostingId(id);
+//		commentRepository.save(comment);
+//		return "redirect:/snssns/comment/complete";
+//		
+		 // 投稿を取得
+	    Posting posting = postingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid posting Id:" + id));
+	    
+	    // コメントに投稿IDを設定
+	    comment.setPostingId(posting.getId());
+	    
+	    // コメントを保存
+	    commentRepository.save(comment);
+	    
+	    // 投稿ページにリダイレクト
+	    return "redirect:/snssns/comment/complete" + id;
 	}
 
 	// コメント完了画面表示
