@@ -24,7 +24,6 @@ public class PostingDeleteController {
 
 	//	DI
 	private final PostingRepository postingRepository;
-	private final UserService userService;
 	
 	/**
 	 * 記事情報削除確認処理
