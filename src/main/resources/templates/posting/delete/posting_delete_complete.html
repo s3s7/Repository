@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>記事削除完了 |　スモールスタート</title>
+</head>
+<body>
+	<h2 class="title">記事削除完了</h2>
+	<p class="complete_message">記事情報の削除が完了しました。</p>
+	<p class="complete_link">
+		<a th:href="@{/snssns/findAll}">トップへ戻る</a>
+	</p>
+</body>
+</html>

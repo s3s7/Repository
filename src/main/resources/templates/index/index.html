@@ -97,6 +97,17 @@
 			</div>		</form></td>
 			
 			</th:block>
+			
+		<!-- 	<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
+			<th:block th:unless="${session.users == session.postingId}">
+				<dd class="link_area">
+				<td><form action="/snssns/index">
+						<div style="text-align: center;">
+							<input type="hidden" name="id" th:value="${posting.id}" /> <input
+								type="submit" value="ログインして、コメントする" />
+			</div>		</form></td>
+			
+			</th:block> 
 		
 		</tr>
 	</table>

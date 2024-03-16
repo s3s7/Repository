@@ -21,8 +21,6 @@ public class PostingService {
 	public void deletePosting(int postingId) {
 
 		// 記事に関する全情報を削除
-		postingRepository.deleteByPostingId(postingId);
-//			postRepository.deleteByUsername(username);
-//			commentRepository.deleteByUsername(username);
+		postingRepository.deleteById(postingId);
 	}
 }

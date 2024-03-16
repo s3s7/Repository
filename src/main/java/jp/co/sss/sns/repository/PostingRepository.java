@@ -19,7 +19,7 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	public List<Posting> findByTitleLikeOrderByInsertDateDesc(String title);
 	
 	//記事削除機能
-	void deleteByPostingId(int postingId);
+	//void deleteByPostingId(int postingId);
 	
 //	default String[] findAllDate(String date) {
 //		List<String> list = new ArrayList<String>();

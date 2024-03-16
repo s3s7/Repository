@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.sns.bean.UserBean;
 import jp.co.sss.sns.entity.Posting;
-import jp.co.sss.sns.entity.User;
 import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.PostingRepository;
-import jp.co.sss.sns.service.UserService;
+import jp.co.sss.sns.service.PostingService;
 import jp.co.sss.sns.util.Constant;
 import lombok.RequiredArgsConstructor;
 
@@ -24,52 +23,60 @@ public class PostingDeleteController {
 
 	//	DI
 	private final PostingRepository postingRepository;
+	private final PostingService postingService;
 	
 	/**
-	 * 記事情報削除確認処理
+	 * 記事情報削除処理
 	 *
 	 * @param model Viewとの値受渡し
 	 * @param session セッション情報
 	 * @return "post/delete/post_delete_check" 記事情報 削除確認画面へ
 	 */
-	@RequestMapping(path = "/snssns/post/delete/checks", method = RequestMethod.GET)
-	public String deletePostCheck(Model model,@ModelAttribute UserForm form,HttpSession session) {
-
-		UserBean userBean = new UserBean();
-		userBean = (UserBean) session.getAttribute("users");
-		// 削除対象の記事情報を取得
-		Posting post = postingRepository.getReferenceById(userBean.getId());
-
-		// Userエンティティの各フィールドの値をUserBeanにコピー
-		BeanUtils.copyProperties(post, userBean);
-
-		// 記事情報をViewに渡す
-		model.addAttribute("post", userBean);
+	@RequestMapping(path = "/post/delete/checks", method = RequestMethod.GET)
+	public String deletePostCheck() {
 		return "post/delete/post_delete_check";
 	}
 
 	/**
+	 * 記事情報削除処理
+	 *
+	 * @param model Viewとの値受渡し
+	 * @param session セッション情報
+	 * @return "post/delete/post_delete_check" 記事情報 削除確認画面へ
+	 */
+	@RequestMapping(path = "/post/delete/complete", method = RequestMethod.GET)
+	public String deletePostComplete(Model model,@ModelAttribute UserForm form,HttpSession session,int postingId) {
+
+		 Posting post = new Posting();
+		//UserBean userBean = (UserBean) session.getAttribute("users");
+		// 削除対象の記事情報を取得
+		postingService.deletePosting(post.getId());
+
+		// 記事情報をViewに渡す
+	//	model.addAttribute("post", userBean);
+	//	return "post/delete/post_delete_check";
+		return "redirect:/post/delete/complete";
+	}
+	/**
 	 * 記事情報削除完了処理
 	 *
 	 * @param session セッション情報
 	 * @return "post/delete/post_delete_complete" 記事情報 削除完了画面へ
 	 */
-	@RequestMapping(path = "/post/delete/complete", method = RequestMethod.POST)
-	public String deletePostComplete(HttpSession session) {
-
-		UserBean userBean = new UserBean();
-		userBean = (UserBean) session.getAttribute("users");
-
-		// 削除対象の記事情報を取得
-		Posting post = postingRepository.getReferenceById(userBean.getId());
-		// 削除フラグを立てる
-		post.setDeleteFlag(Constant.DELETED);
-		
-		// 記事情報を保存
-		postingRepository.save(post);
-
-		return "redirect:/post/delete/complete";
-	}
+//	@RequestMapping(path = "/post/delete/complete", method = RequestMethod.POST)
+//	public String deletePostComplete(HttpSession session) {
+//
+//		UserBean userBean = new UserBean();
+//		userBean = (UserBean) session.getAttribute("users");
+//
+//		// 削除対象の記事情報を取得
+//		//Posting post = postingRepository.getReferenceById(userBean.getId());
+//		
+//		// 記事情報を保存
+//	//	postingRepository.save(post);
+//
+//		return "redirect:/post/delete/complete";
+//	}
 
 	/**
 	 * 記事情報削除完了処理
@@ -77,13 +84,13 @@ public class PostingDeleteController {
 	 * @param session セッション情報
 	 * @return "post/delete/post_delete_complete" 記事情報 削除完了画面へ
 	 */
-	@RequestMapping(path = "/post/delete/complete", method = RequestMethod.GET)
-	public String deleteCompleteRedirect(HttpSession session) {
-
-		// セッション情報を無効にする
-		session.invalidate();
-		return "post/delete/post_delete_complete";
-	}
+//	@RequestMapping(path = "/post/delete/complete", method = RequestMethod.GET)
+//	public String deleteCompleteRedirect(HttpSession session) {
+//
+//		// セッション情報を無効にする
+//		session.invalidate();
+//		return "post/delete/post_delete_complete";
+//	}
 
 	/**
 	 * 記事情報 削除確認処理から記事詳細画面に戻る処理
@@ -92,23 +99,23 @@ public class PostingDeleteController {
 	 * @param session セッション情報
 	 * @return "/post/detail/post_detail" 記事情報 詳細画面へ
 	 */
-	@RequestMapping(path = "/post/delete/check", method = RequestMethod.GET)
-	public String deletePostBack(Model model, HttpSession session) {
-
-		UserBean userBean = new UserBean();
-		userBean = (UserBean) session.getAttribute("users");
-
-		// 削除対象の記事情報を取得
-		Posting post = postingRepository.getOne(userBean.getId());
-
-		// postエンティティの各フィールドの値をUserBeanにコピー
-		BeanUtils.copyProperties(post, userBean);
-
-		// 記事情報をViewに渡す
-		model.addAttribute("post", userBean);
-
-		return "post/detail/post_detail";
-	}
+//	@RequestMapping(path = "/post/delete/check", method = RequestMethod.GET)
+//	public String deletePostBack(Model model, HttpSession session) {
+//
+//		UserBean userBean = new UserBean();
+//		userBean = (UserBean) session.getAttribute("users");
+//
+//		// 削除対象の記事情報を取得
+//		Posting post = postingRepository.getOne(userBean.getId());
+//
+//		// postエンティティの各フィールドの値をUserBeanにコピー
+//		BeanUtils.copyProperties(post, userBean);
+//
+//		// 記事情報をViewに渡す
+//		model.addAttribute("post", userBean);
+//
+//		return "post/detail/post_detail";
+//	}
 	
 	
 }
