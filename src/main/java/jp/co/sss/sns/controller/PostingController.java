@@ -109,7 +109,6 @@ class PostingController {
 		 LocalDateTime localDateTime = LocalDateTime.parse(formattedDateTime, formatter);
 		 
 		 // 結果を表示
-		
 		posting.setInsertDate(localDateTime);
 		postingRepository.save(posting);
 		return "redirect:/snssns/complete";
@@ -139,7 +138,7 @@ class PostingController {
 			posting.setId(postingId);
 		}
 		
-		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
+		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
 		
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
@@ -164,7 +163,7 @@ class PostingController {
 			// nullの場合は検索から取得し記事IDを使用
 			posting.setId(postingId);
 		}
-		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
+		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateAsc();
 
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);

@@ -19,7 +19,6 @@ public class UserService {
 
 	// ユーザー削除
 	public void deleteUserInfo(String userName) {
-
 		// ユーザーに関する全情報を削除
 		userRepository.deleteByUserName(userName);
 //			postRepository.deleteByUsername(username);

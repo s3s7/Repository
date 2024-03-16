@@ -38,7 +38,7 @@ class UserController {
 		return "login";
 	}
 
-//ログアウト
+	//ログアウト
 	@RequestMapping(path = "/snssns/logout")
 	public String Logout(Model model) {
 		List<Posting> posting = postingrepository.findAll();
