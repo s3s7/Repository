@@ -101,10 +101,10 @@
 		<!-- 	<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
 			<th:block th:unless="${session.users == session.postingId}">
 				<dd class="link_area">
-				<td><form action="/snssns/index">
+				<td><form action="/post/delete/check">
 						<div style="text-align: center;">
 							<input type="hidden" name="id" th:value="${posting.id}" /> <input
-								type="submit" value="ログインして、コメントする" />
+								type="submit" value="削除する" />
 			</div>		</form></td>
 			
 			</th:block> 

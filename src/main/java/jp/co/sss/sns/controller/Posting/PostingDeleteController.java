@@ -32,9 +32,9 @@ public class PostingDeleteController {
 	 * @param session セッション情報
 	 * @return "post/delete/post_delete_check" 記事情報 削除確認画面へ
 	 */
-	@RequestMapping(path = "/post/delete/checks", method = RequestMethod.GET)
+	@RequestMapping(path = "/post/delete/check", method = RequestMethod.GET)
 	public String deletePostCheck() {
-		return "post/delete/post_delete_check";
+		return "post/delete/posting_delete_check";
 	}
 
 	/**
