@@ -99,7 +99,7 @@
 			</th:block>
 			
 		<!-- 	<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
-			<th:block th:unless="${session.users == session.postingId}">
+			<th:block th:unless="${session.users == posting.userId}">
 				<dd class="link_area">
 				<td><form action="/post/delete/check">
 						<div style="text-align: center;">

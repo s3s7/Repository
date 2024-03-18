@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import jp.co.sss.sns.entity.Posting;
+import jp.co.sss.sns.entity.User;
 @Repository
 public interface PostingRepository extends JpaRepository<Posting, Integer> {
 
@@ -20,6 +21,9 @@ public interface PostingRepository extends JpaRepository<Posting, Integer> {
 	
 	//記事削除機能
 	//void deleteByPostingId(int postingId);
+	
+	//記事検索
+	Posting getReferenceById(Integer id);
 	
 //	default String[] findAllDate(String date) {
 //		List<String> list = new ArrayList<String>();

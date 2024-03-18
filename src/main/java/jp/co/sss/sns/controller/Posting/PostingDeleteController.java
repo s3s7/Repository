@@ -1,11 +1,14 @@
 package jp.co.sss.sns.controller.Posting;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,10 +35,18 @@ public class PostingDeleteController {
 	 * @param session セッション情報
 	 * @return "post/delete/post_delete_check" 記事情報 削除確認画面へ
 	 */
-	@RequestMapping(path = "/post/delete/check", method = RequestMethod.GET)
-	public String deletePostCheck() {
-		return "post/delete/posting_delete_check";
+	@RequestMapping(path = "/post/delete/check/{id}", method = RequestMethod.GET)
+	public String deletePostCheck(@PathVariable final int postingId,Model model) {
+		 Posting posting = postingRepository.getReferenceById(postingId);
+			if (posting != null) {
+				model.addAttribute("posting", posting);
+			} else {
+				model.addAttribute("errMessage", "投稿記事は存在しません。");
+			}
+		
+		return "posting/delete/posting_delete_check";
 	}
+	
 
 	/**
 	 * 記事情報削除処理

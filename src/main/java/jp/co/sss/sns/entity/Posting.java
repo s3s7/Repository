@@ -36,5 +36,8 @@ public class Posting {
 
 	@Column
 	private String title;
-
+	
+	
+	@Column
+	private String userId;
 }

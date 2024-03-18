@@ -55,7 +55,7 @@ class PostingController {
 		return "posting/posting_page";
 	}
 
-	// 投稿確認画面へ（登録）機能 
+	// 投稿確認画面へ（登録）機能
 	@RequestMapping("/snssns/posting")
 	public String postCheck(Model model, @Valid @ModelAttribute PostingForm form, BindingResult result) {
 		if (result.hasErrors()) {
@@ -89,26 +89,18 @@ class PostingController {
 		posting.setTitle(form.getTitle());
 		// 投稿時間の取得
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
-		Date  date = new Date();
+		Date date = new Date();
 		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-		 // DateからInstantを取得し、それをLocalDateTimeに変換
-       ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    // DateTimeFormatterを作成
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+		// DateからInstantを取得し、それをLocalDateTimeに変換
+		ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		// DateTimeFormatterを作成
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 
-       // LocalDateTimeを指定した形式でフォーマット
-       String formattedDateTime = ldt.format(formatter);
-		// SimpleDateFormatクラスのparseメソッドを使うにはthrows句を使ってParseExceptionなどに例外を投げるか、try-catch構文で例外処理を行う必要
-//		try {
-//		     
-////			ldt = formatter.parse(DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()));
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+		// LocalDateTimeを指定した形式でフォーマット
+		String formattedDateTime = ldt.format(formatter);
+		LocalDateTime localDateTime = LocalDateTime.parse(formattedDateTime, formatter);
 
-		 LocalDateTime localDateTime = LocalDateTime.parse(formattedDateTime, formatter);
-		 
-		 // 結果を表示
+		// 結果を表示
 		posting.setInsertDate(localDateTime);
 		postingRepository.save(posting);
 		return "redirect:/snssns/complete";
@@ -137,18 +129,18 @@ class PostingController {
 			// nullの場合は検索から取得し記事IDを使用
 			posting.setId(postingId);
 		}
-		
+
 		List<Posting> postingList = postingRepository.findAllByOrderByInsertDateDesc();
-		
+
 		// 記事情報をViewへ渡す
 		model.addAttribute("posting", postingList);
 		model.addAttribute("sortNumber", 2);
 		return "index/index";
 	}
-	
+
 	// 記事情報を全件検索(古い順)
 	@RequestMapping(path = "/sns/oldSort")
-	public String oldSort(Model model,Integer postingId) throws Exception {
+	public String oldSort(Model model, Integer postingId) throws Exception {
 		Posting posting = new Posting();
 		// セッションにカテゴリIDが保存されている場合は取得
 		try {
@@ -197,8 +189,8 @@ class PostingController {
 		model.addAttribute("sortNumber", 5);
 		return "index/index";
 	}
-	
-	//タイトル検索　新着順
+
+	// タイトル検索 新着順
 	@RequestMapping(path = "/postingTitle/search")
 	public String searchPostingTitle(Model model, String title) {
 
@@ -207,7 +199,7 @@ class PostingController {
 		// セッションに近況タイトル検索ワードが保存されている場合は取得
 		if (session.getAttribute("titles") != null) {
 			title = (String) session.getAttribute("titles");
-			//前画面の商品名検索欄で入力された商品名検索ワードをセット
+			// 前画面の商品名検索欄で入力された商品名検索ワードをセット
 			posting.setTitle(title);
 		} else {
 			// nullの場合は前画面の近況タイトル検索欄に入力された近況タイトル検索ワードを使用
@@ -225,7 +217,5 @@ class PostingController {
 //		model.addAttribute("sortNumber", 6);
 		return "index/index";
 	}
-	
-	
 
 }
