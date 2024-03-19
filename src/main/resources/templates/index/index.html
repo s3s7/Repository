@@ -98,13 +98,16 @@
 			
 			</th:block>
 			
-		<!-- 	<!-- ログインしてコメントするボタン（ログインしていない場合のみ） -->
-			<th:block th:unless="${session.users == posting.userId}">
+		<!-- 削除するボタン  -->
+			<th:block th:if="${session.users == posting.userId}">
 				<dd class="link_area">
-				<td><form action="/post/delete/check">
-						<div style="text-align: center;">
+				<td><!-- <form action="/post/delete/check/{id}(id=${posting.id})"> -->
+				<td>	<form th:action="@{/post/delete/check/{id}(id=${posting.id})}">
+					 <div> 	<!-- <div style="text-align: center;">
 							<input type="hidden" name="id" th:value="${posting.id}" /> <input
-								type="submit" value="削除する" />
+								type="submit" value="削除する" /> -->
+								
+						<input type="submit" value="削除する" />
 			</div>		</form></td>
 			
 			</th:block> 

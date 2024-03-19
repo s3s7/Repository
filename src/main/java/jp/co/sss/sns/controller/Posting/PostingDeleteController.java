@@ -1,10 +1,8 @@
 package jp.co.sss.sns.controller.Posting;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,12 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.sss.sns.bean.UserBean;
+import jp.co.sss.sns.entity.Comment;
 import jp.co.sss.sns.entity.Posting;
 import jp.co.sss.sns.form.UserForm;
 import jp.co.sss.sns.repository.PostingRepository;
 import jp.co.sss.sns.service.PostingService;
-import jp.co.sss.sns.util.Constant;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -36,8 +33,10 @@ public class PostingDeleteController {
 	 * @return "post/delete/post_delete_check" 記事情報 削除確認画面へ
 	 */
 	@RequestMapping(path = "/post/delete/check/{id}", method = RequestMethod.GET)
-	public String deletePostCheck(@PathVariable final int postingId,Model model) {
-		 Posting posting = postingRepository.getReferenceById(postingId);
+	public String deletePostCheck(@PathVariable int id,Model model) {
+		//int id = 0;
+	//	 Posting posting = postingRepository.getReferenceById(postingId);
+		Posting posting = postingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid posting Id:" + id));
 			if (posting != null) {
 				model.addAttribute("posting", posting);
 			} else {
