@@ -99,7 +99,7 @@
 			</th:block>
 			
 		<!-- 削除するボタン  -->
-			<th:block th:if="${session.users == posting.userId}">
+			<th:block th:if="${session.users != null && session.users == posting.userId }">
 				<dd class="link_area">
 				<td><!-- <form action="/post/delete/check/{id}(id=${posting.id})"> -->
 				<td>	<form th:action="@{/post/delete/check/{id}(id=${posting.id})}">
