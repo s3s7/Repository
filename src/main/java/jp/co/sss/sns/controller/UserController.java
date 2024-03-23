@@ -29,7 +29,7 @@ class UserController {
 	private final UserRepository userrepository;
 	private final HttpSession session;
 	private final PostingRepository postingrepository;
-	private final PostingController postingCo;
+	private final PostingController postingController;
 	
 
 	// ログインページ
@@ -70,7 +70,7 @@ class UserController {
 			// 会員情報が存在する場合、ログイン
 			BeanUtils.copyProperties(user, userBean);
 			session.setAttribute("users", userBean);
-			return postingCo.showList(model);
+			return postingController.showList(model);
 
 		} else {
 			// 会員情報がない場合エラーメッセージ

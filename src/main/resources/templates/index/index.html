@@ -56,9 +56,11 @@
 			<th>タイトル</th>
 			<th>投稿内容</th>
 			<th>コメント一覧</th>
-				<th:block th:if="${session.usersAuthority == 2}">
+			<th:block th:if="${session.usersAuthority == 2}">
 			<th>コメント投稿</th></th:block>
 			<th:block th:unless="${session.users == 0}">
+			<th>コメント投稿</th></th:block>
+			<th:block th:if="${session. == 2}">
 			<th>コメント投稿</th></th:block>
 		</tr>
 		<tr th:each="posting: ${posting}">
@@ -98,12 +100,13 @@
 			
 			</th:block>
 			
-		<!-- 削除するボタン  -->
-			<th:block th:if="${session.users != null && session.users == posting.userId }">
+			<!-- 削除するボタン session.users != null &&  -->
+			<th:block th:if="${session.users != null && session.users.id == posting.userId}">
 				<dd class="link_area">
 				<td><!-- <form action="/post/delete/check/{id}(id=${posting.id})"> -->
 				<td>	<form th:action="@{/post/delete/check/{id}(id=${posting.id})}">
-					 <div> 	<!-- <div style="text-align: center;">
+					 <div> 
+					 	<!-- <div style="text-align: center;">
 							<input type="hidden" name="id" th:value="${posting.id}" /> <input
 								type="submit" value="削除する" /> -->
 								
