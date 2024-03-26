@@ -55,6 +55,7 @@
 			<th>投稿日</th>
 			<th>タイトル</th>
 			<th>投稿内容</th>
+			<th>テスト用userId表示</th>
 			<th>コメント一覧</th>
 			<th:block th:if="${session.usersAuthority eq 2}">
 			<th>コメント投稿</th></th:block>
@@ -69,7 +70,7 @@
 		<td style="text-align: center;"  th:text="${#temporals.format(posting.insertDate, 'yyyy/MM/dd HH:mm')}"></td>
 			<td style="text-align: center;" th:text="${posting.title}"></td>
 			<td style="text-align: center;" th:text="${posting.contents}"></td>
-
+		<td style="text-align: center;" th:text="${posting.userId}"></td><!-- テスト -->
 			<td>
 				<div style="text-align: center;">
 					<form th:action="@{/comment/list/{id}(id=${posting.id})}">
@@ -101,7 +102,7 @@
 			</th:block>
 			
 			<!-- 削除するボタン session.users != null &&  -->
-			<th:block th:if="${session.users.id == posting.userId}">
+			<th:block th:if="${session.users != null and session.users.id eq posting.userId}"> 
 				<dd class="link_area">
 				<td><!-- <form action="/post/delete/check/{id}(id=${posting.id})"> -->
 				<td>	<form th:action="@{/post/delete/check/{id}(id=${posting.id})}">

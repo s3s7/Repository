@@ -31,7 +31,6 @@ class UserController {
 	private final PostingRepository postingrepository;
 	private final PostingController postingController;
 	
-
 	// ログインページ
 	@RequestMapping("/snssns/index")
 	public String index() {
@@ -42,11 +41,13 @@ class UserController {
 	@RequestMapping(path = "/snssns/logout")
 	public String Logout(Model model) {
 		List<Posting> posting = postingrepository.findAll();
+		
 		if (!posting.isEmpty()) {
 			session.setAttribute("posting", posting);
 		} else {
 			model.addAttribute("errMessage", "投稿記事は存在しません。");
 		}
+		
 		session.removeAttribute("users");
 		return "/index/index";
 	}
@@ -61,6 +62,7 @@ class UserController {
 		// ユーザ名とパスワードを取得
 		String userName = form.getUserName();
 		String password = form.getPassword();
+		
 		// 会員情報を検索
 		User user = userrepository.findByUserNameAndPassword(userName, password);
 		Integer userDeleteFlag = user.getDeleteFlag();

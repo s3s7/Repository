@@ -22,10 +22,10 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class CommentShowController {
 
-//	DI
+	//DI
 	private final CommentRepository commentRepository;
 
-//		コメント一覧表示
+	//コメント一覧表示
 	@RequestMapping("comment/list/{id}")
 	public String showCommentList(@PathVariable int id, Model model) {
 

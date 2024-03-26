@@ -31,7 +31,6 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class CommentRegistController {
 	// DI
-	@Autowired
 	private final CommentRepository commentRepository;
 	private final PostingRepository postingRepository;
 	private final HttpSession session;
@@ -52,6 +51,7 @@ public class CommentRegistController {
 			return commentPage(model, form);
 		}
 		String commentContent = form.getCommentContents();
+		
 		if (commentContent != null) {
 			model.addAttribute("contents", commentContent);
 			// 条件を満たした場合コメント内容確認画面へ
@@ -94,7 +94,6 @@ public class CommentRegistController {
 	    
 	    // コメントに投稿IDを設定
 	    comment.setPostingId(posting.getId());
-	    
 	    // コメントを保存
 	    commentRepository.save(comment);
 	    
@@ -114,6 +113,6 @@ public class CommentRegistController {
 		Comment commentContents = new Comment();
 		commentContents.setCommentId(commentId);
 
-	
 	return"comment/comment_complete";
-}}
+	}
+}

@@ -87,10 +87,12 @@ class PostingController {
 		// 入力値をリポジトリ保存
 		posting.setContents(form.getContents());
 		posting.setTitle(form.getTitle());
+		
 		// 投稿時間の取得
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm");
 		Date date = new Date();
 		LocalDateTime ldt = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+		
 		// DateからInstantを取得し、それをLocalDateTimeに変換
 		ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 		// DateTimeFormatterを作成
@@ -213,8 +215,6 @@ class PostingController {
 
 		// 近況タイトルをViewへ渡す
 		model.addAttribute("posting", postingList);
-//		model.addAttribute("postings", postingBeanList);
-//		model.addAttribute("sortNumber", 6);
 		return "index/index";
 	}
 
