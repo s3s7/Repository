@@ -71,6 +71,7 @@
 			<td style="text-align: center;" th:text="${posting.title}"></td>
 			<td style="text-align: center;" th:text="${posting.contents}"></td>
 		<td style="text-align: center;" th:text="${posting.userId}"></td><!-- テスト -->
+		<td style="text-align: center;" th:text="${session.users}"></td><!-- テスト -->
 			<td>
 				<div style="text-align: center;">
 					<form th:action="@{/comment/list/{id}(id=${posting.id})}">
