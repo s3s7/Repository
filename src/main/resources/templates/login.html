@@ -4,14 +4,24 @@ th:replace="~{common/layout2 :: layout(~{::body/content()})}">
 <head>
 <meta charset="UTF-8" />
 <title>スモールスタート</title>
+    <link href="/output.css" rel="stylesheet">
 </head>
 <body>
-
+<h1 class="text-3xl font-bold underline">Welcome!</h1>
 <div>ログイン</div>
 <form  th:action="@{/snssns/doLogin}"  method="post">
 ユーザ名:<input  type="text" name="userName" /> 
 パスワード:<input type="password" name="password" /> 
 <input type="submit" value="ログイン" />
+ <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        Sign In
+      </button>
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        Forgot Password?
+      </a>
+     
     </form>
+ <button class="bg-blue-800 hover:bg-blue-700 text-white rounded px-4 py-2">Blue 800</button>
 </body>
 </html>
