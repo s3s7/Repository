@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<!-- 	th:replace="~{common/layout2 :: layout(~{::body/content()})}"> -->
+	<div th:replace="header::header"></div>
 <head>
     <link href="/output.css" rel="stylesheet">
+   <!-- <link
+  rel="stylesheet"
+  type="text/css"
+  th:href="@{./src/main/resources/static/css/tailwind/output.css}"
+/> -->
+   <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
 <meta charset="UTF-8" />
 <title>近況</title>
 </head>
 <body>
+<script th:href="@{/webjars/jquery/3.5.0/js/jquery.min.js}"></script>
+   <script th:href="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script> 
+ <button class="bg-blue-800 hover:bg-blue-700 text-white rounded px-4 py-2">Blue 800</button>
 	<h3 >みんなの近況！</h3>
+	 <p class="text-blue-700">Tailwindを入れたよ！</p>
+　　　　<p class="text-green-500">内容を更新したよ！</p> <!-- 新しい記述 -->
+ <body class="dark:tw-bg-gray-800 dark:tw-text-gray-50"></body>
 	<p class="error" th:text="${errMessage}"></p>
 
 	<div>記事一覧</div> <div class="posting_sort">

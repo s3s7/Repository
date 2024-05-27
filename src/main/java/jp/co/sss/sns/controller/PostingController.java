@@ -115,7 +115,7 @@ class PostingController {
 	}
 
 	// 記事情報を全件検索(新着順)
-	@RequestMapping(path = "/sns/newSort")
+	@RequestMapping("/sns/newSort")
 	public String newSort(Model model, Integer postingId) throws Exception {
 		Posting posting = new Posting();
 		// セッションにカテゴリIDが保存されている場合は取得
@@ -166,7 +166,7 @@ class PostingController {
 	}
 
 	// コメントが多い順検索
-	@RequestMapping(path = "/sns/commentManySort")
+	@RequestMapping("/sns/commentManySort")
 	public String commentManySort(Model model) {
 
 //				List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
@@ -180,7 +180,7 @@ class PostingController {
 	}
 
 	// コメントが少ない順検索
-	@RequestMapping(path = "/sns/commentLessSort")
+	@RequestMapping("/sns/commentLessSort")
 	public String commentLessSort(Model model) {
 
 //							List<Object[]> commentList = commentRepository.findByPostingIdAndCountpOrderByCountpDesc();
@@ -193,7 +193,7 @@ class PostingController {
 	}
 
 	// タイトル検索 新着順
-	@RequestMapping(path = "/postingTitle/search")
+	@RequestMapping("/postingTitle/search")
 	public String searchPostingTitle(Model model, String title) {
 
 		Posting posting = new Posting();

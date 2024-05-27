@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{common/layout2 :: layout(~{::body/content()})}">
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<th:replace="~{common/layout2 :: layout(~{::body/content()})}">-->
+<div th:replace="header::header"></div>
 <head>
 <meta charset="UTF-8" />
 <title>スモールスタート</title>
-    <link href="/output.css" rel="stylesheet">
+ <link href="./src/main/resources/static/css/tailwind/output.css" rel="stylesheet">
+  <!--   <link
+  rel="stylesheet"
+  type="text/css"
+  th:href="@{./src/main/resources/static/css/tailwind/output.css}"
+/> -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
 </head>
 <body>
+ <body class="dark:tw-bg-gray-800 dark:tw-text-gray-50"></body>
 <h1 class="text-3xl font-bold underline">Welcome!</h1>
 <div>ログイン</div>
 <form  th:action="@{/snssns/doLogin}"  method="post">
