@@ -34,7 +34,7 @@ class WeekGoalRegistController {
 		 */
 		@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.GET)
 		public String weekGoalRegistGet(WeekGoalForm form) {
-			return "goal/week_goal_input";
+			return "goal/week/week_goal_input";
 		}
 		
 		/**
@@ -43,10 +43,10 @@ class WeekGoalRegistController {
 		 * @param form 会員情報
 		 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 		 */
-		@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.POST)
-		public String weekGoalRegistPost(WeekGoalForm form) {
-			return "goal/week_goal_input";
-		}
+		//@RequestMapping(path = "/sns/weekGoal/input", method = RequestMethod.POST)
+	//	public String weekGoalRegistPost(WeekGoalForm form) {
+//			return "goal/week_goal_input";
+//		}
 	
 		/**
 		 * 今週の目標 登録確認処理
@@ -60,9 +60,9 @@ class WeekGoalRegistController {
 		public String weekGoalRegistCheck(@Valid @ModelAttribute WeekGoalForm form, BindingResult result) {
 			// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
 			if (result.hasErrors()) {
-				return "goal/week_goal_input";
+				return "goal/week/week_goal_input";
 			}
-			return "goal/week_goal_check";
+			return "goal/week/week_goal_check";
 		}
 
 		/**
@@ -72,7 +72,7 @@ class WeekGoalRegistController {
 		 * @return "redirect:goal/week_goal_complete" 今週の目標 登録完了画面へ
 		 */
 		@RequestMapping(path = "/sns/weekGoal/complete", method = RequestMethod.POST)
-		public String registComplete(@ModelAttribute WeekGoalForm form) {
+		public String weekGoalRegistComplete(@ModelAttribute WeekGoalForm form) {
 		// 今日の目標情報の生成
 		goal goal = new goal();
 
@@ -89,7 +89,7 @@ class WeekGoalRegistController {
 //		userBean.setAuthority(user.getAuthority());
         session.setAttribute("goal",goal);
         
-		return "redirect:/goal/week_goal_complete";
+		return "redirect:/goal/week/week_goal_complete";
 	}
 	//
 //		/**

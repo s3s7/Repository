@@ -33,7 +33,7 @@ class MonthGoalRegistController {
 			 */
 			@RequestMapping(path = "/sns/monthGoal/input", method = RequestMethod.GET)
 			public String monthGoalRegistGet(MonthGoalForm form) {
-				return "goal/month_goal_input";
+				return "goal/month/month_goal_input";
 			}
 			
 			/**
@@ -42,10 +42,10 @@ class MonthGoalRegistController {
 			 * @param form 会員情報
 			 * @return "user/regist/user_regist_input" 会員情報 登録入力画面へ
 			 */
-			@RequestMapping(path = "/sns/monthGoal/input", method = RequestMethod.POST)
-			public String monthGoalRegistPost(MonthGoalForm form) {
-				return "goal/month_goal_input";
-			}
+//			@RequestMapping(path = "/sns/monthGoal/input", method = RequestMethod.POST)
+//			public String monthGoalRegistPost(MonthGoalForm form) {
+//				return "goal/month_goal_input";
+//			}
 		
 			/**
 			 * 今週の目標 登録確認処理
@@ -59,9 +59,9 @@ class MonthGoalRegistController {
 			public String monthGoalRegistCheck(@Valid @ModelAttribute MonthGoalForm form, BindingResult result) {
 				// 入力値にエラーがあった場合、目標 入力画面表示処理に戻る
 				if (result.hasErrors()) {
-					return "goal/month_goal_input";
+					return "goal/month/month_goal_input";
 				}
-				return "goal/month_goal_check";
+				return "goal/month/month_goal_check";
 			}
 
 			/**
@@ -71,14 +71,14 @@ class MonthGoalRegistController {
 			 * @return "redirect:goal/month_goal_complete" 今月の目標 登録完了画面へ
 			 */
 			@RequestMapping(path = "/sns/monthGoal/complete", method = RequestMethod.POST)
-			public String registComplete(@ModelAttribute MonthGoalForm form) {
-			// 今日の目標情報の生成
+			public String monthGoalRegistComplete(@ModelAttribute MonthGoalForm form) {
+			// 今月の目標情報の生成
 			goal goal = new goal();
 
 			// 入力値を情報にコピー
 //			BeanUtils.copyProperties(form, goal);
 
-			// 今日の目標情報を保存
+			// 今月の目標情報を保存
 			goalRepository.save(goal);
 
 			// 状態保存
@@ -88,7 +88,7 @@ class MonthGoalRegistController {
 //			userBean.setAuthority(user.getAuthority());
 	        session.setAttribute("goal",goal);
 	        
-			return "redirect:/goal/month_goal_complete";
+			return "redirect:/goal/month/month_goal_complete";
 		}
 		//
 //			/**

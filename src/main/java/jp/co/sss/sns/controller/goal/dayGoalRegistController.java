@@ -57,7 +57,7 @@ class dayGoalRegistController {
 	 * @return 入力値エラーあり："goal/daily_goal_input" 今日の目標登録画面へ
 	 *         入力値エラーなし："goal/daily_goal_input" 今日の目標登録確認画面へ
 	 */
-	@RequestMapping(path = "/sns/dailyGoal/check")
+	@RequestMapping("/sns/dailyGoal/check")
 	public String dailyGoalRegistCheck(@Valid @ModelAttribute GoalForm form, BindingResult result) {
 		// 入力値にエラーがあった場合、今日の目標 入力画面表示処理に戻る
 		if (result.hasErrors()) {
